@@ -228,11 +228,7 @@ want to reference this work before a paper exists, link to this repository.
 
 ## License
 
-**No software license has been chosen yet — this needs a decision from the PI.**
-
-Until a license file is added, default copyright applies: the code is readable and auditable here,
-but no permissions are granted for reuse, modification or redistribution. If you want to build on
-it, open an issue and ask.
+This project is licensed under the [Apache License 2.0](LICENSE).
 
 Note separately that the manuscripts the pipeline operates on are third-party copyrighted works.
 None are redistributed here, and any reuse of the methodology needs sources you have the right to
