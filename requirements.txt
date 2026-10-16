@@ -1,0 +1,9 @@
+# Analysis and pipeline dependencies.
+# Inference is served separately (vLLM, OpenAI-compatible HTTP); no model is loaded in-process
+# by this code, and nothing here downloads weights.
+numpy>=1.26
+scipy>=1.11
+statsmodels>=0.14        # GEE and the mixed-model analyses
+pandas>=2.1
+matplotlib>=3.8          # figure-generation code only
+requests>=2.31

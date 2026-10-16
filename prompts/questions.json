@@ -1,0 +1,12 @@
+{
+  "principle": "A second verifier should add independent evidence rather than merely echo a prior verdict.",
+  "targeted_questions": [
+    "Does the alleged evidence actually exist in the manuscript?",
+    "Does the relevant evidence support or refute the alleged defect?",
+    "Can the numerical or statistical statement be recomputed from the manuscript?",
+    "Is the cited cross-reference or artifact actually present?",
+    "Would the verdict change if the decisive evidence were repaired?",
+    "Does the issue require external literature, code execution, or reproduction to settle?",
+    "If evidence is insufficient, does the verifier preserve UNRESOLVED rather than force consensus?"
+  ]
+}

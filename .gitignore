@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# environments
+.venv/
+venv/
+env/
+.conda/
+
+# never commit research artifacts into this repository
+runs/
+results/
+sources/
+logs/
+*.jsonl
+*.ckpt
+*.safetensors
+*.pt
+*.bin
+
+# never commit generated figures or manuscript output
+figures/
+overleaf/
+*.pdf
+*.png
+*.jpg
+*.svg
+
+# secrets
+.env
+*.pem
+*.key
+
+# os
+.DS_Store
