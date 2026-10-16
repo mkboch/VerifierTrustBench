@@ -1,0 +1,813 @@
+{
+ "schema_version": 1,
+ "what_this_is": "Minimal de-identified aggregate sufficient statistics for the VerifierTrustBench interactive playground. Counts only. No per-case records, no model outputs, no manuscript text, no human-participant data.",
+ "recomputation_note": "Paired contrasts ship as the 2x2 cell counts (both, b, c, neither). The browser recomputes the difference and the exact two-sided McNemar p from b and c; nothing is precomputed for display.",
+ "models": [
+  {
+   "id": "qwen38_27",
+   "label": "Qwen3.8-27B"
+  },
+  {
+   "id": "qwen36_27",
+   "label": "Qwen3.6-27B"
+  },
+  {
+   "id": "gemma4_12",
+   "label": "Gemma-4-12B"
+  },
+  {
+   "id": "granite42_30",
+   "label": "Granite-4.2-30B"
+  },
+  {
+   "id": "qwen3_8",
+   "label": "Qwen3-8B"
+  }
+ ],
+ "experiments": {
+  "discovery_vs_localized": {
+   "label": "Discovery vs relation-localized verification",
+   "unit": "paired case x model",
+   "pooled": {
+    "n": 909,
+    "both": 62,
+    "b": 332,
+    "c": 33,
+    "neither": 482,
+    "targeted": {
+     "x": 394,
+     "n": 909
+    },
+    "blind": {
+     "x": 95,
+     "n": 909
+    }
+   },
+   "by_model": {
+    "qwen38_27": {
+     "n": 181,
+     "both": 28,
+     "b": 112,
+     "c": 3,
+     "neither": 38,
+     "targeted": {
+      "x": 140,
+      "n": 181
+     },
+     "blind": {
+      "x": 31,
+      "n": 181
+     }
+    },
+    "qwen36_27": {
+     "n": 179,
+     "both": 23,
+     "b": 85,
+     "c": 12,
+     "neither": 59,
+     "targeted": {
+      "x": 108,
+      "n": 179
+     },
+     "blind": {
+      "x": 35,
+      "n": 179
+     }
+    },
+    "gemma4_12": {
+     "n": 183,
+     "both": 10,
+     "b": 57,
+     "c": 7,
+     "neither": 109,
+     "targeted": {
+      "x": 67,
+      "n": 183
+     },
+     "blind": {
+      "x": 17,
+      "n": 183
+     }
+    },
+    "granite42_30": {
+     "n": 183,
+     "both": 1,
+     "b": 54,
+     "c": 9,
+     "neither": 119,
+     "targeted": {
+      "x": 55,
+      "n": 183
+     },
+     "blind": {
+      "x": 10,
+      "n": 183
+     }
+    },
+    "qwen3_8": {
+     "n": 183,
+     "both": 0,
+     "b": 24,
+     "c": 2,
+     "neither": 157,
+     "targeted": {
+      "x": 24,
+      "n": 183
+     },
+     "blind": {
+      "x": 2,
+      "n": 183
+     }
+    }
+   },
+   "by_family": {
+    "arithmetic": {
+     "n": 59,
+     "both": 0,
+     "b": 22,
+     "c": 0,
+     "neither": 37,
+     "targeted": {
+      "x": 22,
+      "n": 59
+     },
+     "blind": {
+      "x": 0,
+      "n": 59
+     }
+    },
+    "claim_evidence": {
+     "n": 94,
+     "both": 9,
+     "b": 27,
+     "c": 2,
+     "neither": 56,
+     "targeted": {
+      "x": 36,
+      "n": 94
+     },
+     "blind": {
+      "x": 11,
+      "n": 94
+     }
+    },
+    "cross_reference": {
+     "n": 310,
+     "both": 1,
+     "b": 194,
+     "c": 0,
+     "neither": 115,
+     "targeted": {
+      "x": 195,
+      "n": 310
+     },
+     "blind": {
+      "x": 1,
+      "n": 310
+     }
+    },
+    "method_result": {
+     "n": 114,
+     "both": 9,
+     "b": 20,
+     "c": 10,
+     "neither": 75,
+     "targeted": {
+      "x": 29,
+      "n": 114
+     },
+     "blind": {
+      "x": 19,
+      "n": 114
+     }
+    },
+    "numerical": {
+     "n": 302,
+     "both": 39,
+     "b": 61,
+     "c": 18,
+     "neither": 184,
+     "targeted": {
+      "x": 100,
+      "n": 302
+     },
+     "blind": {
+      "x": 57,
+      "n": 302
+     }
+    },
+    "statistical": {
+     "n": 30,
+     "both": 4,
+     "b": 8,
+     "c": 3,
+     "neither": 15,
+     "targeted": {
+      "x": 12,
+      "n": 30
+     },
+     "blind": {
+      "x": 7,
+      "n": 30
+     }
+    }
+   },
+   "by_domain": {
+    "A_ml_ai": {
+     "n": 156,
+     "both": 5,
+     "b": 52,
+     "c": 5,
+     "neither": 94,
+     "targeted": {
+      "x": 57,
+      "n": 156
+     },
+     "blind": {
+      "x": 10,
+      "n": 156
+     }
+    },
+    "B_vision_signal": {
+     "n": 216,
+     "both": 19,
+     "b": 96,
+     "c": 11,
+     "neither": 90,
+     "targeted": {
+      "x": 115,
+      "n": 216
+     },
+     "blind": {
+      "x": 30,
+      "n": 216
+     }
+    },
+    "C_biomedical": {
+     "n": 205,
+     "both": 13,
+     "b": 55,
+     "c": 7,
+     "neither": 130,
+     "targeted": {
+      "x": 68,
+      "n": 205
+     },
+     "blind": {
+      "x": 20,
+      "n": 205
+     }
+    },
+    "D_statistics": {
+     "n": 167,
+     "both": 16,
+     "b": 59,
+     "c": 4,
+     "neither": 88,
+     "targeted": {
+      "x": 75,
+      "n": 167
+     },
+     "blind": {
+      "x": 20,
+      "n": 167
+     }
+    },
+    "E_physics_engineering": {
+     "n": 165,
+     "both": 9,
+     "b": 70,
+     "c": 6,
+     "neither": 80,
+     "targeted": {
+      "x": 79,
+      "n": 165
+     },
+     "blind": {
+      "x": 15,
+      "n": 165
+     }
+    }
+   },
+   "domain_labels": {
+    "A_ml_ai": "ML / AI",
+    "B_vision_signal": "Vision & signal",
+    "C_biomedical": "Biomedical",
+    "D_statistics": "Statistics",
+    "E_physics_engineering": "Physics & engineering"
+   }
+  },
+  "ranking": {
+   "label": "Does a longer finding list recover the missed defects?",
+   "ks_observable": [
+    1,
+    2,
+    3,
+    5
+   ],
+   "ks_note": "blind schema caps findings at maxItems 5; Recall/Precision@10 are NOT recoverable and are not reported",
+   "budget_note": "The blind response schema caps a system at five findings, so only the recorded top-five budget is observable. Recall@4 was not stored separately and Recall@10 is not recoverable. No claim is made about ranks beyond five.",
+   "by_model": {
+    "qwen38_27": {
+     "1": {
+      "x": 23,
+      "n": 184
+     },
+     "2": {
+      "x": 29,
+      "n": 184
+     },
+     "3": {
+      "x": 32,
+      "n": 184
+     },
+     "5": {
+      "x": 32,
+      "n": 184
+     }
+    },
+    "qwen36_27": {
+     "1": {
+      "x": 27,
+      "n": 179
+     },
+     "2": {
+      "x": 34,
+      "n": 179
+     },
+     "3": {
+      "x": 35,
+      "n": 179
+     },
+     "5": {
+      "x": 35,
+      "n": 179
+     }
+    },
+    "gemma4_12": {
+     "1": {
+      "x": 12,
+      "n": 184
+     },
+     "2": {
+      "x": 17,
+      "n": 184
+     },
+     "3": {
+      "x": 18,
+      "n": 184
+     },
+     "5": {
+      "x": 18,
+      "n": 184
+     }
+    },
+    "granite42_30": {
+     "1": {
+      "x": 10,
+      "n": 184
+     },
+     "2": {
+      "x": 10,
+      "n": 184
+     },
+     "3": {
+      "x": 10,
+      "n": 184
+     },
+     "5": {
+      "x": 10,
+      "n": 184
+     }
+    },
+    "qwen3_8": {
+     "1": {
+      "x": 2,
+      "n": 184
+     },
+     "2": {
+      "x": 2,
+      "n": 184
+     },
+     "3": {
+      "x": 2,
+      "n": 184
+     },
+     "5": {
+      "x": 2,
+      "n": 184
+     }
+    }
+   }
+  },
+  "agentic": {
+   "label": "Bounded agentic navigation",
+   "model": "qwen38_27",
+   "scope_note": "One system under one bounded tool budget. Bounded agentic navigation recovered part of the observed direct-to-localized deficit. The unrecovered portion is not characterized.",
+   "n_paired_cases": 183,
+   "direct_blind": {
+    "x": 31,
+    "n": 183
+   },
+   "agentic_blind": {
+    "x": 66,
+    "n": 183
+   },
+   "relation_localized": {
+    "x": 140,
+    "n": 181
+   },
+   "paired_agentic_vs_direct": {
+    "n": 183,
+    "both": 25,
+    "b": 41,
+    "c": 6,
+    "neither": 111
+   },
+   "false_positive_findings_per_case": {
+    "direct": 0.7,
+    "agentic": 1.53
+   },
+   "tool_calls": {
+    "mean": 7.99,
+    "budget": 8,
+    "distribution": {
+     "8": 181,
+     "7": 2
+    }
+   },
+   "recall_at": {
+    "agentic": {
+     "1": {
+      "x": 46,
+      "n": 183
+     },
+     "2": {
+      "x": 60,
+      "n": 183
+     },
+     "3": {
+      "x": 65,
+      "n": 183
+     },
+     "5": {
+      "x": 66,
+      "n": 183
+     }
+    },
+    "direct": {
+     "1": {
+      "x": 22,
+      "n": 183
+     },
+     "2": {
+      "x": 28,
+      "n": 183
+     },
+     "3": {
+      "x": 31,
+      "n": 183
+     },
+     "5": {
+      "x": 31,
+      "n": 183
+     }
+    }
+   }
+  },
+  "information_transfer": {
+   "label": "What transfers between verifiers",
+   "arm_labels": {
+    "neutral": "Neutral control",
+    "filler": "Length-matched filler",
+    "correct_verdict": "Correct verdict only",
+    "correct_rationale": "Correct rationale",
+    "false_verdict": "False verdict only",
+    "false_rationale": "False rationale",
+    "cv_irrelevant": "Correct verdict + irrelevant text",
+    "fv_irrelevant": "False verdict + irrelevant text"
+   },
+   "arms": {
+    "neutral": {
+     "x": 411,
+     "n": 628
+    },
+    "correct_verdict": {
+     "x": 426,
+     "n": 629
+    },
+    "correct_rationale": {
+     "x": 503,
+     "n": 630
+    },
+    "false_verdict": {
+     "x": 400,
+     "n": 628
+    },
+    "false_rationale": {
+     "x": 481,
+     "n": 623
+    },
+    "cv_irrelevant": {
+     "x": 387,
+     "n": 623
+    },
+    "fv_irrelevant": {
+     "x": 402,
+     "n": 627
+    },
+    "filler": {
+     "x": 409,
+     "n": 627
+    }
+   },
+   "frozen_contrasts": {
+    "1_relevant_vs_irrelevant_rationale": {
+     "question": "Does relation-specific evidence content matter beyond a length-matched irrelevant rationale?",
+     "a_arm": "correct_rationale",
+     "b_arm": "cv_irrelevant",
+     "n": 623,
+     "both": 364,
+     "b": 132,
+     "c": 23,
+     "neither": 104,
+     "frozen_exact_p": "8.7525E-20",
+     "frozen_ci95_pp": [
+      13.79,
+      21.15
+     ]
+    },
+    "2_label_only_vs_irrelevant_rationale": {
+     "question": "Does adding length-matched irrelevant text to a verdict change anything?",
+     "a_arm": "correct_verdict",
+     "b_arm": "cv_irrelevant",
+     "n": 622,
+     "both": 344,
+     "b": 77,
+     "c": 42,
+     "neither": 159,
+     "frozen_exact_p": "1.7105E-3",
+     "frozen_ci95_pp": [
+      2.2,
+      9.03
+     ]
+    },
+    "3_relevant_rationale_vs_filler": {
+     "question": "Relevant rationale against pure length-matched context, with no verdict.",
+     "a_arm": "correct_rationale",
+     "b_arm": "filler",
+     "n": 627,
+     "both": 379,
+     "b": 121,
+     "c": 30,
+     "neither": 97,
+     "frozen_exact_p": "3.7177E-14",
+     "frozen_ci95_pp": [
+      10.81,
+      18.18
+     ]
+    },
+    "4_correct_vs_false_under_irrelevant": {
+     "question": "Verdict-label effect with rationale relevance held constant (both irrelevant).",
+     "a_arm": "cv_irrelevant",
+     "b_arm": "fv_irrelevant",
+     "n": 620,
+     "both": 359,
+     "b": 27,
+     "c": 37,
+     "neither": 197,
+     "frozen_exact_p": "2.6044E-1",
+     "frozen_ci95_pp": [
+      -4.15,
+      0.93
+     ]
+    },
+    "5_original_h3_replication": {
+     "question": "The original H3 contrast, recomputed on the same subset.",
+     "a_arm": "correct_rationale",
+     "b_arm": "correct_verdict",
+     "n": 629,
+     "both": 388,
+     "b": 114,
+     "c": 38,
+     "neither": 89,
+     "frozen_exact_p": "5.1164E-10",
+     "frozen_ci95_pp": [
+      8.34,
+      15.81
+     ]
+    },
+    "6_filler_vs_neutral": {
+     "question": "Pure token/context effect with no verdict and no relation content.",
+     "a_arm": "filler",
+     "b_arm": "neutral",
+     "n": 625,
+     "both": 377,
+     "b": 30,
+     "c": 33,
+     "neither": 185,
+     "frozen_exact_p": "8.0131E-1",
+     "frozen_ci95_pp": [
+      -2.99,
+      2.03
+     ]
+    }
+   },
+   "null_note": "A contrast whose interval includes zero is not evidence that the effect is exactly zero; it is an interval consistent with no effect at this sample size."
+  },
+  "evidence_profile": {
+   "label": "Verification Evidence Profile",
+   "by_model": {
+    "qwen38_27": {
+     "discovery_recall_at_1": {
+      "x": 23,
+      "n": 184
+     },
+     "discovery_recall_at_5": {
+      "x": 32,
+      "n": 184
+     },
+     "relation_localized": {
+      "x": 140,
+      "n": 181
+     },
+     "false_alarm": {
+      "x": 22,
+      "n": 184
+     },
+     "verdict_x_provenance": {
+      "CORRECT_RELATION_SUPPORTED": 412,
+      "CORRECT_UNSUPPORTED": 21,
+      "INCORRECT_RELATION_SUPPORTED": 82,
+      "INCORRECT_UNSUPPORTED": 33
+     },
+     "trajectory": {
+      "x": 107,
+      "n": 180
+     },
+     "miss_defect": {
+      "x": 41,
+      "n": 180
+     },
+     "miss_reversal": {
+      "x": 52,
+      "n": 180
+     }
+    },
+    "qwen36_27": {
+     "discovery_recall_at_1": {
+      "x": 27,
+      "n": 179
+     },
+     "discovery_recall_at_5": {
+      "x": 35,
+      "n": 179
+     },
+     "relation_localized": {
+      "x": 108,
+      "n": 179
+     },
+     "false_alarm": {
+      "x": 19,
+      "n": 183
+     },
+     "verdict_x_provenance": {
+      "CORRECT_RELATION_SUPPORTED": 358,
+      "CORRECT_UNSUPPORTED": 21,
+      "INCORRECT_RELATION_SUPPORTED": 140,
+      "INCORRECT_UNSUPPORTED": 32
+     },
+     "trajectory": {
+      "x": 81,
+      "n": 183
+     },
+     "miss_defect": {
+      "x": 72,
+      "n": 183
+     },
+     "miss_reversal": {
+      "x": 81,
+      "n": 183
+     }
+    },
+    "gemma4_12": {
+     "discovery_recall_at_1": {
+      "x": 12,
+      "n": 184
+     },
+     "discovery_recall_at_5": {
+      "x": 18,
+      "n": 184
+     },
+     "relation_localized": {
+      "x": 67,
+      "n": 183
+     },
+     "false_alarm": {
+      "x": 11,
+      "n": 184
+     },
+     "verdict_x_provenance": {
+      "CORRECT_RELATION_SUPPORTED": 270,
+      "CORRECT_UNSUPPORTED": 31,
+      "INCORRECT_RELATION_SUPPORTED": 210,
+      "INCORRECT_UNSUPPORTED": 38
+     },
+     "trajectory": {
+      "x": 37,
+      "n": 181
+     },
+     "miss_defect": {
+      "x": 116,
+      "n": 181
+     },
+     "miss_reversal": {
+      "x": 121,
+      "n": 181
+     }
+    },
+    "granite42_30": {
+     "discovery_recall_at_1": {
+      "x": 10,
+      "n": 184
+     },
+     "discovery_recall_at_5": {
+      "x": 10,
+      "n": 184
+     },
+     "relation_localized": {
+      "x": 55,
+      "n": 183
+     },
+     "false_alarm": {
+      "x": 20,
+      "n": 184
+     },
+     "verdict_x_provenance": {
+      "CORRECT_RELATION_SUPPORTED": 191,
+      "CORRECT_UNSUPPORTED": 88,
+      "INCORRECT_RELATION_SUPPORTED": 155,
+      "INCORRECT_UNSUPPORTED": 116
+     },
+     "trajectory": {
+      "x": 37,
+      "n": 182
+     },
+     "miss_defect": {
+      "x": 128,
+      "n": 182
+     },
+     "miss_reversal": {
+      "x": 123,
+      "n": 182
+     }
+    },
+    "qwen3_8": {
+     "discovery_recall_at_1": {
+      "x": 2,
+      "n": 184
+     },
+     "discovery_recall_at_5": {
+      "x": 2,
+      "n": 184
+     },
+     "relation_localized": {
+      "x": 24,
+      "n": 183
+     },
+     "false_alarm": {
+      "x": 26,
+      "n": 184
+     },
+     "verdict_x_provenance": {
+      "CORRECT_RELATION_SUPPORTED": 104,
+      "CORRECT_UNSUPPORTED": 102,
+      "INCORRECT_RELATION_SUPPORTED": 155,
+      "INCORRECT_UNSUPPORTED": 190
+     },
+     "trajectory": {
+      "x": 5,
+      "n": 183
+     },
+     "miss_defect": {
+      "x": 159,
+      "n": 183
+     },
+     "miss_reversal": {
+      "x": 160,
+      "n": 183
+     }
+    }
+   },
+   "definitions": {
+    "false_alarm": "1 - clearance on unmodified valid relations",
+    "trajectory": "all three evidence states (E0, E1, E2) judged correctly on the same relation",
+    "verdict_x_provenance": "verdict correctness crossed with whether the cited line carries the tested relation"
+   }
+  }
+ },
+ "human_validation": {
+  "included": false,
+  "reason": "Omitted from the first public release. The human study involved six identifiable colleagues; no aggregate is published here so that no reconstruction path exists."
+ }
+}
