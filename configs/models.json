@@ -1,0 +1,38 @@
+{
+  "qwen38_27": {
+    "family": "qwen",
+    "size_b": 27,
+    "endpoint": "http://127.0.0.1:8097",
+    "phase": "qwen27"
+  },
+  "qwen36_27": {
+    "family": "qwen",
+    "size_b": 27,
+    "endpoint": "http://127.0.0.1:8098",
+    "phase": "qwen27"
+  },
+  "qwen3_8": {
+    "family": "qwen",
+    "size_b": 8,
+    "endpoint": "http://127.0.0.1:8100",
+    "phase": "small"
+  },
+  "llama31_8": {
+    "family": "llama",
+    "size_b": 8,
+    "endpoint": "http://127.0.0.1:8101",
+    "phase": "small"
+  },
+  "mistral7": {
+    "family": "mistral",
+    "size_b": 7,
+    "endpoint": "http://127.0.0.1:8102",
+    "phase": "small"
+  },
+  "phi4mini": {
+    "family": "phi",
+    "size_b": 4,
+    "endpoint": "http://127.0.0.1:8103",
+    "phase": "small"
+  }
+}

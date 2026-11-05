@@ -1,0 +1,3 @@
+-r requirements.txt
+pytest>=7.4
+quickjs>=1.19            # executes docs/assets/app.js in tests/test_playground.py
