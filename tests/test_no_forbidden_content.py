@@ -63,12 +63,19 @@ def test_no_manuscript_sources_are_tracked():
     sources instead.
     """
     doc_suffixes = {".tex", ".bib", ".docx", ".pdf"}
+    # Two tracked files are named after the manuscript but contain no manuscript text:
+    # an index of reported values to their frozen records, and the comparison targets.
+    # They are listed explicitly so the guard stays strict for everything else.
+    metadata_about_the_manuscript = {
+        "docs/data/manuscript_results_index.json",
+        "reproducibility/manuscript_targets.json",
+    }
     bad = []
     for f in FILES:
         rel = f.relative_to(ROOT).as_posix()
-        if f.suffix.lower() in doc_suffixes:
-            bad.append(rel)
-        elif re.match(r"manuscript[_-]", f.name.lower()):
+        if rel in metadata_about_the_manuscript:
+            continue
+        if f.suffix.lower() in doc_suffixes or "manuscript" in f.name.lower():
             bad.append(rel)
     assert bad == [], f"manuscript material is tracked: {bad}"
 
