@@ -578,8 +578,15 @@ function runFrontier() {
   const walk = (obj, prefix) => {
     for (const k of Object.keys(obj || {})) {
       const v = obj[k];
-      if (v && typeof v === "object" && !Array.isArray(v)) walk(v, prefix ? prefix + " / " + k : k);
-      else rows.push([(prefix ? prefix + " / " : "") + k, String(v)]);
+      if (v && typeof v === "object" && !Array.isArray(v)) {
+        walk(v, prefix ? prefix + " / " + k : k);
+      } else {
+        /* Percentages render to one decimal, as every other card does, so 30 and 30.0
+           cannot look like different measurements of the same thing. */
+        const isPct = /(^|_)pct$/.test(k) && typeof v === "number";
+        rows.push([(prefix ? prefix + " / " : "") + k,
+                   isPct ? v.toFixed(1) + "%" : String(v)]);
+      }
     }
   };
   walk(o, "");
