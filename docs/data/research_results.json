@@ -248,168 +248,106 @@
  },
  "frontier": {
   "openai": {
-   "anthropic": {
-    "model": "claude-sonnet-5-5",
-    "spend_usd": 5.9615,
-    "rungs": {
-     "BLIND_FINDING_LIST": {
-      "n_attempted": 15,
-      "n_scored": 0,
-      "n_refused": 15,
-      "n_technical_failure": 0,
-      "detected": 0,
-      "pct": null,
-      "findings_per_case": null,
-      "fp_findings_per_case": null,
-      "recall_at_1": 0,
-      "recall_at_5": 0
-     },
-     "CATEGORY_TARGETED_FINDING_LIST": {
-      "n_attempted": 15,
-      "n_scored": 0,
-      "n_refused": 15,
-      "n_technical_failure": 0,
-      "detected": 0,
-      "pct": null,
-      "findings_per_case": null,
-      "fp_findings_per_case": null,
-      "recall_at_1": 0,
-      "recall_at_5": 0
-     },
-     "RELATION_TARGETED_FINDING_LIST": {
-      "n_attempted": 15,
-      "n_scored": 0,
-      "n_refused": 15,
-      "n_technical_failure": 0,
-      "detected": 0,
-      "pct": null,
-      "findings_per_case": null,
-      "fp_findings_per_case": null,
-      "recall_at_1": 0,
-      "recall_at_5": 0
-     },
-     "RELATION_LOCALIZED_BINARY_VERDICT": {
-      "n_attempted": 60,
-      "n_scored": 49,
-      "n_refused": 2,
-      "n_technical_failure": 9,
-      "detected": 37,
-      "pct": 75.5,
-      "findings_per_case": null,
-      "fp_findings_per_case": null,
-      "recall_at_1": 0,
-      "recall_at_5": 0
-     }
+   "model": "gpt-5.2",
+   "spend_usd": 8.3378,
+   "rungs": {
+    "BLIND_FINDING_LIST": {
+     "n_attempted": 60,
+     "n_scored": 60,
+     "n_refused": 0,
+     "n_technical_failure": 0,
+     "detected": 18,
+     "pct": 30.0,
+     "findings_per_case": 2.13,
+     "fp_findings_per_case": 1.58,
+     "recall_at_1": 11,
+     "recall_at_5": 18
     },
-    "contrasts": {
-     "category information, format held": null,
-     "exact-relation increment": null,
-     "total information, format held": null,
-     "RESPONSE FORMAT, information held": null
+    "CATEGORY_TARGETED_FINDING_LIST": {
+     "n_attempted": 60,
+     "n_scored": 60,
+     "n_refused": 0,
+     "n_technical_failure": 0,
+     "detected": 32,
+     "pct": 53.3,
+     "findings_per_case": 1.38,
+     "fp_findings_per_case": 0.55,
+     "recall_at_1": 29,
+     "recall_at_5": 32
+    },
+    "RELATION_TARGETED_FINDING_LIST": {
+     "n_attempted": 60,
+     "n_scored": 60,
+     "n_refused": 0,
+     "n_technical_failure": 0,
+     "detected": 25,
+     "pct": 41.7,
+     "findings_per_case": 0.63,
+     "fp_findings_per_case": 0.02,
+     "recall_at_1": 25,
+     "recall_at_5": 25
+    },
+    "RELATION_LOCALIZED_BINARY_VERDICT": {
+     "n_attempted": 60,
+     "n_scored": 60,
+     "n_refused": 0,
+     "n_technical_failure": 0,
+     "detected": 39,
+     "pct": 65.0,
+     "findings_per_case": null,
+     "fp_findings_per_case": null,
+     "recall_at_1": 0,
+     "recall_at_5": 0
     }
    },
-   "openai": {
-    "model": "gpt-5.2",
-    "spend_usd": 8.3378,
-    "rungs": {
-     "BLIND_FINDING_LIST": {
-      "n_attempted": 60,
-      "n_scored": 60,
-      "n_refused": 0,
-      "n_technical_failure": 0,
-      "detected": 18,
-      "pct": 30.0,
-      "findings_per_case": 2.13,
-      "fp_findings_per_case": 1.58,
-      "recall_at_1": 11,
-      "recall_at_5": 18
-     },
-     "CATEGORY_TARGETED_FINDING_LIST": {
-      "n_attempted": 60,
-      "n_scored": 60,
-      "n_refused": 0,
-      "n_technical_failure": 0,
-      "detected": 32,
-      "pct": 53.3,
-      "findings_per_case": 1.38,
-      "fp_findings_per_case": 0.55,
-      "recall_at_1": 29,
-      "recall_at_5": 32
-     },
-     "RELATION_TARGETED_FINDING_LIST": {
-      "n_attempted": 60,
-      "n_scored": 60,
-      "n_refused": 0,
-      "n_technical_failure": 0,
-      "detected": 25,
-      "pct": 41.7,
-      "findings_per_case": 0.63,
-      "fp_findings_per_case": 0.02,
-      "recall_at_1": 25,
-      "recall_at_5": 25
-     },
-     "RELATION_LOCALIZED_BINARY_VERDICT": {
-      "n_attempted": 60,
-      "n_scored": 60,
-      "n_refused": 0,
-      "n_technical_failure": 0,
-      "detected": 39,
-      "pct": 65.0,
-      "findings_per_case": null,
-      "fp_findings_per_case": null,
-      "recall_at_1": 0,
-      "recall_at_5": 0
-     }
+   "contrasts": {
+    "category information, format held": {
+     "n": 60,
+     "rate_a": 53.3,
+     "rate_b": 30.0,
+     "diff_pp": 23.33,
+     "a_only": 16,
+     "b_only": 2,
+     "exact_p": "1.3123E-3",
+     "lo": 11.86,
+     "hi": 34.43,
+     "n_manuscripts": 21
     },
-    "contrasts": {
-     "category information, format held": {
-      "n": 60,
-      "rate_a": 53.3,
-      "rate_b": 30.0,
-      "diff_pp": 23.33,
-      "a_only": 16,
-      "b_only": 2,
-      "exact_p": "1.3123E-3",
-      "lo": 11.86,
-      "hi": 34.43,
-      "n_manuscripts": 21
-     },
-     "exact-relation increment": {
-      "n": 60,
-      "rate_a": 41.7,
-      "rate_b": 53.3,
-      "diff_pp": -11.67,
-      "a_only": 8,
-      "b_only": 15,
-      "exact_p": "2.1004E-1",
-      "lo": -26.98,
-      "hi": 5.08,
-      "n_manuscripts": 21
-     },
-     "total information, format held": {
-      "n": 60,
-      "rate_a": 41.7,
-      "rate_b": 30.0,
-      "diff_pp": 11.67,
-      "a_only": 13,
-      "b_only": 6,
-      "exact_p": "1.6707E-1",
-      "lo": 1.89,
-      "hi": 22.22,
-      "n_manuscripts": 21
-     },
-     "RESPONSE FORMAT, information held": {
-      "n": 60,
-      "rate_a": 65.0,
-      "rate_b": 41.7,
-      "diff_pp": 23.33,
-      "a_only": 20,
-      "b_only": 6,
-      "exact_p": "9.3553E-3",
-      "lo": 10.0,
-      "hi": 35.59,
-      "n_manuscripts": 21
-     }
+    "exact-relation increment": {
+     "n": 60,
+     "rate_a": 41.7,
+     "rate_b": 53.3,
+     "diff_pp": -11.67,
+     "a_only": 8,
+     "b_only": 15,
+     "exact_p": "2.1004E-1",
+     "lo": -26.98,
+     "hi": 5.08,
+     "n_manuscripts": 21
+    },
+    "total information, format held": {
+     "n": 60,
+     "rate_a": 41.7,
+     "rate_b": 30.0,
+     "diff_pp": 11.67,
+     "a_only": 13,
+     "b_only": 6,
+     "exact_p": "1.6707E-1",
+     "lo": 1.89,
+     "hi": 22.22,
+     "n_manuscripts": 21
+    },
+    "RESPONSE FORMAT, information held": {
+     "n": 60,
+     "rate_a": 65.0,
+     "rate_b": 41.7,
+     "diff_pp": 23.33,
+     "a_only": 20,
+     "b_only": 6,
+     "exact_p": "9.3553E-3",
+     "lo": 10.0,
+     "hi": 35.59,
+     "n_manuscripts": 21
     }
    }
   },

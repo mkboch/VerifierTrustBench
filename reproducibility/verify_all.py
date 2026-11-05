@@ -383,6 +383,116 @@ def main(argv=None) -> int:
         except ImportError:
             print("    SKIP  matplotlib not installed; figures not regenerated")
 
+    # ---------------------------------------------------------- GPT-5.2 (stage 7b)
+    #
+    # The previous release excluded GPT-5.2 from every cell-level test, which is why an
+    # export bug that collapsed its blind E0 outcomes from 18 hits to 2 survived a full
+    # audit. These assertions check the cell table itself, and cross-check it against the
+    # canonical frontier aggregates carried in research_results.json, so the two can never
+    # silently disagree again.
+    print("\n[7b] GPT-5.2")
+    G = ["gpt-5.2"]
+    gt = TARGETS["gpt_5_2"]
+    glad = {r["rung"]: r for r in C.ladder(cells, G)}
+    canon_rungs = (rr.get("frontier", {}).get("openai", {}) or {}).get("rungs", {})
+    RUNG_KEY = {"blind": "BLIND_FINDING_LIST",
+                "category": "CATEGORY_TARGETED_FINDING_LIST",
+                "relation": "RELATION_TARGETED_FINDING_LIST",
+                "binary": "RELATION_LOCALIZED_BINARY_VERDICT"}
+    for t in gt["ladder"]:
+        r = glad[t["rung"]]
+        check("gpt", f"{t['rung']} E0 hits", t["hits"], r["hits"])
+        check("gpt", f"{t['rung']} E0 n", t["n"], r["n_e0"])
+        check("gpt", f"{t['rung']} E0 rate %", t["rate_pct"],
+              100 * r["sensitivity"], tol=0.05, nd=1)
+        check("gpt", f"{t['rung']} E1 false alarms", t["false_alarms"], r["false_alarms"])
+        check("gpt", f"{t['rung']} E1 n", t["n"], r["n_e1"])
+        check("gpt", f"{t['rung']} E1 FA rate %", t["fa_rate_pct"],
+              100 * r["false_alarm_rate"], tol=0.05, nd=1)
+        check("gpt", f"{t['rung']} balanced accuracy %",
+              (t["rate_pct"] + (100.0 - t["fa_rate_pct"])) / 2.0,
+              100 * r["balanced_accuracy"], tol=0.1, nd=1,
+              note="balanced accuracy implied by the asserted counts")
+        # the cell table must agree with the canonical frontier aggregate, independently
+        ck = canon_rungs.get(RUNG_KEY[t["rung"]], {})
+        check("gpt", f"{t['rung']} cell table agrees with canonical aggregate",
+              ck.get("detected"), r["hits"],
+              note="research_results.json frontier.openai.rungs")
+        check("gpt", f"{t['rung']} canonical aggregate n_scored",
+              ck.get("n_scored"), r["n_e0"])
+
+    rv = gt["relation_to_verdict"]
+    pairs = C.eligible(cells, "relation", "binary", G)
+    rh = sum(p["a"]["e0_hit"] for p in pairs)
+    vh = sum(p["b"]["e0_hit"] for p in pairs)
+    check("gpt", "relation->verdict paired n", rv["paired_n"], len(pairs))
+    check("gpt", "relation->verdict raw difference pp", rv["raw_difference_pp"],
+          100 * (vh - rh) / len(pairs), tol=0.0005, nd=3)
+    for metric, key, cikey, tol, nd in (
+            ("balanced_accuracy", "balanced_accuracy_pp", "balanced_accuracy_ci", 0.005, 2),
+            ("dprime", "dprime", "dprime_ci", 1e-6, 7)):
+        for w in ("pooled", "system_balanced"):
+            r = C.contrast(cells, "relation", "binary", G, metric, w, draws=a.draws)
+            check("gpt", f"relation->verdict {metric} {w}", rv[key], r["point"],
+                  tol=tol, nd=nd)
+            if exact and w == "pooled":
+                check("gpt", f"relation->verdict {metric} CI lo", rv[cikey][0],
+                      r["ci95_lo"], tol=0.05, nd=2)
+                check("gpt", f"relation->verdict {metric} CI hi", rv[cikey][1],
+                      r["ci95_hi"], tol=0.05, nd=2)
+    # a single system: the two weightings must coincide exactly, not merely closely
+    for metric in ("balanced_accuracy", "dprime"):
+        p_ = C.contrast(cells, "relation", "binary", G, metric, "pooled", draws=a.draws)
+        b_ = C.contrast(cells, "relation", "binary", G, metric, "system_balanced",
+                        draws=a.draws)
+        check("gpt", f"one system: {metric} weightings coincide", p_["point"], b_["point"],
+              tol=1e-12)
+    # all six GPT contrasts must be computable and carry an interval
+    for a_, b_ in C.SIX:
+        r = C.contrast(cells, a_, b_, G, "balanced_accuracy", "pooled", draws=a.draws)
+        check("gpt", f"{a_}->{b_} paired n", 60, r["n_pairs"])
+        check("gpt", f"{a_}->{b_} has an interval", True,
+              r["ci95_lo"] is not None and r["ci95_hi"] is not None)
+        check("gpt", f"{a_}->{b_} bootstrap clusters", 21, r["n_clusters"])
+
+    # ---------------------------------------- raw vs fair estimand (stage 7c)
+    print("\n[7c] paired versus marginal raw effects")
+    rf = TARGETS["open_weight_raw_vs_fair"]
+    pr = rf["paired_relation_to_verdict"]
+    pairs = C.eligible(cells, "relation", "binary", OW)
+    rh = sum(p["a"]["e0_hit"] for p in pairs)
+    vh = sum(p["b"]["e0_hit"] for p in pairs)
+    check("estimand", "paired eligible n", pr["n"], len(pairs))
+    check("estimand", "paired relation hits", pr["relation_hits"], rh)
+    check("estimand", "paired verdict hits", pr["verdict_hits"], vh)
+    check("estimand", "paired pooled raw pp", pr["pooled_raw_pp"],
+          100 * (vh - rh) / len(pairs), tol=0.0005, nd=4)
+    check("estimand", "paired pooled balanced-accuracy pp",
+          pr["pooled_balanced_accuracy_pp"],
+          C.contrast(cells, "relation", "binary", OW, "balanced_accuracy", "pooled",
+                     draws=a.draws)["point"], tol=0.0005, nd=4)
+    import collections as _c
+    _by = _c.defaultdict(list)
+    for p in pairs:
+        _by[p["system"]].append(p)
+    _v = [100 * (sum(x["b"]["e0_hit"] for x in v) - sum(x["a"]["e0_hit"] for x in v)) / len(v)
+          for k, v in sorted(_by.items())]
+    check("estimand", "paired system-balanced raw pp", pr["system_balanced_raw_pp"],
+          sum(_v) / len(_v), tol=0.0005, nd=4)
+    mg = rf["marginal_relation_to_verdict"]
+    check("estimand", "marginal relation hits", mg["relation"]["hits"], lad["relation"]["hits"])
+    check("estimand", "marginal relation n", mg["relation"]["n"], lad["relation"]["n_e0"])
+    check("estimand", "marginal raw difference pp", mg["raw_difference_pp"],
+          100 * (lad["binary"]["sensitivity"] - lad["relation"]["sensitivity"]),
+          tol=0.0005, nd=4)
+    # the two must NOT be equal; quoting one for the other is the error being guarded
+    check("estimand", "paired and marginal raw effects differ", True,
+          abs(pr["pooled_raw_pp"] - mg["raw_difference_pp"]) > 0.1)
+    for k in ("gpt", "estimand"):
+        n = sum(1 for r in ROWS if r["stage"] == k)
+        f = sum(1 for r in ROWS if r["stage"] == k and r["status"] == "FAIL")
+        print(f"    {'PASS' if not f else 'FAIL'}  {k}: {n - f}/{n}")
+
     # ------------------------------------------------- manuscript discrepancies
     print("\n[*] manuscript vs canonical record")
     disc = TARGETS["manuscript_vs_canonical_discrepancies"]["items"]

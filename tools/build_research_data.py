@@ -237,7 +237,9 @@ def research_results():
             "verdict": sens["verdict"],
         },
         "frontier": {
-            "openai": fr["summary"],
+            # fr["summary"] carries BOTH providers; take the openai block so that
+            # frontier.openai is the openai results and nothing else.
+            "openai": fr["summary"].get("openai", fr["summary"]),
             "anthropic": {
                 "model": anth["model"],
                 "total_records": anth["total_records"],

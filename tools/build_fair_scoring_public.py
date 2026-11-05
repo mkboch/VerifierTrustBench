@@ -39,6 +39,13 @@ FS = ROOT / "nature_extension/fair_scoring_validation_20261020"
 sys.path.insert(0, str(FS / "code"))
 import fairlib as F  # noqa: E402
 
+# The frozen fairlib exports GPT-5.2 blind E0 with manuscript-level deduplication, which
+# is correct for E1 and wrong for E0. tools/frontier_blind_fix.py explains why and
+# corrects it in a subclass, leaving the frozen module untouched.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import frontier_blind_fix  # noqa: E402
+FairFixed = frontier_blind_fix.install(F)
+
 OUT = Path(__file__).resolve().parents[1] / "docs/data/fair_scoring_cells.json"
 
 RUNGS = [
@@ -71,7 +78,7 @@ SYSTEM_LABELS = {
 
 
 def main() -> int:
-    f = F.Fair()
+    f = FairFixed()
     papers = sorted({c["paper"] for c in f.cells.values()})
     relations = sorted(f.subset)
     cluster = {p: f"M{i + 1:02d}" for i, p in enumerate(papers)}

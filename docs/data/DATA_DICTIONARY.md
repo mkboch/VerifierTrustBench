@@ -119,6 +119,9 @@ Reported, not reconciled. The frozen record is the source of truth.
 | D5 | §3B relation sensitivity | 20.2% | 20.1% |
 | D6 | §3C relation balanced accuracy | 58.1% | 58.0% |
 | D7 | Table 1, relation→binary d′ lower CI | +0.13 | +0.125 (exact 0.124956) |
+| D8 | §3F GPT‑5.2 category / relation E0 | category 41.7%, relation 53.3% | **transposed** — category 53.3% (32/60), relation 41.7% (25/60) |
+| D9 | §3F GPT‑5.2 pooled d′ | −0.07 | −0.0750335, which is **−0.08** at two decimals |
+| D10 | §3B pooled descriptive raw relation→verdict | ≈ +29.3 pp | +29.4314 pp marginal (299 cells) **or** +29.8658 pp paired (298 cells) |
 
 D7 is double rounding: 0.124956 → 0.125 at three decimals, and 0.125 was then rounded
 again to 0.13. At two decimals the correct value is **+0.12**.
@@ -127,6 +130,20 @@ D3 is a genuine one-count difference in the headline rung and is not a rounding 
 
 The six paired contrasts of Table 1, both weightings, and all four weighting-sensitive
 d′ results reproduce **exactly**, interval endpoints included.
+
+## Paired estimates versus rung-marginal descriptives
+
+These are different quantities on different denominators, and quoting one for the other
+overstates or understates the effect:
+
+| | relation → verdict, open-weight |
+|---|---|
+| **paired**, 298 eligible cells | 59 vs 148 hits → **+29.8658 pp** raw, **+12.7517 pp** balanced accuracy |
+| **paired, system-balanced** | **+29.9548 pp** raw, +12.8051 pp balanced accuracy |
+| **rung-marginal**, each rung on its own complete-case set | 60/299 vs 148/299 → **+29.4314 pp** |
+
+The relation rung has 299 cells marginally and 298 in the paired set, because one cell is
+unscoreable at the verdict rung and is therefore dropped from *both* sides of the pair.
 
 ## Reproducing the intervals exactly
 

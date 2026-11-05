@@ -478,6 +478,30 @@
     "computed": 0.12495567648969796,
     "why": "double rounding. The exact endpoint is 0.124956, which rounds to 0.125 at three decimals and to 0.12 at two. The manuscript appears to have rounded the already-rounded 0.125 up to 0.13.",
     "severity": "display rounding"
+   },
+   {
+    "id": "D8",
+    "where": "section 3F, GPT-5.2 category and relation E0 rates",
+    "manuscript": "category 41.7%, relation 53.3%",
+    "canonical": "category 53.3%, relation 41.7%",
+    "why": "the two rates are transposed. FRONTIER_ITEMLEVEL.csv records 32/60 detected at the category-targeted rung and 25/60 at the relation-targeted rung",
+    "severity": "values transposed"
+   },
+   {
+    "id": "D9",
+    "where": "section 3F, GPT-5.2 pooled d' difference",
+    "manuscript": -0.07,
+    "canonical": -0.0750335,
+    "why": "-0.0750335 rounds to -0.08 at two decimals, not -0.07; the magnitude exceeds 0.075",
+    "severity": "display rounding"
+   },
+   {
+    "id": "D10",
+    "where": "section 3B, pooled descriptive raw relation-to-verdict difference",
+    "manuscript": "approximately +29.3 pp",
+    "canonical": "+29.4314 pp marginal on 299 cells, or +29.8658 pp paired on the 298 eligible cells",
+    "why": "the manuscript's figure matches neither estimand exactly; the marginal descriptive is +29.43 and the paired estimate is +29.87",
+    "severity": "estimand and value"
    }
   ]
  },
@@ -488,6 +512,90 @@
    "nd": 3,
    "tol": 0.0005,
    "discrepancy": "D7"
+  },
+  "gpt-5.2 relation->binary d'": {
+   "canonical": -0.0750335,
+   "nd": 7,
+   "tol": 1e-06,
+   "discrepancy": "D9"
+  }
+ },
+ "gpt_5_2": {
+  "note": "GPT-5.2 is a single system, so pooled and system-balanced coincide for every GPT-only contrast. Both are computed and both are asserted, so a change that broke one weighting could not hide behind the other.",
+  "ladder": [
+   {
+    "rung": "blind",
+    "hits": 18,
+    "n": 60,
+    "rate_pct": 30.0,
+    "false_alarms": 0,
+    "fa_rate_pct": 0.0
+   },
+   {
+    "rung": "category",
+    "hits": 32,
+    "n": 60,
+    "rate_pct": 53.3,
+    "false_alarms": 1,
+    "fa_rate_pct": 1.7
+   },
+   {
+    "rung": "relation",
+    "hits": 25,
+    "n": 60,
+    "rate_pct": 41.7,
+    "false_alarms": 0,
+    "fa_rate_pct": 0.0
+   },
+   {
+    "rung": "binary",
+    "hits": 39,
+    "n": 60,
+    "rate_pct": 65.0,
+    "false_alarms": 2,
+    "fa_rate_pct": 3.3
+   }
+  ],
+  "relation_to_verdict": {
+   "paired_n": 60,
+   "raw_difference_pp": 23.333,
+   "balanced_accuracy_pp": 10.0,
+   "balanced_accuracy_ci": [
+    2.5,
+    17.0
+   ],
+   "dprime": -0.0750335,
+   "dprime_ci": [
+    -0.66,
+    0.8
+   ],
+   "dprime_display_2dp": -0.08,
+   "display_note": "-0.0750335 rounds to -0.08 at two decimals under round-half-away-from-zero. A printed -0.07 is wrong."
+  },
+  "canonical_source": "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_ITEMLEVEL.csv and FRONTIER_RESULTS.json"
+ },
+ "open_weight_raw_vs_fair": {
+  "note": "A PAIRED estimate and a RUNG-MARGINAL descriptive are different quantities on different denominators. They must never be quoted interchangeably.",
+  "paired_relation_to_verdict": {
+   "n": 298,
+   "relation_hits": 59,
+   "verdict_hits": 148,
+   "pooled_raw_pp": 29.8658,
+   "pooled_balanced_accuracy_pp": 12.7517,
+   "system_balanced_raw_pp": 29.9548,
+   "system_balanced_balanced_accuracy_pp": 12.8051
+  },
+  "marginal_relation_to_verdict": {
+   "relation": {
+    "hits": 60,
+    "n": 299
+   },
+   "verdict": {
+    "hits": 148,
+    "n": 299
+   },
+   "raw_difference_pp": 29.4314,
+   "why_it_differs": "each rung uses its own complete-case set, so the relation rung has 299 cells here and 298 in the paired set"
   }
  }
 }
