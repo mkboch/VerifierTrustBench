@@ -158,23 +158,44 @@
     return vals.length ? vals.reduce((x, y) => x + y, 0) / vals.length : null;
   }
 
-  /** Manuscript-cluster bootstrap. The whole estimand is recomputed per replicate. */
-  function clusterBootstrap(pairs, stat, draws, seed) {
+  /** Manuscript-cluster bootstrap. The whole estimand is recomputed per replicate.
+   *
+   * `generator` selects the random source:
+   *   "mt19937"     CPython's Mersenne Twister, identical to the frozen analysis. This
+   *                 reproduces the published interval endpoints exactly and is what the
+   *                 published-research mode uses.
+   *   "mulberry32"  a small fast generator, kept for the synthetic demonstration where
+   *                 no published endpoint is being reproduced.
+   *
+   * Rates are never resampled: a resampled rate is a different and wrong quantity.
+   */
+  function clusterBootstrap(pairs, stat, draws, seed, generator) {
     draws = draws || DRAWS;
     seed = seed === undefined ? SEED : seed;
+    generator = generator || "mt19937";
     const by = new Map();
     for (const p of pairs) {
       if (!by.has(p.cluster)) by.set(p.cluster, []);
       by.get(p.cluster).push(p);
     }
     const keys = [...by.keys()].sort();
-    const rng = mulberry32(seed);
+    let pick;
+    if (generator === "mulberry32") {
+      const rng = mulberry32(seed);
+      pick = function () { return Math.floor(rng() * keys.length); };
+    } else {
+      if (typeof MT19937 !== "function") {
+        throw new Error("mt19937.js must be loaded before fair.js for exact intervals");
+      }
+      const mt = new MT19937(seed);
+      pick = function () { return mt.randrange(keys.length); };
+    }
     const point = stat(pairs);
     const vals = [];
     for (let d = 0; d < draws; d++) {
       const samp = [];
       for (let i = 0; i < keys.length; i++) {
-        const bucket = by.get(keys[Math.floor(rng() * keys.length)]);
+        const bucket = by.get(keys[pick()]);
         for (const x of bucket) samp.push(x);
       }
       const v = stat(samp);
@@ -206,10 +227,10 @@
     return out;
   }
 
-  function contrast(D, a, b, systems, weighting, metric, draws, seed) {
+  function contrast(D, a, b, systems, weighting, metric, draws, seed, generator) {
     const pairs = eligible(D, a, b, systems);
     const fn = weighting === "pooled" ? pooledDiff : balancedDiff;
-    const boot = clusterBootstrap(pairs, (ps) => fn(ps, metric), draws, seed);
+    const boot = clusterBootstrap(pairs, (ps) => fn(ps, metric), draws, seed, generator);
     const excludesZero = boot.lo !== null && (boot.lo > 0 || boot.hi < 0);
     return {
       a, b, metric, weighting,
@@ -219,6 +240,7 @@
       point: boot.point, lo: boot.lo, hi: boot.hi,
       n_clusters: boot.clusters, draws_used: boot.used,
       draws: draws || DRAWS, seed: seed === undefined ? SEED : seed,
+      generator: generator || "mt19937",
       excludesZero,
       verdict: excludesZero
         ? "difference detected"

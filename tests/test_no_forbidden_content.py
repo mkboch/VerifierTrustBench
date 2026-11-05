@@ -92,22 +92,45 @@ def test_no_experimental_result_artifact_is_tracked():
     assert bad == [], f"experimental result artifacts are tracked: {bad}"
 
 
-def test_no_tracked_file_asserts_a_study_result():
-    """A number from the paper hard-coded in code or documentation is a published result
-    in all but name. The headline values are listed here and must not reappear.
+def test_no_study_value_is_hard_coded_in_page_or_analysis_code():
+    """The release publishes the study's results as DATA. That makes it more important,
+    not less, that no analysis path can produce them without computing them.
 
-    These strings are assembled from fragments so that this file does not itself ship the
-    values it exists to exclude, and so it is scanned like any other file."""
+    A value typed into the page scripts or into an estimator would make the site look
+    reproducible while being a lookup table. Tests may assert these values -- that is what
+    a test is for -- and reproducibility/manuscript_targets.json declares them openly as
+    comparison targets, which is why those are excluded.
+
+    The strings are assembled from fragments so this file does not itself trip the scan.
+    """
     values = ["12" + ".752", "12" + ".8 pp", "+0" + ".460", "-0" + ".733",
               "\u2212" + "0.733", "29" + ".87", "13" + ".14", "394/" + "909",
-              "95/" + "909"]
+              "95/" + "909", "15" + ".44", "70" + ".7", "79" + ".1"]
+    # Where a hard-coded result would actually be a lie about reproduction.
+    guarded = ("docs/assets/", "src/analysis/", "reproducibility/estimators.py",
+               "reproducibility/bootstrap.py", "reproducibility/contrasts.py",
+               "reproducibility/data.py")
     bad = []
     for f in scannable():
+        rel = f.relative_to(ROOT).as_posix()
+        if not rel.startswith(guarded):
+            continue
         t = read(f)
         for v in values:
             if v in t:
-                bad.append(f"{f.relative_to(ROOT).as_posix()}: {v!r}")
-    assert bad == [], f"a study result value is hard-coded: {bad}"
+                bad.append(f"{rel}: {v!r}")
+    assert bad == [], (
+        f"a study result value is hard-coded where it must be computed: {bad}")
+
+
+def test_the_targets_file_is_never_read_by_an_analysis_module():
+    """manuscript_targets.json is for comparison only. If an estimator read it, the
+    reconciliation would be checking the targets against themselves."""
+    for name in ("estimators.py", "bootstrap.py", "contrasts.py", "data.py"):
+        f = ROOT / "reproducibility" / name
+        if f.exists():
+            assert "manuscript_targets" not in read(f), (
+                f"reproducibility/{name} reads the manuscript targets file")
 
 
 def test_the_shipped_fixture_is_marked_synthetic():

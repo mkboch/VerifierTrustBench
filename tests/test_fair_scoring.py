@@ -28,7 +28,10 @@ SYNTHETIC_LADDER = {
     "relation": {"n": 305, "hits": 85,  "false_alarms": 18},
     "binary":   {"n": 310, "hits": 157, "false_alarms": 24},
 }
-SYNTHETIC_CONTRAST = {"n": 300, "point": 10.166667, "lo": 5.821918, "hi": 14.500000}
+# Recomputed under the FROZEN generator (Python stdlib Mersenne Twister), which both
+# the Python reference and docs/assets/mt19937.js now use. The point estimate is
+# unchanged; only the interval endpoints depend on the draw sequence.
+SYNTHETIC_CONTRAST = {"n": 300, "point": 10.166667, "lo": 5.806452, "hi": 14.309764}
 
 
 # ------------------------------------------------------------------ the estimator itself
@@ -96,6 +99,7 @@ def test_every_contrast_runs_and_reports_a_complete_case_denominator():
 def _js(draws):
     quickjs = pytest.importorskip("quickjs", reason="quickjs is needed to execute fair.js")
     ctx = quickjs.Context()
+    ctx.eval((ROOT / "docs/assets/mt19937.js").read_text())
     ctx.eval((ROOT / "docs/assets/fair.js").read_text())
     ctx.set("__DATA", DATA.read_text())
     return json.loads(ctx.eval("""
@@ -141,6 +145,7 @@ def test_browser_code_matches_the_python_reference():
 def test_browser_matches_python_at_the_published_draw_count():
     quickjs = pytest.importorskip("quickjs")
     ctx = quickjs.Context()
+    ctx.eval((ROOT / "docs/assets/mt19937.js").read_text())
     ctx.eval((ROOT / "docs/assets/fair.js").read_text())
     ctx.set("__DATA", DATA.read_text())
     got = json.loads(ctx.eval("""

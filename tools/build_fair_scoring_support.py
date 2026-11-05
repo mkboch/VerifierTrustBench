@@ -47,6 +47,10 @@ SCENARIO_KIND = {
 
 doc = {
     "schema_version": 1,
+        "defects_are_synthetic": (
+            "An E0 defect is a perturbation THIS STUDY injected into a sound published "
+            "manuscript. No number in this file asserts that any real paper contains an "
+            "error. Manuscripts appear only as opaque labels."),
     "what_this_is":
         "Audited aggregate results that support the fair-scoring analysis but are not "
         "per-cell quantities. Unlike fair_scoring_cells.json, the intervals here were "

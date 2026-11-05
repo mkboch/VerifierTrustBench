@@ -34,7 +34,18 @@ def test_the_demo_systems_match_nothing_real():
 def test_the_fixture_is_the_only_data_file():
     data = sorted(p.name for p in (ROOT / "docs/data").glob("*")
                   if p.suffix in {".json", ".csv"})
-    assert data == ["synthetic_demo_cells.json"], data
+    # The release now ships the study's outcome data as well. What must stay true is that
+    # exactly ONE file declares itself synthetic, so fabricated numbers can never be
+    # mistaken for measured ones.
+    synthetic = []
+    for name in data:
+        try:
+            doc = json.loads((ROOT / "docs/data" / name).read_text())
+        except (ValueError, OSError):
+            continue
+        if isinstance(doc, dict) and doc.get("synthetic") is True:
+            synthetic.append(name)
+    assert synthetic == ["synthetic_demo_cells.json"], synthetic
 
 
 def test_the_fixture_carries_outcomes_and_nothing_else():

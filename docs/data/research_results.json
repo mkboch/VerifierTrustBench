@@ -1,0 +1,1115 @@
+{
+ "schema_version": 1,
+ "what_this_is": "Derive the remaining public research data from the frozen records.",
+ "defects_are_synthetic": "Every E0 defect is a perturbation THIS STUDY injected into a sound published manuscript. No number here asserts that any real paper contains an error.",
+ "three_state_localized": {
+  "label": "Relation-localized verdict in three evidence states",
+  "note": "E0 is the perturbed state, E1 the manuscript as published, E2 an alternate perturbation. Denominators differ because validity is judged per state.",
+  "E0_defective": {
+   "x": 398,
+   "n": 914
+  },
+  "E1_as_published": {
+   "x": 821,
+   "n": 919
+  },
+  "E2_alternate": {
+   "x": 379,
+   "n": 916
+  },
+  "correct_in_all_three": {
+   "x": 267,
+   "n": 909
+  },
+  "cited_relation_but_wrong_verdict": 742
+ },
+ "ladder_decomposition": {
+  "seed": 20261016,
+  "n_bootstrap": 10000,
+  "common_support_units": 297,
+  "n_relations": 60,
+  "n_systems": 5,
+  "rungs": {
+   "BLIND_DISCOVERY": {
+    "label": "blind discovery",
+    "format": "ranked finding list",
+    "information": "none",
+    "x": 35,
+    "n": 297,
+    "pct": 11.8
+   },
+   "CATEGORY_TARGETED_DISCOVERY": {
+    "label": "category-targeted discovery",
+    "format": "ranked finding list",
+    "information": "defect category",
+    "x": 66,
+    "n": 297,
+    "pct": 22.2
+   },
+   "RELATION_TARGETED_DISCOVERY": {
+    "label": "relation-targeted discovery",
+    "format": "ranked finding list",
+    "information": "the specific relation",
+    "x": 60,
+    "n": 297,
+    "pct": 20.2
+   },
+   "__LOCALIZED__": {
+    "label": "relation-localized verdict",
+    "format": "binary verdict",
+    "information": "the specific relation",
+    "x": 147,
+    "n": 297,
+    "pct": 49.5
+   }
+  },
+  "steps": {
+   "information: blind -> category": {
+    "n": 297,
+    "a_only": 51,
+    "b_only": 20,
+    "diff_pp": 10.44,
+    "exact_p": "3.0316E-4",
+    "lo": 3.97,
+    "hi": 17.01
+   },
+   "information: category -> relation": {
+    "n": 297,
+    "a_only": 40,
+    "b_only": 46,
+    "diff_pp": -2.02,
+    "exact_p": "5.9004E-1",
+    "lo": -8.14,
+    "hi": 4.98
+   },
+   "information total: blind -> relation (format held)": {
+    "n": 297,
+    "a_only": 43,
+    "b_only": 18,
+    "diff_pp": 8.42,
+    "exact_p": "1.8681E-3",
+    "lo": 2.32,
+    "hi": 15.12
+   },
+   "FORMAT: relation-targeted -> relation-localized (information held)": {
+    "n": 297,
+    "a_only": 97,
+    "b_only": 10,
+    "diff_pp": 29.29,
+    "exact_p": "4.8166E-19",
+    "lo": 23.44,
+    "hi": 34.48
+   },
+   "the manuscript's contrast: blind -> localized": {
+    "n": 297,
+    "a_only": 121,
+    "b_only": 9,
+    "diff_pp": 37.71,
+    "exact_p": "3.4901E-26",
+    "lo": 32.28,
+    "hi": 43.55
+   }
+  },
+  "decomposition": {
+   "total_pp": 37.71,
+   "information_pp": 8.42,
+   "format_pp": 29.29,
+   "information_share": 0.223,
+   "format_share": 0.777
+  }
+ },
+ "scorer_correction_scenarios": {
+  "note": "Four scenarios, not one. They differ in WHICH audited judgements are credited and in WHETHER the correction is applied to the clean state as well. They are different estimands and must not be interchanged.",
+  "frozen_primary_not_altered": true,
+  "frozen_primary": {
+   "raw_E0_pp": 29.87,
+   "balanced_accuracy_pp": 12.75,
+   "dprime": 0.46,
+   "relation_sensitivity_pct": 19.8,
+   "binary_sensitivity_pct": 49.7
+  },
+  "measured_per_stratum_fn_rate": {
+   "C_NEAR_MISS": 0.3333,
+   "A_NO_FINDINGS": 0.0,
+   "B_OFF_TARGET": 0.25
+  },
+  "measured_false_negative_rate": {
+   "raw_unweighted_pct": 23.3,
+   "stratum_reweighted_pct": 13.14,
+   "ci95_pct": [
+    4.38,
+    21.9
+   ],
+   "implied_corpus_misses_affected": 36.0
+  },
+  "scenarios": {
+   "one_sided_strict": {
+    "description": "measured majority-Yes rate credited on E0 only; most generous to the criticism",
+    "symmetric": false,
+    "relation_sensitivity_pct": 30.6,
+    "relation_false_alarm_pct": 3.7,
+    "relation_balanced_accuracy_pct": 63.5,
+    "relation_dprime": 1.265,
+    "raw_E0_difference_pp": 19.02,
+    "balanced_accuracy_difference_pp": 7.33,
+    "balanced_accuracy_ci95": [
+     2.53,
+     11.79
+    ],
+    "dprime_difference": 0.119,
+    "dprime_ci95": [
+     -0.276,
+     0.491
+    ],
+    "balanced_accuracy_difference_excludes_zero": true,
+    "dprime_difference_excludes_zero": false
+   },
+   "one_sided_with_partial": {
+    "description": "Yes plus Partially credited on E0 only; the outer bound of the criticism",
+    "symmetric": false,
+    "relation_sensitivity_pct": 33.0,
+    "relation_false_alarm_pct": 3.7,
+    "relation_balanced_accuracy_pct": 64.6,
+    "relation_dprime": 1.33,
+    "raw_E0_difference_pp": 16.69,
+    "balanced_accuracy_difference_pp": 6.16,
+    "balanced_accuracy_ci95": [
+     1.46,
+     10.59
+    ],
+    "dprime_difference": 0.054,
+    "dprime_ci95": [
+     -0.347,
+     0.438
+    ],
+    "balanced_accuracy_difference_excludes_zero": true,
+    "dprime_difference_excludes_zero": false
+   },
+   "symmetric_strict": {
+    "description": "measured rate applied to E0 detections AND E1 near misses",
+    "symmetric": true,
+    "relation_sensitivity_pct": 30.6,
+    "relation_false_alarm_pct": 10.5,
+    "relation_balanced_accuracy_pct": 60.1,
+    "relation_dprime": 0.742,
+    "raw_E0_difference_pp": 19.02,
+    "balanced_accuracy_difference_pp": 10.74,
+    "balanced_accuracy_ci95": [
+     6.49,
+     14.73
+    ],
+    "dprime_difference": 0.642,
+    "dprime_ci95": [
+     0.297,
+     0.979
+    ],
+    "balanced_accuracy_difference_excludes_zero": true,
+    "dprime_difference_excludes_zero": true
+   },
+   "symmetric_with_partial": {
+    "description": "Yes plus Partially applied to both states",
+    "symmetric": true,
+    "relation_sensitivity_pct": 33.0,
+    "relation_false_alarm_pct": 13.2,
+    "relation_balanced_accuracy_pct": 59.9,
+    "relation_dprime": 0.67,
+    "raw_E0_difference_pp": 16.69,
+    "balanced_accuracy_difference_pp": 10.94,
+    "balanced_accuracy_ci95": [
+     6.63,
+     15.05
+    ],
+    "dprime_difference": 0.714,
+    "dprime_ci95": [
+     0.388,
+     1.041
+    ],
+    "balanced_accuracy_difference_excludes_zero": true,
+    "dprime_difference_excludes_zero": true
+   }
+  },
+  "which_scenario_the_manuscript_quotes": {
+   "conservative_one_sided": "one_sided_with_partial",
+   "why": "'Yes plus Partially credited on E0 only' is the outer bound of the criticism and therefore the conservative choice.",
+   "earlier_public_aggregate_used": "one_sided_strict",
+   "these_are_not_in_conflict": true
+  },
+  "symmetric_scenarios_are_modelled": "The symmetric scenarios apply the measured E0 false-negative rate to E1 near misses as well. The E1 near misses were NEVER AUDITED. Symmetric figures are modelled, not measured.",
+  "verdict": {
+   "status": "SCORER_VALID_WITH_CAVEATS",
+   "balanced_accuracy_survives_outer_bound": true,
+   "dprime_survives_outer_bound": false,
+   "dprime_caveat": "Under the ONE-SIDED outer bound the d' difference falls to +0.054 with a 95% CI of [-0.347, 0.438], which INCLUDES ZERO. The d' difference therefore does not survive the most generous possible reading of the criticism, although the balanced-accuracy difference does. Under the symmetric correction, which is the more defensible of the two because it applies the same leniency to both states, d' is +0.714 (95% CI [0.388, 1.041]) and excludes zero. This split must be reported, not resolved by choosing the convenient scenario.",
+   "can_scorer_false_negatives_explain_the_interface_difference": "NO",
+   "reasoning": "The measured scorer false-negative rate is 13.14% of relation-targeted misses (95% CI 4.38-21.9%), stratum-reweighted. That is material rather than negligible, which is why the status is not a clean SCORER_VALIDATED. But even under the outer bound of the criticism (crediting every majority-Yes AND majority-Partially on E0, with no offsetting correction on E1), the balanced-accuracy difference remains +6.16 pp (95% CI [1.46, 10.59]) and d' remains +0.054 (95% CI [-0.347, 0.438]). Plausible strict-scorer false negatives therefore do NOT explain the fair-scoring interface difference in balanced accuracy. The d' difference is the more fragile of the two: see dprime_caveat.",
+   "why_not_fully_validated": "a 13.14% false-negative rate on misses is real and must be disclosed; the strict matcher understates relation-targeted discovery",
+   "one_sided_is_conservative_because": "the pooled open-weight data contain 61 E1 near misses against 12 scored false alarms, so applying leniency to E0 alone flatters the relation-targeted rung; the symmetric scenarios show the difference is larger when both states are corrected"
+  }
+ },
+ "frontier": {
+  "openai": {
+   "anthropic": {
+    "model": "claude-sonnet-5-5",
+    "spend_usd": 5.9615,
+    "rungs": {
+     "BLIND_FINDING_LIST": {
+      "n_attempted": 15,
+      "n_scored": 0,
+      "n_refused": 15,
+      "n_technical_failure": 0,
+      "detected": 0,
+      "pct": null,
+      "findings_per_case": null,
+      "fp_findings_per_case": null,
+      "recall_at_1": 0,
+      "recall_at_5": 0
+     },
+     "CATEGORY_TARGETED_FINDING_LIST": {
+      "n_attempted": 15,
+      "n_scored": 0,
+      "n_refused": 15,
+      "n_technical_failure": 0,
+      "detected": 0,
+      "pct": null,
+      "findings_per_case": null,
+      "fp_findings_per_case": null,
+      "recall_at_1": 0,
+      "recall_at_5": 0
+     },
+     "RELATION_TARGETED_FINDING_LIST": {
+      "n_attempted": 15,
+      "n_scored": 0,
+      "n_refused": 15,
+      "n_technical_failure": 0,
+      "detected": 0,
+      "pct": null,
+      "findings_per_case": null,
+      "fp_findings_per_case": null,
+      "recall_at_1": 0,
+      "recall_at_5": 0
+     },
+     "RELATION_LOCALIZED_BINARY_VERDICT": {
+      "n_attempted": 60,
+      "n_scored": 49,
+      "n_refused": 2,
+      "n_technical_failure": 9,
+      "detected": 37,
+      "pct": 75.5,
+      "findings_per_case": null,
+      "fp_findings_per_case": null,
+      "recall_at_1": 0,
+      "recall_at_5": 0
+     }
+    },
+    "contrasts": {
+     "category information, format held": null,
+     "exact-relation increment": null,
+     "total information, format held": null,
+     "RESPONSE FORMAT, information held": null
+    }
+   },
+   "openai": {
+    "model": "gpt-5.2",
+    "spend_usd": 8.3378,
+    "rungs": {
+     "BLIND_FINDING_LIST": {
+      "n_attempted": 60,
+      "n_scored": 60,
+      "n_refused": 0,
+      "n_technical_failure": 0,
+      "detected": 18,
+      "pct": 30.0,
+      "findings_per_case": 2.13,
+      "fp_findings_per_case": 1.58,
+      "recall_at_1": 11,
+      "recall_at_5": 18
+     },
+     "CATEGORY_TARGETED_FINDING_LIST": {
+      "n_attempted": 60,
+      "n_scored": 60,
+      "n_refused": 0,
+      "n_technical_failure": 0,
+      "detected": 32,
+      "pct": 53.3,
+      "findings_per_case": 1.38,
+      "fp_findings_per_case": 0.55,
+      "recall_at_1": 29,
+      "recall_at_5": 32
+     },
+     "RELATION_TARGETED_FINDING_LIST": {
+      "n_attempted": 60,
+      "n_scored": 60,
+      "n_refused": 0,
+      "n_technical_failure": 0,
+      "detected": 25,
+      "pct": 41.7,
+      "findings_per_case": 0.63,
+      "fp_findings_per_case": 0.02,
+      "recall_at_1": 25,
+      "recall_at_5": 25
+     },
+     "RELATION_LOCALIZED_BINARY_VERDICT": {
+      "n_attempted": 60,
+      "n_scored": 60,
+      "n_refused": 0,
+      "n_technical_failure": 0,
+      "detected": 39,
+      "pct": 65.0,
+      "findings_per_case": null,
+      "fp_findings_per_case": null,
+      "recall_at_1": 0,
+      "recall_at_5": 0
+     }
+    },
+    "contrasts": {
+     "category information, format held": {
+      "n": 60,
+      "rate_a": 53.3,
+      "rate_b": 30.0,
+      "diff_pp": 23.33,
+      "a_only": 16,
+      "b_only": 2,
+      "exact_p": "1.3123E-3",
+      "lo": 11.86,
+      "hi": 34.43,
+      "n_manuscripts": 21
+     },
+     "exact-relation increment": {
+      "n": 60,
+      "rate_a": 41.7,
+      "rate_b": 53.3,
+      "diff_pp": -11.67,
+      "a_only": 8,
+      "b_only": 15,
+      "exact_p": "2.1004E-1",
+      "lo": -26.98,
+      "hi": 5.08,
+      "n_manuscripts": 21
+     },
+     "total information, format held": {
+      "n": 60,
+      "rate_a": 41.7,
+      "rate_b": 30.0,
+      "diff_pp": 11.67,
+      "a_only": 13,
+      "b_only": 6,
+      "exact_p": "1.6707E-1",
+      "lo": 1.89,
+      "hi": 22.22,
+      "n_manuscripts": 21
+     },
+     "RESPONSE FORMAT, information held": {
+      "n": 60,
+      "rate_a": 65.0,
+      "rate_b": 41.7,
+      "diff_pp": 23.33,
+      "a_only": 20,
+      "b_only": 6,
+      "exact_p": "9.3553E-3",
+      "lo": 10.0,
+      "hi": 35.59,
+      "n_manuscripts": 21
+     }
+    }
+   }
+  },
+  "anthropic": {
+   "model": "claude-sonnet-5-5",
+   "total_records": 108,
+   "binary_verdict_rung": {
+    "expected_cases": 60,
+    "records": 60,
+    "all_60_accounted": true,
+    "categories": {
+     "COMPLIANT_STRICT": 43,
+     "POLICY_REFUSAL": 2,
+     "PROSE": 8,
+     "RECOVERABLE_BY_BRACE_SCAN": 6,
+     "TECHNICAL_FAILURE:max_tokens": 1
+    },
+    "mutually_exclusive_total": 60
+   },
+   "accuracy": {
+    "primary_strict_parser": {
+     "n_scored": 43,
+     "n_correct": 34,
+     "accuracy_pct": 79.1,
+     "n_of_60_scoreable": 43
+    },
+    "sensitivity_including_brace_scan": {
+     "n_scored": 49,
+     "n_correct": 37,
+     "accuracy_pct": 75.5,
+     "n_of_60_scoreable": 49
+    },
+    "sensitivity_including_hand_parse": {
+     "n_scored": 53,
+     "n_correct": 41,
+     "accuracy_pct": 77.4,
+     "n_of_60_scoreable": 53
+    },
+    "note": "The three readings differ in how many of the 60 are scoreable, not in the scoring rule. No reading changes a verdict that the strict parser already read."
+   },
+   "finding_list_rungs": {
+    "per_rung": {
+     "BLIND_FINDING_LIST": {
+      "CLIENT_SIDE_ERROR:ERROR:IndexError": 1,
+      "POLICY_REFUSAL": 15
+     },
+     "CATEGORY_TARGETED_FINDING_LIST": {
+      "CLIENT_SIDE_ERROR:ERROR:IndexError": 1,
+      "POLICY_REFUSAL": 15
+     },
+     "RELATION_TARGETED_FINDING_LIST": {
+      "CLIENT_SIDE_ERROR:ERROR:IndexError": 1,
+      "POLICY_REFUSAL": 15
+     }
+    },
+    "coverage": {
+     "BLIND_FINDING_LIST": {
+      "n_records": 16,
+      "n_distinct_relations": 15,
+      "duplicated_relations": [
+       "p00115_claim_04"
+      ]
+     },
+     "CATEGORY_TARGETED_FINDING_LIST": {
+      "n_records": 16,
+      "n_distinct_relations": 15,
+      "duplicated_relations": [
+       "p00115_claim_04"
+      ]
+     },
+     "RELATION_TARGETED_FINDING_LIST": {
+      "n_records": 16,
+      "n_distinct_relations": 15,
+      "duplicated_relations": [
+       "p00115_claim_04"
+      ]
+     }
+    },
+    "conclusion": "Every finding-list request that reached the provider was refused. The interface is not measurable under the frozen prompt, which is why this phase issues no further Anthropic requests."
+   },
+   "prose_sensitivity_parse": {
+    "rule": "deterministic: resolved only if exactly one token of the frozen verdict vocabulary appears literally in the text",
+    "vocabulary": [
+     "ISSUE_PRESENT",
+     "NO_ISSUE",
+     "UNRESOLVED"
+    ],
+    "n_prose": 8,
+    "resolved": 4,
+    "unresolved": 4,
+    "reasons": {
+     "no_explicit_verdict_token": 4,
+     "single_explicit_token": 4
+    }
+   },
+   "reconciliation": {
+    "previously_reported": "49 compliant + 8 prose = 57, with 3 unexplained",
+    "the_missing_3": {
+     "policy_refusals": 2,
+     "technical_failures": 1,
+     "detail": [
+      "p00223_arith_07: POLICY_REFUSAL",
+      "p03181_num_01: TECHNICAL_FAILURE:max_tokens",
+      "p06853_xref_03: POLICY_REFUSAL"
+     ],
+     "explanation": "57 is the count of records whose status was OK. The remaining 3 of the 60 are not OK at all: 2 policy refusals (stop_reason='refusal') and 1 technical failure (stop_reason='max_tokens', a truncation the frozen protocol already classes as a technical failure, not a refusal). 49 + 8 therefore sums to the OK subset, not to 60."
+    },
+    "the_49_itself_is_parser_dependent": {
+     "strict_frozen_parser_compliant": 43,
+     "additionally_recoverable_by_brace_scan": 6,
+     "sum": 49,
+     "explanation": "The earlier figure of 49 was produced by a parser that falls back to scanning for the outermost {...} when strict JSON fails. The frozen protocol parser (exp2b/client.py::strict_json) explicitly forbids brace scanning. Under the frozen parser only 43 of the 60 are compliant; a further 6 contain a readable JSON object embedded in prose. The strict count is the primary one because it is the protocol the rest of the study used."
+    }
+   },
+   "what_was_not_done": [
+    "no sentence ablation",
+    "no prompt-bypass experiment",
+    "no new Anthropic request",
+    "no LLM judge"
+   ],
+   "refusals_are_not_errors": "A refused or unparseable output is NOT a wrong answer. The strict denominator counts only strictly parsed verdicts."
+  },
+  "bootstrap": {
+   "seed": 20261016,
+   "draws": 10000
+  }
+ },
+ "gold_label_validation": {
+  "label": "Human gold-label validation of the deterministic checkers",
+  "human_participants": 6,
+  "privacy": "Aggregates only. No participant identifier, free text or per-participant row is published.",
+  "agreement_overall": {
+   "x": 43,
+   "n": 47
+  },
+  "agreement_defective_items": {
+   "x": 32,
+   "n": 36
+  },
+  "agreement_control_items": {
+   "x": 11,
+   "n": 11
+  },
+  "false_alarms_on_controls": {
+   "x": 0,
+   "n": 11
+  },
+  "evidence_cited": {
+   "x": 47,
+   "n": 47
+  },
+  "cohens_kappa": "0.539",
+  "raw_agreement_pct": "80%",
+  "n_manuscripts": 16,
+  "n_relations": 16,
+  "sensitivity_excluding_one_contested_item": {
+   "item": "H009",
+   "agreement_overall": {
+    "x": 40,
+    "n": 43
+   },
+   "agreement_defective_items": {
+    "x": 29,
+    "n": 32
+   },
+   "agreement_control_items": {
+    "x": 11,
+    "n": 11
+   }
+  }
+ },
+ "denominator_reconciliation": {
+  "label": "DENOMINATOR_AND_WORDING_RECONCILIATION",
+  "source": "frozen records only; no new inference",
+  "qwen38_27_direct_blind": {
+   "question": "what do 31/181, 32/184 and 31/183 each represent?",
+   "summary": "Three different, individually correct denominators over the same 184 relations: the marginal set, the set paired with the localized arm, and the set paired with the agentic arm. None is an error; each must state its pairing when reported.",
+   "32/184": {
+    "numerator": 32,
+    "denominator": 184,
+    "definition": "the MARGINAL blind rate: every tested relation for this system. All 184 blind requests returned a schema-valid response, so the valid and attempted denominators coincide here.",
+    "pct": 17.4
+   },
+   "31/181": {
+    "numerator": 31,
+    "denominator": 181,
+    "definition": "the PAIRED blind rate: blind restricted to the relations where this system's localized E0 verdict is also schema-valid, which is the only set on which blind and localized can be compared case-by-case. Three localized E0 responses failed for this system.",
+    "pct": 17.1
+   },
+   "31/183": {
+    "numerator": 31,
+    "denominator": 183,
+    "pct": 16.9,
+    "definition": "the AGENTIC-PAIRED blind rate, and NOT a localized denominator. It is qwen38_27 direct blind restricted to the relations where both the direct blind generation and the Phase 3 agentic generation are valid. The comparison figure on the same 183 cases is the agentic rate.",
+    "agentic_rate_on_same_cells": {
+     "numerator": 66,
+     "denominator": 183,
+     "pct": 36.1
+    },
+    "why_183_and_not_181": "the agentic pairing drops one relation whose agentic generation failed, a different exclusion from the three relations whose LOCALIZED generation failed. 181 and 183 are therefore different subsets of the same 184 relations, not a rounding or counting error."
+   }
+  },
+  "per_system_denominators": {
+   "qwen38_27": {
+    "relations": 184,
+    "blind_valid": 184,
+    "localized_E0_valid": 181,
+    "all_three_states_valid": 180,
+    "paired_blind_and_localized_valid": 181
+   },
+   "qwen36_27": {
+    "relations": 184,
+    "blind_valid": 179,
+    "localized_E0_valid": 184,
+    "all_three_states_valid": 183,
+    "paired_blind_and_localized_valid": 179
+   },
+   "gemma4_12": {
+    "relations": 184,
+    "blind_valid": 184,
+    "localized_E0_valid": 183,
+    "all_three_states_valid": 181,
+    "paired_blind_and_localized_valid": 183
+   },
+   "granite42_30": {
+    "relations": 184,
+    "blind_valid": 184,
+    "localized_E0_valid": 183,
+    "all_three_states_valid": 182,
+    "paired_blind_and_localized_valid": 183
+   },
+   "qwen3_8": {
+    "relations": 184,
+    "blind_valid": 184,
+    "localized_E0_valid": 183,
+    "all_three_states_valid": 183,
+    "paired_blind_and_localized_valid": 183
+   }
+  },
+  "the_two_909s": {
+   "question": "the manuscript reports 909 twice; are these the same eligible set?",
+   "answer": "NO. They are different sets that happen to have the same cardinality.",
+   "setA_paired_blind_and_localized_valid": {
+    "n": 909,
+    "definition": "cells where the blind response AND the localized E0 verdict are both schema-valid; the denominator of the primary blind-versus-localized contrast"
+   },
+   "setB_all_three_localized_states_valid": {
+    "n": 909,
+    "definition": "cells where the localized verdict is schema-valid in E0, E1 AND E2; the denominator of the three-state trajectory metric. It does not require a blind response at all, and it does require E1 and E2, which set A does not."
+   },
+   "identical": false,
+   "in_A_not_B": 5,
+   "in_B_not_A": 5,
+   "intersection": 904,
+   "proof": "The two sets both have 909 members but differ on 10 cells: 5 are in the paired-contrast set only and 5 are in the trajectory set only. Equal size is a coincidence of two different exclusions cancelling, not the same denominator.",
+   "total_cells": 920
+  },
+  "off_target_audit_units": {
+   "question": "3/30 = 10.0% versus 12.2% \u2014 which unit is which, and are both right?",
+   "answer": "Both are correct and both describe the SAME false-positive half of the audit. They differ only in the unit of analysis, and neither may be quoted without naming its unit.",
+   "false_positive_half": {
+    "items": "3/30 (10.0%)",
+    "items_definition": "ITEMS on which a MAJORITY of the six reviewers judged the off-target finding to be a genuine additional issue. The unit is the item; the six reviewers contribute one majority verdict.",
+    "judgments": "22/180 (12.2%)",
+    "judgments_definition": "INDIVIDUAL reviewer-by-item judgments of 'genuine'. The unit is one reviewer's answer on one item, so the denominator is reviewers x items = 6 x 30 = 180, not 30.",
+    "recomputed": {
+     "n_items": 30,
+     "items_majority_genuine": 3,
+     "item_rate_pct": 10.0,
+     "n_judgments": 180,
+     "judgments_genuine": 22,
+     "judgment_rate_pct": 12.2,
+     "item_ids": [
+      "A018",
+      "A023",
+      "A029"
+     ]
+    }
+   },
+   "miss_half_for_contrast": {
+    "items": "1/30 (3.3%)",
+    "judgments": "15/180 (8.3%)",
+    "recomputed": {
+     "n_items": 30,
+     "items_majority_genuine": 1,
+     "item_rate_pct": 3.3,
+     "n_judgments": 180,
+     "judgments_genuine": 15,
+     "judgment_rate_pct": 8.3,
+     "item_ids": [
+      "A035"
+     ]
+    }
+   },
+   "rule": "An item-level rate and a judgment-level rate are not interchangeable and must never be pooled or compared with each other. The judgment-level rate is the higher of the two here because the reviewers who called a finding genuine were spread across items rather than concentrated on the three items that reached a majority."
+  },
+  "frontier_highest_verdict_rung_claim": {
+   "question": "is GPT-5.2 the highest on the verdict rung?",
+   "rule": "The comparison must be made on the SAME 60-relation ladder subset. A 60-relation frontier figure may not be compared against a 184-relation open-weight aggregate.",
+   "same_subset_60_relations": {
+    "qwen38_27": {
+     "n": 59,
+     "k": 51,
+     "pct": 86.4
+    },
+    "qwen36_27": {
+     "n": 60,
+     "k": 41,
+     "pct": 68.3
+    },
+    "gemma4_12": {
+     "n": 60,
+     "k": 25,
+     "pct": 41.7
+    },
+    "granite42_30": {
+     "n": 60,
+     "k": 21,
+     "pct": 35.0
+    },
+    "qwen3_8": {
+     "n": 60,
+     "k": 10,
+     "pct": 16.7
+    },
+    "gpt-5.2": {
+     "n": 60,
+     "k": 39,
+     "pct": 65.0
+    }
+   },
+   "open_weight_full_184_for_reference_only": {
+    "qwen38_27": {
+     "n": 181,
+     "k": 140,
+     "pct": 77.3
+    },
+    "qwen36_27": {
+     "n": 184,
+     "k": 112,
+     "pct": 60.9
+    },
+    "gemma4_12": {
+     "n": 183,
+     "k": 67,
+     "pct": 36.6
+    },
+    "granite42_30": {
+     "n": 183,
+     "k": 55,
+     "pct": 30.1
+    },
+    "qwen3_8": {
+     "n": 183,
+     "k": 24,
+     "pct": 13.1
+    }
+   },
+   "highest_on_the_60_relation_subset": "qwen38_27",
+   "gpt_5_2_rank_on_subset": 3,
+   "verdict": "NOT_SUPPORTED",
+   "statement_that_is_defensible": "On the shared 60-relation subset GPT-5.2 reaches 65.0% (39/60) on the verdict rung, which is BELOW qwen38_27 at 86.4% (51/59). The claim that the frontier system posts the highest verdict-rung rate is NOT supported once the comparison is made on the same relations."
+  },
+  "rounding_rule": {
+   "rule": "One decimal place for primary percentages and percentage-point effects.",
+   "exceptions": [
+    "exact p-values, reported in scientific notation or as a bound",
+    "d-prime, reported to two decimals because the unit is not a percentage",
+    "counts, which are integers"
+   ]
+  }
+ },
+ "miss_anatomy": {
+  "label": "RELATION_TARGETED_E0_MISS_ANATOMY",
+  "source": "existing frozen data only; no new inference",
+  "scorer": "exp2b.scoring.label_defective, unchanged",
+  "llm_judge_used": false,
+  "pooled_openweight": {
+   "scope": "pooled_openweight",
+   "n_cells": 300,
+   "n_misses": 239,
+   "categories": {
+    "A_NO_FINDINGS": 127,
+    "B_OFF_TARGET": 60,
+    "C_NEAR_MISS": 52,
+    "D_INVALID": 0
+   },
+   "subtypes": {
+    "cited_relation_but_no_contradiction_token": 38,
+    "cited_relation_but_wrong_family_vocabulary": 10,
+    "described_relation_but_cited_no_target_line": 4
+   },
+   "pct_of_misses": {
+    "A_NO_FINDINGS": 53.1,
+    "B_OFF_TARGET": 25.1,
+    "C_NEAR_MISS": 21.8,
+    "D_INVALID": 0.0
+   }
+  },
+  "gpt_5_2": {
+   "scope": "gpt-5.2",
+   "n_cells": 60,
+   "n_misses": 35,
+   "categories": {
+    "A_NO_FINDINGS": 23,
+    "B_OFF_TARGET": 4,
+    "C_NEAR_MISS": 8,
+    "D_INVALID": 0
+   },
+   "subtypes": {
+    "cited_relation_but_no_contradiction_token": 8
+   },
+   "pct_of_misses": {
+    "A_NO_FINDINGS": 65.7,
+    "B_OFF_TARGET": 11.4,
+    "C_NEAR_MISS": 22.9,
+    "D_INVALID": 0.0
+   }
+  },
+  "by_system": {
+   "qwen38_27": {
+    "A_NO_FINDINGS": 22,
+    "B_OFF_TARGET": 7,
+    "C_NEAR_MISS": 7
+   },
+   "qwen36_27": {
+    "C_NEAR_MISS": 11,
+    "B_OFF_TARGET": 14,
+    "A_NO_FINDINGS": 16
+   },
+   "gemma4_12": {
+    "A_NO_FINDINGS": 36,
+    "C_NEAR_MISS": 9,
+    "B_OFF_TARGET": 5
+   },
+   "granite42_30": {
+    "A_NO_FINDINGS": 49,
+    "C_NEAR_MISS": 5,
+    "B_OFF_TARGET": 1
+   },
+   "qwen3_8": {
+    "B_OFF_TARGET": 33,
+    "C_NEAR_MISS": 20,
+    "A_NO_FINDINGS": 4
+   },
+   "gpt-5.2": {
+    "A_NO_FINDINGS": 23,
+    "C_NEAR_MISS": 8,
+    "B_OFF_TARGET": 4
+   }
+  },
+  "human_review_required": {
+   "category": "C_NEAR_MISS",
+   "reason": "the response engaged the tested relation but failed a strict matcher requirement; only a human can say whether it should have counted",
+   "n_pooled_openweight": 52,
+   "n_gpt_5_2": 8
+  }
+ },
+ "contamination_chronology": {
+  "label": "TRAINING_CHRONOLOGY_FINAL",
+  "sources": {
+   "checkpoints": "Hugging Face model API, the exact served repository",
+   "manuscripts": "arXiv API, v1 <published> timestamp",
+   "frontier_snapshot": "provider models endpoint, recorded at selection time and re-confirmed by the live API during the E1 run"
+  },
+  "no_inference_run": true,
+  "manuscripts": {
+   "n": 21,
+   "n_resolved": 21,
+   "unresolved": [],
+   "first_posted_utc": "2026-06-30T19:51:54Z",
+   "last_posted_utc": "2026-08-07T06:23:02Z",
+   "posted_utc": {
+    "M01": "2026-06-30T19:51:54Z",
+    "M02": "2026-06-30T21:30:49Z",
+    "M03": "2026-06-30T22:02:12Z",
+    "M04": "2026-06-30T23:51:44Z",
+    "M05": "2026-07-01T02:57:06Z",
+    "M06": "2026-07-01T03:34:29Z",
+    "M07": "2026-07-02T14:21:44Z",
+    "M08": "2026-07-02T16:17:33Z",
+    "M09": "2026-07-02T18:22:52Z",
+    "M10": "2026-07-03T15:19:09Z",
+    "M11": "2026-07-03T01:37:59Z",
+    "M12": "2026-07-08T17:05:31Z",
+    "M13": "2026-07-10T13:48:26Z",
+    "M14": "2026-07-13T12:23:11Z",
+    "M15": "2026-07-18T01:45:27Z",
+    "M16": "2026-07-21T17:34:05Z",
+    "M17": "2026-07-23T09:47:04Z",
+    "M18": "2026-07-27T15:34:35Z",
+    "M19": "2026-08-04T06:18:58Z",
+    "M20": "2026-08-06T17:14:54Z",
+    "M21": "2026-08-07T06:23:02Z"
+   }
+  },
+  "open_weight": {
+   "qwen38_27": {
+    "served_repository": "cyankiwi/Qwen3.8-27B-AWQ-INT4",
+    "served_revision_pinned": null,
+    "served": {
+     "repo": "cyankiwi/Qwen3.8-27B-AWQ-INT4",
+     "created_utc": "2026-08-15T03:52:51.000Z",
+     "last_modified_utc": "2026-10-19T15:49:24.000Z",
+     "head_sha": "e3a700906e6a73ba4290b1873dc2ba8198527ab5"
+    },
+    "documented_training_cutoff": "unknown",
+    "basis": "model card retrieved (67093 chars) and contains no training-cutoff statement",
+    "upstream_base_repository": "Qwen/Qwen3.8-27B",
+    "upstream": {
+     "repo": "Qwen/Qwen3.8-27B",
+     "created_utc": "2026-08-05T08:22:59.000Z",
+     "last_modified_utc": "2026-08-14T15:00:01.000Z",
+     "head_sha": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
+    },
+    "upstream_documented_training_cutoff": "unknown",
+    "upstream_basis": "model card retrieved (64985 chars) and contains no training-cutoff statement",
+    "chronology_reference_date": "2026-08-05T08:22:59.000Z",
+    "reference_basis": "upstream base checkpoint publication",
+    "manuscripts_posted_after_this_checkpoint": 2,
+    "manuscripts_posted_before_this_checkpoint": 19,
+    "memorization_status": "PARTIALLY_RULED_OUT",
+    "statement": "2 of 21 manuscripts postdate this checkpoint and are temporally ruled out; the remaining 19 are not."
+   },
+   "qwen36_27": {
+    "served_repository": "QuantTrio/Qwen3.6-27B-AWQ",
+    "served_revision_pinned": null,
+    "served": {
+     "repo": "QuantTrio/Qwen3.6-27B-AWQ",
+     "created_utc": "2026-04-22T23:51:58.000Z",
+     "last_modified_utc": "2026-04-23T00:11:23.000Z",
+     "head_sha": "9b507bdc9afafb87b7898700cc2a591aa6639461"
+    },
+    "documented_training_cutoff": "unknown",
+    "basis": "model card retrieved (64412 chars) and contains no training-cutoff statement",
+    "upstream_base_repository": "Qwen/Qwen3.6-27B",
+    "upstream": {
+     "repo": "Qwen/Qwen3.6-27B",
+     "created_utc": "2026-04-21T07:50:43.000Z",
+     "last_modified_utc": "2026-04-24T02:39:16.000Z",
+     "head_sha": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9"
+    },
+    "upstream_documented_training_cutoff": "unknown",
+    "upstream_basis": "model card retrieved (62584 chars) and contains no training-cutoff statement",
+    "chronology_reference_date": "2026-04-21T07:50:43.000Z",
+    "reference_basis": "upstream base checkpoint publication",
+    "manuscripts_posted_after_this_checkpoint": 21,
+    "manuscripts_posted_before_this_checkpoint": 0,
+    "memorization_status": "TEMPORALLY_RULED_OUT",
+    "statement": "Every one of the 21 held-out manuscripts was first posted after this checkpoint was published, so direct memorization of them by this frozen checkpoint is temporally ruled out under the documented chronology."
+   },
+   "gemma4_12": {
+    "served_repository": "google/gemma-4-12B-it",
+    "served_revision_pinned": null,
+    "served": {
+     "repo": "google/gemma-4-12B-it",
+     "created_utc": "2026-05-23T01:17:15.000Z",
+     "last_modified_utc": "2026-07-20T16:42:08.000Z",
+     "head_sha": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7"
+    },
+    "documented_training_cutoff": "Our pre-training dataset is a large-scale, diverse collection of data encompassing a wide range of domains and modalities, which includes web documents, code, images, audio, with a cutoff date of January 2025. Here are the key components:",
+    "basis": "model card",
+    "chronology_reference_date": "2026-05-23T01:17:15.000Z",
+    "reference_basis": "served checkpoint publication",
+    "manuscripts_posted_after_this_checkpoint": 21,
+    "manuscripts_posted_before_this_checkpoint": 0,
+    "memorization_status": "TEMPORALLY_RULED_OUT",
+    "statement": "Every one of the 21 held-out manuscripts was first posted after this checkpoint was published, so direct memorization of them by this frozen checkpoint is temporally ruled out under the documented chronology."
+   },
+   "granite42_30": {
+    "served_repository": "ibm-granite/granite-4.2-30b",
+    "served_revision_pinned": "9e668ce1c538387ef24d3644e9b0606647762636",
+    "served": {
+     "repo": "ibm-granite/granite-4.2-30b",
+     "created_utc": "2026-08-07T16:29:50.000Z",
+     "last_modified_utc": "2026-09-04T21:08:46.000Z",
+     "head_sha": "9e668ce1c538387ef24d3644e9b0606647762636"
+    },
+    "documented_training_cutoff": "unknown",
+    "basis": "model card retrieved (38613 chars) and contains no training-cutoff statement",
+    "chronology_reference_date": "2026-08-07T16:29:50.000Z",
+    "reference_basis": "served checkpoint publication",
+    "manuscripts_posted_after_this_checkpoint": 0,
+    "manuscripts_posted_before_this_checkpoint": 21,
+    "memorization_status": "NOT_RULED_OUT",
+    "statement": "This checkpoint was published after every held-out manuscript had appeared. Direct memorization is not ruled out by chronology, and no training cutoff is documented, so it cannot be ruled out on any other documentary basis either."
+   },
+   "qwen3_8": {
+    "served_repository": "Qwen/Qwen3-8B",
+    "served_revision_pinned": null,
+    "served": {
+     "repo": "Qwen/Qwen3-8B",
+     "created_utc": "2025-04-27T03:42:21.000Z",
+     "last_modified_utc": "2025-07-26T03:49:13.000Z",
+     "head_sha": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    "documented_training_cutoff": "unknown",
+    "basis": "model card retrieved (16660 chars) and contains no training-cutoff statement",
+    "chronology_reference_date": "2025-04-27T03:42:21.000Z",
+    "reference_basis": "served checkpoint publication",
+    "manuscripts_posted_after_this_checkpoint": 21,
+    "manuscripts_posted_before_this_checkpoint": 0,
+    "memorization_status": "TEMPORALLY_RULED_OUT",
+    "statement": "Every one of the 21 held-out manuscripts was first posted after this checkpoint was published, so direct memorization of them by this frozen checkpoint is temporally ruled out under the documented chronology."
+   }
+  },
+  "frontier_gpt_5_2": {
+   "model_id": "gpt-5.2",
+   "snapshot_id": "gpt-5.2-2025-12-11",
+   "snapshot_date": "2025-12-11T00:00:00Z",
+   "snapshot_recorded_from": "provider models endpoint 2026-10-18, not documentation",
+   "snapshot_confirmed_at_runtime": true,
+   "runtime_confirmation": "the E1 runner aborts unless the API's resolved model field equals this snapshot; it returned gpt-5.2-2025-12-11",
+   "documented_training_cutoff": "unknown \u2014 the provider publishes no training cutoff for this snapshot",
+   "manuscripts_posted_after_snapshot": 21,
+   "memorization_status": "TEMPORALLY_RULED_OUT",
+   "statement": "The snapshot is dated 2025-12-11. All 21 held-out manuscripts were first posted between 2026-06-30 and 2026-08-07, every one of them after that date. Direct memorization of these manuscripts in this frozen checkpoint's training data is therefore temporally ruled out under the documented chronology."
+  },
+  "caveat": "A release date bounds only what could have been in a checkpoint published on that date. It says nothing about continued or pre-release training, and no training cutoff is documented for any system here. Where the ordering does not rule memorization out, this file says so rather than arguing from silence.",
+  "ordering_verdict_by_system": {
+   "qwen38_27": {
+    "served_checkpoint_created_utc": "2026-08-15T03:52:51",
+    "predates_every_held_out_manuscript": false,
+    "memorisation_ruled_out_by_ordering": false
+   },
+   "qwen36_27": {
+    "served_checkpoint_created_utc": "2026-04-22T23:51:58",
+    "predates_every_held_out_manuscript": true,
+    "memorisation_ruled_out_by_ordering": true
+   },
+   "gemma4_12": {
+    "served_checkpoint_created_utc": "2026-05-23T01:17:15",
+    "predates_every_held_out_manuscript": true,
+    "memorisation_ruled_out_by_ordering": true
+   },
+   "granite42_30": {
+    "served_checkpoint_created_utc": "2026-08-07T16:29:50",
+    "predates_every_held_out_manuscript": false,
+    "memorisation_ruled_out_by_ordering": false
+   },
+   "qwen3_8": {
+    "served_checkpoint_created_utc": "2025-04-27T03:42:21",
+    "predates_every_held_out_manuscript": true,
+    "memorisation_ruled_out_by_ordering": true
+   },
+   "gpt-5.2": {
+    "served_checkpoint_created_utc": "2025-12-11T00:00:00",
+    "predates_every_held_out_manuscript": true,
+    "memorisation_ruled_out_by_ordering": true
+   }
+  },
+  "ordering_summary": {
+   "manuscripts_first_posted_utc": "2026-06-30T19:51:54Z",
+   "manuscripts_last_posted_utc": "2026-08-07T06:23:02Z",
+   "n_systems_ruled_out_by_ordering": 4,
+   "n_systems_not_ruled_out": 2,
+   "reading": "A checkpoint published AFTER a manuscript could in principle have seen it. Where that is the case the ordering establishes nothing and this file says so. It is not evidence that memorisation occurred."
+  },
+  "manuscript_labels_are_opaque": "Manuscripts appear as the same opaque cluster labels used in fair_scoring_cells.json. The label-to-arXiv mapping is not published."
+ },
+ "audit_impact": {
+  "n_sampled_miss": 30,
+  "fn_items": [
+   "A043"
+  ],
+  "unweighted_fn_rate": 0.0333,
+  "corpus_misses": 741,
+  "corpus_by_family": {
+   "numerical": 215,
+   "cross_reference": 307,
+   "claim_evidence": 71,
+   "statistical": 19,
+   "arithmetic": 47,
+   "method_result": 82
+  },
+  "sampled_by_family": {
+   "method_result": 5,
+   "arithmetic": 8,
+   "claim_evidence": 5,
+   "cross_reference": 5,
+   "numerical": 5,
+   "statistical": 2
+  },
+  "reweighted_fn_estimate": 0.0079,
+  "reweighted_fn_ci": [
+   0.0,
+   0.0238
+  ],
+  "blind_rate_frozen": {
+   "x": 95,
+   "n": 909,
+   "pct": 10.45
+  },
+  "blind_rate_corrected_point": 11.16,
+  "blind_rate_corrected_ci": [
+   10.45,
+   12.58
+  ],
+  "ladder_information_effect_corrected_pp": 7.72,
+  "ladder_format_effect_pp": 29.29
+ },
+ "generated_by": "tools/build_research_data.py"
+}

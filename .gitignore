@@ -38,3 +38,5 @@ overleaf/
 
 # os
 .DS_Store
+reproduction_output/
+.pytest_repro_out/

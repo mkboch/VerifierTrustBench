@@ -3,14 +3,29 @@
 Research software for measuring when a language model's verdict on a scientific manuscript
 counts as **verification** rather than a correct-looking guess.
 
-This repository is a **code release**. It contains the protocol, the generation runners,
-the scorers, the parsers and the statistical analysis — enough to read exactly what was
-done and to run the whole methodology on manuscripts and models you obtain yourself. **It
-does not contain the study's experimental results.** See
-[What this repository does and does not contain](#what-this-repository-does-and-does-not-contain).
+This repository is a **research data and code release**. It contains the protocol, the
+generation runners, the scorers, the parsers, the statistical analysis **and the released
+outcome data**, so that the published numerical results can be reproduced independently
+rather than taken on trust.
 
-**Methodology demonstration:** <https://mkboch.github.io/VerifierTrustBench/> — runs the
-analysis in your browser on a synthetic fixture, or on a file you supply.
+```bash
+git clone https://github.com/mkboch/VerifierTrustBench && cd VerifierTrustBench
+pip install -r requirements.txt
+python -m reproducibility.verify_all
+```
+
+That command verifies every data checksum, validates the schema, recomputes the rung
+counts, the estimators, the six paired contrasts under both weightings and their
+manuscript-cluster bootstrap intervals, regenerates the tables and figures, and writes a
+machine-readable reconciliation against the manuscript's published values — PASS or FAIL,
+line by line. It needs no private path, no API key, no GPU and no paid model API.
+
+**Live:** <https://mkboch.github.io/VerifierTrustBench/> — recomputes the published
+results in your browser from the same released data, or runs the analysis on synthetic
+data or on a file you supply.
+
+> **An E0 defect is a perturbation this study injected** into a sound published
+> manuscript. Nothing in this repository asserts that any real paper contains an error.
 
 ---
 
@@ -98,6 +113,14 @@ playground, which reads it in your browser and uploads it nowhere.
 
 ### Published here
 
+- **The released outcome data** — 1,440 per-cell binary outcomes, the audited aggregates,
+  the de-identified sufficient statistics for every other experiment, per-item human
+  rating counts, and a source-of-truth manifest mapping each manuscript value to its
+  canonical record and its reproduction route. See
+  [`docs/data/DATA_DICTIONARY.md`](docs/data/DATA_DICTIONARY.md).
+- **`reproducibility/`** — the end-to-end reproduction, using the frozen bootstrap
+  generator and seed, so interval endpoints reproduce exactly rather than approximately.
+
 - Corpus harvesting, data-only screening and seeded cohort selection.
 - The relation miner and the **deterministic checkers**.
 - E0 / E1 / E2 variant construction with line-preserving edits, and the dataset audit gate.
@@ -124,23 +147,28 @@ playground, which reads it in your browser and uploads it nowhere.
 
 ### Deliberately not published here
 
-- **The study's experimental results** — result tables, frozen numerical outcomes,
-  per-relation records, aggregate statistics files, precomputed intervals, performance
-  summaries, generated figures.
 - **Raw model generations** and every inference or execution log.
 - **Source manuscript text** — the corpus is third-party copyrighted material, and the
   relation ledgers embed excerpts.
 - **The manuscript**, reviewer reports, audit records and internal research logs.
-- **Human-participant data.** The scorer audit involved a small number of identifiable
-  colleagues. No human judgment is published, in any form, aggregate or otherwise.
+- **The reviewer axis of the human audits, and all free text.** Per-item rating counts
+  *are* published, which is enough to recompute every item-level statistic the manuscript
+  reports. Per-reviewer rates and the pairwise agreement matrix are not: six named
+  colleagues are not de-identifiable along that axis and no consent covering publication
+  of individual judgements exists. Mean pairwise agreement is therefore carried as a
+  retained audited aggregate and labelled as one.
+- **The label-to-arXiv mapping.** Manuscripts appear only as opaque labels, so no released
+  file names a third-party paper beside an injected-defect label.
 - Paper-specific checker modules whose regular expressions quote source-manuscript
   phrasing. The general-purpose miner and checkers that supersede them *are* published.
 
-The one data file shipped is `docs/data/synthetic_demo_cells.json`, which declares itself
-synthetic, carries a warning against being read as evidence, and is regenerable from its
-generator. `scripts/audit_public_release.py` refuses to publish a data file that does not,
-and the test suite fails if those markers are weakened or if a study result value appears
-hard-coded anywhere in the tree.
+`docs/data/synthetic_demo_cells.json` remains, declaring itself synthetic and carrying a
+warning against being read as evidence, so the analysis can be demonstrated without
+touching the real outcomes. `scripts/audit_public_release.py` fails the build if a
+released data file carries an arXiv identifier, a reviewer identifier or free text, or if
+it discusses E0 defects without stating that they are injected. The test suite fails if a
+study value is hard-coded anywhere the page or an estimator could read it — the published
+numbers must be **computed**, never looked up.
 
 ### What you can actually reproduce
 
@@ -150,11 +178,19 @@ hard-coded anywhere in the tree.
 | run the four-rung analysis end to end on data in the published schema | **yes** |
 | check that the browser and the Python reference agree to machine precision | **yes** — the tests assert it |
 | apply the whole methodology to manuscripts and models you obtain yourself | **yes** |
-| recompute the manuscript's reported numbers from this repository | **no** |
-| obtain the study's per-relation records, generations or human judgments | **no** — see the manuscript's availability statement |
+| recompute the six paired contrasts, both weightings, with exact interval endpoints | **yes** |
+| recompute the rung counts, balanced accuracy and log-linear d′ | **yes** |
+| recompute the scorer audits' reweighted false-negative rates from per-item counts | **yes** |
+| recompute the broader benchmark, three-state, agentic and transfer results | **yes** |
+| recompute reviewer-level agreement in the human audits | **no** — the reviewer axis is withheld; the value is carried as an audited aggregate |
+| obtain raw model generations, source manuscript text or participant data | **no** — see the manuscript's availability statement |
+| identify which real papers were used | **no**, by design |
 
-**This repository supports methodological reproduction, not reproduction of the published
-numbers.** Access to the controlled research dataset is described in the manuscript.
+**What this repository reproduces is the published numerical analysis, from released
+outcomes.** It does not re-run inference: that needs the models and the source corpus,
+which are not distributed here. Seven values in the 2026-11-05 manuscript disagree with
+the frozen record; `verify_all` reports each one rather than reconciling it, and
+[`docs/data/DATA_DICTIONARY.md`](docs/data/DATA_DICTIONARY.md) lists them.
 
 ---
 

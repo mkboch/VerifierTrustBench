@@ -53,6 +53,10 @@ def main() -> int:
 
     out: dict = {
         "schema_version": 1,
+        "defects_are_synthetic": (
+            "An E0 defect is a perturbation THIS STUDY injected into a sound published "
+            "manuscript. No number in this file asserts that any real paper contains an "
+            "error. Manuscripts appear only as opaque labels."),
         "what_this_is": (
             "Minimal de-identified aggregate sufficient statistics for the VerifierTrustBench interactive "
             "playground. Counts only. No per-case records, no model outputs, no manuscript text, no "

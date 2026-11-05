@@ -45,6 +45,7 @@ UNCERTAINTY
     between the two is recorded in FAIR_SCORING_REPRODUCTION.md and checked by the tests.
 """
 from __future__ import annotations
+import random
 import argparse, collections, json, math
 from pathlib import Path
 
@@ -178,17 +179,25 @@ def balanced_diff(pairs, metric):
 
 
 def cluster_bootstrap(pairs, stat, draws=DRAWS, seed=SEED):
+    """Manuscript-cluster bootstrap with the FROZEN generator.
+
+    This uses Python's stdlib Mersenne Twister, which is what the frozen analysis used, so
+    the interval endpoints computed here are the published endpoints rather than endpoints
+    from a different random source that happen to be close. docs/assets/mt19937.js
+    reproduces the same generator in JavaScript, and the tests assert the two agree, so
+    the browser and this module return identical intervals.
+    """
     by = collections.defaultdict(list)
     for p in pairs:
         by[p["cluster"]].append(p)
     keys = sorted(by)
-    rng = Mulberry32(seed)
+    rng = random.Random(seed)
     point = stat(pairs)
     vals = []
     for _ in range(draws):
         samp = []
         for _ in range(len(keys)):
-            samp += by[keys[rng.below(len(keys))]]
+            samp += by[keys[rng.randrange(len(keys))]]
         v = stat(samp)
         if v is not None and not math.isnan(v):
             vals.append(v)

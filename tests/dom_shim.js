@@ -81,7 +81,16 @@ for (const id of ["experiment", "experiment-hint", "settings", "run", "reset", "
   document.register(id, new Node(TAGS[id] || "div"));
 }
 /* the real <select> starts on its first option; the shim has no options, so seed the
-   values the markup declares */
+   values the markup declares, and give each select the option list the page gates on */
+function seedOptions(node, values) {
+  node.options = values.map((v) => ({ value: v, disabled: false, label: v }));
+  Object.defineProperty(node, "selectedOptions", {
+    get() { return node.options.filter((o) => o.value === node.value); },
+  });
+}
+seedOptions(document.getElementById("datasource"), ["published", "synthetic", "upload"]);
+seedOptions(document.getElementById("experiment"),
+            ["ladder", "contrasts", "table1", "experiments", "frontier", "scorer"]);
 document.getElementById("datasource").value = "synthetic";
 document.getElementById("experiment").value = "ladder";
 

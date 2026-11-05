@@ -1,0 +1,4140 @@
+{
+ "schema_version": 1,
+ "defects_are_synthetic": "An E0 defect is a perturbation THIS STUDY injected into a sound published manuscript. No number in this file asserts that any real paper contains an error. Manuscripts appear only as opaque labels.",
+ "what_this_is": "Source-of-truth manifest. Every manuscript macro, its frozen value, the canonical record it came from, and how it can be reproduced from the public release.",
+ "routes": {
+  "recomputable": "computable from the public data files in docs/data/",
+  "audited_aggregate": "carried as a published aggregate; the underlying observations cannot safely be released",
+  "restricted": "not published; see DATA_SHARING_AND_PRIVACY_REVIEW.md",
+  "mixed": "parts of this value take different routes"
+ },
+ "n_macros": 375,
+ "entries": {
+  "an_acc_hand": {
+   "value": "77.4%",
+   "frozen_value": "77.4%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/ANTHROPIC_ACCOUNTING.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier.anthropic counts"
+   ]
+  },
+  "an_acc_strict": {
+   "value": "79.1%",
+   "frozen_value": "79.1%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/ANTHROPIC_ACCOUNTING.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier.anthropic counts"
+   ]
+  },
+  "an_attempted_fl": {
+   "value": "45",
+   "frozen_value": "45",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "an_brace": {
+   "value": "6",
+   "frozen_value": "6",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/ANTHROPIC_ACCOUNTING.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier.anthropic counts"
+   ]
+  },
+  "an_n_strict": {
+   "value": "43",
+   "frozen_value": "43",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/ANTHROPIC_ACCOUNTING.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier.anthropic counts"
+   ]
+  },
+  "an_prose": {
+   "value": "8",
+   "frozen_value": "8",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/ANTHROPIC_ACCOUNTING.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier.anthropic counts"
+   ]
+  },
+  "an_refusal": {
+   "value": "2",
+   "frozen_value": "2",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/ANTHROPIC_ACCOUNTING.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier.anthropic counts"
+   ]
+  },
+  "an_refused": {
+   "value": "45",
+   "frozen_value": "45",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "an_strict": {
+   "value": "43",
+   "frozen_value": "43",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/ANTHROPIC_ACCOUNTING.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier.anthropic counts"
+   ]
+  },
+  "an_trunc": {
+   "value": "1",
+   "frozen_value": "1",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/ANTHROPIC_ACCOUNTING.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier.anthropic counts"
+   ]
+  },
+  "an_ver_pct": {
+   "value": "75.5%",
+   "frozen_value": "75.5%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "ba60_neg_dprime": {
+   "value": "5",
+   "frozen_value": "5",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LOCALIZED_BIAS_AWARE_METRICS.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "ba_balacc": {
+   "value": "66.4%",
+   "frozen_value": "66.4%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LOCALIZED_BIAS_AWARE_METRICS.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "ba_crit": {
+   "value": "0.7023",
+   "frozen_value": "0.7023",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LOCALIZED_BIAS_AWARE_METRICS.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "ba_dprime": {
+   "value": "1.0799",
+   "frozen_value": "1.0799",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LOCALIZED_BIAS_AWARE_METRICS.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "ba_qwen3_8_dprime": {
+   "value": "-0.0458",
+   "frozen_value": "-0.0458",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LOCALIZED_BIAS_AWARE_METRICS.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "ba_sens": {
+   "value": "43.5%",
+   "frozen_value": "43.5%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LOCALIZED_BIAS_AWARE_METRICS.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "ba_spec": {
+   "value": "89.3%",
+   "frozen_value": "89.3%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LOCALIZED_BIAS_AWARE_METRICS.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "ch_first": {
+   "value": "2026-06-30",
+   "frozen_value": "2026-06-30",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_gemma4_12_date": {
+   "value": "2026-05-23",
+   "frozen_value": "2026-05-23",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_gemma4_12_status": {
+   "value": "TEMPORALLY_RULED_OUT",
+   "frozen_value": "TEMPORALLY_RULED_OUT",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_gpt_date": {
+   "value": "2025-12-11",
+   "frozen_value": "2025-12-11",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_gpt_snapshot": {
+   "value": "gpt-5.2-2025-12-11",
+   "frozen_value": "gpt-5.2-2025-12-11",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_gpt_status": {
+   "value": "TEMPORALLY_RULED_OUT",
+   "frozen_value": "TEMPORALLY_RULED_OUT",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_granite42_30_date": {
+   "value": "2026-08-07",
+   "frozen_value": "2026-08-07",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_granite42_30_status": {
+   "value": "NOT_RULED_OUT",
+   "frozen_value": "NOT_RULED_OUT",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_last": {
+   "value": "2026-08-07",
+   "frozen_value": "2026-08-07",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_n_ruled_out": {
+   "value": "3",
+   "frozen_value": "3",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_qwen36_27_date": {
+   "value": "2026-04-21",
+   "frozen_value": "2026-04-21",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_qwen36_27_status": {
+   "value": "TEMPORALLY_RULED_OUT",
+   "frozen_value": "TEMPORALLY_RULED_OUT",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_qwen38_27_date": {
+   "value": "2026-08-05",
+   "frozen_value": "2026-08-05",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_qwen38_27_status": {
+   "value": "PARTIALLY_RULED_OUT",
+   "frozen_value": "PARTIALLY_RULED_OUT",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_qwen3_8_date": {
+   "value": "2025-04-27",
+   "frozen_value": "2025-04-27",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "ch_qwen3_8_status": {
+   "value": "TEMPORALLY_RULED_OUT",
+   "frozen_value": "TEMPORALLY_RULED_OUT",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRAINING_CHRONOLOGY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on model release metadata"
+   ]
+  },
+  "corr_blind_loc": {
+   "value": "0.85",
+   "frozen_value": "0.85",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/PROFILE_AXIS_CORRELATIONS_12SYSTEM.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "corr_blind_loc_ci": {
+   "value": "[0.551, 0.929]",
+   "frozen_value": "[0.551, 0.929]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/PROFILE_AXIS_CORRELATIONS_12SYSTEM.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "corr_loc_e1": {
+   "value": "0.377",
+   "frozen_value": "0.377",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/PROFILE_AXIS_CORRELATIONS_12SYSTEM.csv"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "cr_blind": {
+   "value": "95/909",
+   "frozen_value": "95/909",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/CLUSTER_ROBUST_PRIMARY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "cr_blind_pct": {
+   "value": "10.5%",
+   "frozen_value": "10.5%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/CLUSTER_ROBUST_PRIMARY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "cr_ci": {
+   "value": "[28.3, 37.7]",
+   "frozen_value": "[28.3, 37.7]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/CLUSTER_ROBUST_PRIMARY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "cr_diff": {
+   "value": "32.9",
+   "frozen_value": "32.9",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/CLUSTER_ROBUST_PRIMARY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "cr_p": {
+   "value": "< 10^-10",
+   "frozen_value": "< 10^-10",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/CLUSTER_ROBUST_PRIMARY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "cr_targ": {
+   "value": "394/909",
+   "frozen_value": "394/909",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/CLUSTER_ROBUST_PRIMARY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "cr_targ_pct": {
+   "value": "43.3%",
+   "frozen_value": "43.3%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/CLUSTER_ROBUST_PRIMARY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "d909_a": {
+   "value": "909",
+   "frozen_value": "909",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "d909_diff": {
+   "value": "10",
+   "frozen_value": "10",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "d909_inter": {
+   "value": "904",
+   "frozen_value": "904",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "dn_agentic_pair": {
+   "value": "31/183",
+   "frozen_value": "31/183",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "dn_agentic_pct": {
+   "value": "36.1%",
+   "frozen_value": "36.1%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "dn_agentic_rate": {
+   "value": "66/183",
+   "frozen_value": "66/183",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "eligibility_pct": {
+   "value": "3.2%",
+   "frozen_value": "3.2%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "fr_anthropic_model": {
+   "value": "claude-sonnet-5-5",
+   "frozen_value": "claude-sonnet-5-5",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_LADDER_MANIFEST.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "run manifest; counts carried in research_results.json"
+   ]
+  },
+  "fr_blind_offtarget": {
+   "value": "1.58",
+   "frozen_value": "1.58",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_blind_pct": {
+   "value": "30.0%",
+   "frozen_value": "30.0%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_blind_x": {
+   "value": "18/60",
+   "frozen_value": "18/60",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_cat_offtarget": {
+   "value": "0.55",
+   "frozen_value": "0.55",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_cat_pct": {
+   "value": "53.3%",
+   "frozen_value": "53.3%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_cat_x": {
+   "value": "32/60",
+   "frozen_value": "32/60",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_catc_ci": {
+   "value": "[+11.86, +34.43]",
+   "frozen_value": "[+11.86, +34.43]",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_catc_diff": {
+   "value": "+23.33",
+   "frozen_value": "+23.33",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_fmt_ci": {
+   "value": "[+10.00, +35.59]",
+   "frozen_value": "[+10.00, +35.59]",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_fmt_diff": {
+   "value": "+23.33",
+   "frozen_value": "+23.33",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_fmt_p": {
+   "value": "= 9.36E-3",
+   "frozen_value": "= 9.36E-3",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_info_diff": {
+   "value": "+11.67",
+   "frozen_value": "+11.67",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_openai_model": {
+   "value": "gpt-5.2",
+   "frozen_value": "gpt-5.2",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_LADDER_MANIFEST.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "run manifest; counts carried in research_results.json"
+   ]
+  },
+  "fr_openai_snapshot": {
+   "value": "gpt-5.2-2025-12-11",
+   "frozen_value": "gpt-5.2-2025-12-11",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_LADDER_MANIFEST.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "run manifest; counts carried in research_results.json"
+   ]
+  },
+  "fr_rel_offtarget": {
+   "value": "0.02",
+   "frozen_value": "0.02",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_rel_pct": {
+   "value": "41.7%",
+   "frozen_value": "41.7%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_rel_x": {
+   "value": "25/60",
+   "frozen_value": "25/60",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_relcat_ci": {
+   "value": "[-26.98, +5.08]",
+   "frozen_value": "[-26.98, +5.08]",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_relcat_diff": {
+   "value": "-11.67",
+   "frozen_value": "-11.67",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_ver_pct": {
+   "value": "65.0%",
+   "frozen_value": "65.0%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fr_ver_x": {
+   "value": "39/60",
+   "frozen_value": "39/60",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from research_results.json frontier counts"
+   ]
+  },
+  "fs_binary_bal": {
+   "value": "70.7%",
+   "frozen_value": "70.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_binary_d": {
+   "value": "1.38",
+   "frozen_value": "1.38",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_binary_dc": {
+   "value": "44.5%",
+   "frozen_value": "44.5%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_binary_far": {
+   "value": "8.0%",
+   "frozen_value": "8.0%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_binary_hits": {
+   "value": "148",
+   "frozen_value": "148",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_binary_pg_hits": {
+   "value": "137",
+   "frozen_value": "137",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_binary_sens": {
+   "value": "49.5%",
+   "frozen_value": "49.5%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_binary_spec": {
+   "value": "92.0%",
+   "frozen_value": "92.0%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_blind_bal": {
+   "value": "55.2%",
+   "frozen_value": "55.2%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_blind_d": {
+   "value": "0.99",
+   "frozen_value": "0.99",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_blind_dc": {
+   "value": "10.7%",
+   "frozen_value": "10.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_blind_far": {
+   "value": "1.3%",
+   "frozen_value": "1.3%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_blind_sens": {
+   "value": "11.7%",
+   "frozen_value": "11.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_blind_spec": {
+   "value": "98.7%",
+   "frozen_value": "98.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_category_bal": {
+   "value": "60.8%",
+   "frozen_value": "60.8%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_category_d": {
+   "value": "1.63",
+   "frozen_value": "1.63",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_category_dc": {
+   "value": "21.9%",
+   "frozen_value": "21.9%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_category_far": {
+   "value": "0.7%",
+   "frozen_value": "0.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_category_sens": {
+   "value": "22.2%",
+   "frozen_value": "22.2%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_category_spec": {
+   "value": "99.3%",
+   "frozen_value": "99.3%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_diff_bal": {
+   "value": "+12.8",
+   "frozen_value": "+12.8",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_diff_bal_ci": {
+   "value": "[+9.8, +15.5]",
+   "frozen_value": "[+9.8, +15.5]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_diff_d": {
+   "value": "+0.460",
+   "frozen_value": "+0.460",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_diff_d_ci": {
+   "value": "[+0.120, +0.770]",
+   "frozen_value": "[+0.120, +0.770]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_diff_pg": {
+   "value": "+26.2",
+   "frozen_value": "+26.2",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_diff_pg_ci": {
+   "value": "[+20.9, +31.1]",
+   "frozen_value": "[+20.9, +31.1]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_diff_raw": {
+   "value": "+29.9",
+   "frozen_value": "+29.9",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_diff_raw_ci": {
+   "value": "[+24.5, +34.8]",
+   "frozen_value": "[+24.5, +34.8]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gemma4_12_diff_bal": {
+   "value": "+9.2",
+   "frozen_value": "+9.2",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gemma4_12_diff_d": {
+   "value": "+0.11",
+   "frozen_value": "+0.11",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gemma4_12_diff_raw": {
+   "value": "+25.0",
+   "frozen_value": "+25.0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_binary_d": {
+   "value": "2.12",
+   "frozen_value": "2.12",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_binary_far": {
+   "value": "3.3%",
+   "frozen_value": "3.3%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_blind_far": {
+   "value": "0.0%",
+   "frozen_value": "0.0%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_category_far": {
+   "value": "1.7%",
+   "frozen_value": "1.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_diff_bal": {
+   "value": "+10.0",
+   "frozen_value": "+10.0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_diff_d": {
+   "value": "-0.07",
+   "frozen_value": "-0.07",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_diff_raw": {
+   "value": "+23.3",
+   "frozen_value": "+23.3",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_relation_d": {
+   "value": "2.19",
+   "frozen_value": "2.19",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_gpt52_relation_far": {
+   "value": "0.0%",
+   "frozen_value": "0.0%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_granite42_30_diff_bal": {
+   "value": "+13.3",
+   "frozen_value": "+13.3",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_granite42_30_diff_d": {
+   "value": "+0.96",
+   "frozen_value": "+0.96",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_granite42_30_diff_raw": {
+   "value": "+26.7",
+   "frozen_value": "+26.7",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_n_no_dprime_advantage": {
+   "value": "2",
+   "frozen_value": "2",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_no_dprime_advantage_systems": {
+   "value": "qwen3_8, gpt-5.2",
+   "frozen_value": "qwen3_8, gpt-5.2",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_paired_n": {
+   "value": "298",
+   "frozen_value": "298",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_paired_papers": {
+   "value": "21",
+   "frozen_value": "21",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen36_27_diff_bal": {
+   "value": "+21.2",
+   "frozen_value": "+21.2",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen36_27_diff_d": {
+   "value": "+1.24",
+   "frozen_value": "+1.24",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen36_27_diff_raw": {
+   "value": "+39.0",
+   "frozen_value": "+39.0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen38_27_diff_bal": {
+   "value": "+20.3",
+   "frozen_value": "+20.3",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen38_27_diff_d": {
+   "value": "+0.85",
+   "frozen_value": "+0.85",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen38_27_diff_raw": {
+   "value": "+47.5",
+   "frozen_value": "+47.5",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen3_8_diff_bal": {
+   "value": "+0.0",
+   "frozen_value": "+0.0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen3_8_diff_d": {
+   "value": "-0.10",
+   "frozen_value": "-0.10",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_qwen3_8_diff_raw": {
+   "value": "+11.7",
+   "frozen_value": "+11.7",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_relation_bal": {
+   "value": "58.0%",
+   "frozen_value": "58.0%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_relation_d": {
+   "value": "0.90",
+   "frozen_value": "0.90",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_relation_dc": {
+   "value": "17.4%",
+   "frozen_value": "17.4%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_relation_far": {
+   "value": "4.0%",
+   "frozen_value": "4.0%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_relation_sens": {
+   "value": "20.1%",
+   "frozen_value": "20.1%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_relation_spec": {
+   "value": "96.0%",
+   "frozen_value": "96.0%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "fs_retained": {
+   "value": "43%",
+   "frozen_value": "43%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "gen_distinct": {
+   "value": "9,350",
+   "frozen_value": "9,350",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "gen_valid": {
+   "value": "9,297",
+   "frozen_value": "9,297",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "gen_validity": {
+   "value": "99.43%",
+   "frozen_value": "99.43%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h1_gemma4_12_targ": {
+   "value": "36.6%",
+   "frozen_value": "36.6%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h1_granite42_30_targ": {
+   "value": "30.0%",
+   "frozen_value": "30.0%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h1_qwen36_27_targ": {
+   "value": "60.3%",
+   "frozen_value": "60.3%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h1_qwen38_27_blind_frac": {
+   "value": "31/181",
+   "frozen_value": "31/181",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h1_qwen38_27_targ": {
+   "value": "77.3%",
+   "frozen_value": "77.3%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h1_qwen3_8_targ": {
+   "value": "13.1%",
+   "frozen_value": "13.1%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_e0": {
+   "value": "398/914 (43.5%)",
+   "frozen_value": "398/914 (43.5%)",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_e1": {
+   "value": "821/919 (89.3%)",
+   "frozen_value": "821/919 (89.3%)",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_e2": {
+   "value": "379/916 (41.4%)",
+   "frozen_value": "379/916 (41.4%)",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_gemma4_12_e0": {
+   "value": "36.6%",
+   "frozen_value": "36.6%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_gemma4_12_e1": {
+   "value": "94.0%",
+   "frozen_value": "94.0%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_gemma4_12_e2": {
+   "value": "33.5%",
+   "frozen_value": "33.5%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_granite42_30_e0": {
+   "value": "30.0%",
+   "frozen_value": "30.0%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_granite42_30_e1": {
+   "value": "89.1%",
+   "frozen_value": "89.1%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_granite42_30_e2": {
+   "value": "32.8%",
+   "frozen_value": "32.8%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen36_27_e0": {
+   "value": "60.9%",
+   "frozen_value": "60.9%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen36_27_e1": {
+   "value": "89.6%",
+   "frozen_value": "89.6%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen36_27_e2": {
+   "value": "56.0%",
+   "frozen_value": "56.0%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen38_27_e0": {
+   "value": "77.3%",
+   "frozen_value": "77.3%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen38_27_e1": {
+   "value": "88.0%",
+   "frozen_value": "88.0%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen38_27_e2": {
+   "value": "71.6%",
+   "frozen_value": "71.6%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen3_8_e0": {
+   "value": "13.1%",
+   "frozen_value": "13.1%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen3_8_e1": {
+   "value": "85.9%",
+   "frozen_value": "85.9%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_qwen3_8_e2": {
+   "value": "13.0%",
+   "frozen_value": "13.0%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h2_traj": {
+   "value": "267/909 (29.4%)",
+   "frozen_value": "267/909 (29.4%)",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "h3bare_ci": {
+   "value": "[+1.1, +7.0]",
+   "frozen_value": "[+1.1, +7.0]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3bare_diff": {
+   "value": "+4.0",
+   "frozen_value": "+4.0",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3fill_ci": {
+   "value": "[-2.9, +1.9]",
+   "frozen_value": "[-2.9, +1.9]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3fill_diff": {
+   "value": "-0.5",
+   "frozen_value": "-0.5",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3frfv_ci": {
+   "value": "[+10.4, +16.4]",
+   "frozen_value": "[+10.4, +16.4]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3frfv_diff": {
+   "value": "+13.5",
+   "frozen_value": "+13.5",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3held_ci": {
+   "value": "[-3.7, +0.3]",
+   "frozen_value": "[-3.7, +0.3]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3held_diff": {
+   "value": "-1.6",
+   "frozen_value": "-1.6",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3rel_ci": {
+   "value": "[+14.2, +21.1]",
+   "frozen_value": "[+14.2, +21.1]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "h3rel_diff": {
+   "value": "+17.5",
+   "frozen_value": "+17.5",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/TRANSFER_CONTRASTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "hv_agree": {
+   "value": "43/47",
+   "frozen_value": "43/47",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_agree_pct": {
+   "value": "91.5%",
+   "frozen_value": "91.5%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_assigned": {
+   "value": "48",
+   "frozen_value": "48",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_ctrl": {
+   "value": "11/11",
+   "frozen_value": "11/11",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_def": {
+   "value": "32/36",
+   "frozen_value": "32/36",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_falsealarm": {
+   "value": "0/11",
+   "frozen_value": "0/11",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_manuscripts": {
+   "value": "16",
+   "frozen_value": "16",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_relations_total": {
+   "value": "16",
+   "frozen_value": "16",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_scored": {
+   "value": "47",
+   "frozen_value": "47",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_sens_agree": {
+   "value": "40/43",
+   "frozen_value": "40/43",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_sens_agree_pct": {
+   "value": "93.0%",
+   "frozen_value": "93.0%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_sens_def": {
+   "value": "29/32",
+   "frozen_value": "29/32",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "hv_sens_def_pct": {
+   "value": "90.6%",
+   "frozen_value": "90.6%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "ma_gpt_a": {
+   "value": "23",
+   "frozen_value": "23",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_gpt_a_pct": {
+   "value": "65.7%",
+   "frozen_value": "65.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_gpt_b": {
+   "value": "4",
+   "frozen_value": "4",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_gpt_b_pct": {
+   "value": "11.4%",
+   "frozen_value": "11.4%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_gpt_c": {
+   "value": "8",
+   "frozen_value": "8",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_gpt_c_pct": {
+   "value": "22.9%",
+   "frozen_value": "22.9%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_gpt_d": {
+   "value": "0",
+   "frozen_value": "0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_ow_a": {
+   "value": "127",
+   "frozen_value": "127",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_ow_a_pct": {
+   "value": "53.1%",
+   "frozen_value": "53.1%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_ow_b": {
+   "value": "60",
+   "frozen_value": "60",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_ow_b_pct": {
+   "value": "25.1%",
+   "frozen_value": "25.1%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_ow_c": {
+   "value": "52",
+   "frozen_value": "52",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_ow_c_pct": {
+   "value": "21.8%",
+   "frozen_value": "21.8%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "ma_ow_d": {
+   "value": "0",
+   "frozen_value": "0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/MISS_ANATOMY.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with counts"
+   ]
+  },
+  "n_cases": {
+   "value": "184",
+   "frozen_value": "184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "n_domains": {
+   "value": "5",
+   "frozen_value": "5",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "n_eligible": {
+   "value": "34",
+   "frozen_value": "34",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "n_families": {
+   "value": "6",
+   "frozen_value": "6",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "n_model_families": {
+   "value": "10",
+   "frozen_value": "10",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "n_papers": {
+   "value": "21",
+   "frozen_value": "21",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "n_primary_models": {
+   "value": "5",
+   "frozen_value": "5",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "n_screened": {
+   "value": "1,076",
+   "frozen_value": "1,076",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "ne_fulltext": {
+   "value": "20",
+   "frozen_value": "20",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/../natural/NATURAL_ERROR_LEDGER.json"
+   ],
+   "reproduction_route": "restricted",
+   "how": [
+    "concerns naturally occurring errors in third-party manuscripts; not published"
+   ]
+  },
+  "ne_necessary": {
+   "value": "12",
+   "frozen_value": "12",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/../natural/NATURAL_ERROR_USABLE.json"
+   ],
+   "reproduction_route": "restricted",
+   "how": [
+    "concerns naturally occurring errors in third-party manuscripts; not published"
+   ]
+  },
+  "ne_quant": {
+   "value": "26",
+   "frozen_value": "26",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/../natural/CORRECTION_CANDIDATES_WIDE.json"
+   ],
+   "reproduction_route": "restricted",
+   "how": [
+    "concerns naturally occurring errors in third-party manuscripts; not published"
+   ]
+  },
+  "ne_screened": {
+   "value": "2,519",
+   "frozen_value": "2,519",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/../natural/CORRECTION_CANDIDATES_WIDE.json"
+   ],
+   "reproduction_route": "restricted",
+   "how": [
+    "concerns naturally occurring errors in third-party manuscripts; not published"
+   ]
+  },
+  "ne_usable": {
+   "value": "3",
+   "frozen_value": "3",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/../natural/NATURAL_ERROR_USABLE.json"
+   ],
+   "reproduction_route": "restricted",
+   "how": [
+    "concerns naturally occurring errors in third-party manuscripts; not published"
+   ]
+  },
+  "ot_items": {
+   "value": "3/30 (10.0%)",
+   "frozen_value": "3/30 (10.0%)",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "ot_judgments": {
+   "value": "22/180 (12.2%)",
+   "frozen_value": "22/180 (12.2%)",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "ow_blind_findings": {
+   "value": "1.52",
+   "frozen_value": "1.52",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_blind_offtarget": {
+   "value": "1.23",
+   "frozen_value": "1.23",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_cat_ci": {
+   "value": "[+4.0, +17.0]",
+   "frozen_value": "[+4.0, +17.0]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_cat_diff": {
+   "value": "+10.4",
+   "frozen_value": "+10.4",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_fmt_ci": {
+   "value": "[+23.4, +34.5]",
+   "frozen_value": "[+23.4, +34.5]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_fmt_diff": {
+   "value": "+29.3",
+   "frozen_value": "+29.3",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_info_ci": {
+   "value": "[+2.3, +15.1]",
+   "frozen_value": "[+2.3, +15.1]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_info_diff": {
+   "value": "+8.4",
+   "frozen_value": "+8.4",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_r1_pct": {
+   "value": "11.8%",
+   "frozen_value": "11.8%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_r1_x": {
+   "value": "35/297",
+   "frozen_value": "35/297",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_r2_pct": {
+   "value": "22.2%",
+   "frozen_value": "22.2%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_r2_x": {
+   "value": "66/297",
+   "frozen_value": "66/297",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_r3_pct": {
+   "value": "20.2%",
+   "frozen_value": "20.2%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_r3_x": {
+   "value": "60/297",
+   "frozen_value": "60/297",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_r4_pct": {
+   "value": "49.5%",
+   "frozen_value": "49.5%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_r4_x": {
+   "value": "147/297",
+   "frozen_value": "147/297",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_rel": {
+   "value": "60",
+   "frozen_value": "60",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_relarm_findings": {
+   "value": "0.6",
+   "frozen_value": "0.6",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_relarm_offtarget": {
+   "value": "0.16",
+   "frozen_value": "0.16",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_relcat_ci": {
+   "value": "[-8.1, +5.0]",
+   "frozen_value": "[-8.1, +5.0]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_relcat_diff": {
+   "value": "-2.0",
+   "frozen_value": "-2.0",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_sys": {
+   "value": "5",
+   "frozen_value": "5",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ow_units": {
+   "value": "297",
+   "frozen_value": "297",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/LADDER_DECOMPOSITION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "p0_gain_max": {
+   "value": "4.9",
+   "frozen_value": "4.9",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_gemma4_12_fa": {
+   "value": "11/184",
+   "frozen_value": "11/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_gemma4_12_fa_pct": {
+   "value": "6.0%",
+   "frozen_value": "6.0%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_gemma4_12_r1": {
+   "value": "12/184",
+   "frozen_value": "12/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_gemma4_12_r5": {
+   "value": "18/184",
+   "frozen_value": "18/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_granite42_30_fa": {
+   "value": "20/184",
+   "frozen_value": "20/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_granite42_30_r1": {
+   "value": "10/184",
+   "frozen_value": "10/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_granite42_30_r5": {
+   "value": "10/184",
+   "frozen_value": "10/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_irs_total": {
+   "value": "742",
+   "frozen_value": "742",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen36_27_fa": {
+   "value": "19/183",
+   "frozen_value": "19/183",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen36_27_r1": {
+   "value": "27/179",
+   "frozen_value": "27/179",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen36_27_r5": {
+   "value": "35/179",
+   "frozen_value": "35/179",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen38_27_fa": {
+   "value": "22/184",
+   "frozen_value": "22/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen38_27_r1": {
+   "value": "23/184",
+   "frozen_value": "23/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen38_27_r5": {
+   "value": "32/184",
+   "frozen_value": "32/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen3_8_fa": {
+   "value": "26/184",
+   "frozen_value": "26/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen3_8_fa_pct": {
+   "value": "14.1%",
+   "frozen_value": "14.1%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen3_8_r1": {
+   "value": "2/184",
+   "frozen_value": "2/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_qwen3_8_r5": {
+   "value": "2/184",
+   "frozen_value": "2/184",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p0_zero_gain_n": {
+   "value": "2",
+   "frozen_value": "2",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_agentic": {
+   "value": "66/183",
+   "frozen_value": "66/183",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_agentic_pct": {
+   "value": "36.1%",
+   "frozen_value": "36.1%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_ci": {
+   "value": "[12.2, 25.9]",
+   "frozen_value": "[12.2, 25.9]",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_diff": {
+   "value": "19.1",
+   "frozen_value": "19.1",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_direct": {
+   "value": "31/183",
+   "frozen_value": "31/183",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_direct_pct": {
+   "value": "16.9%",
+   "frozen_value": "16.9%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_fp_agentic": {
+   "value": "1.53",
+   "frozen_value": "1.53",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_fp_direct": {
+   "value": "0.70",
+   "frozen_value": "0.70",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_model": {
+   "value": "Qwen3.8-27B",
+   "frozen_value": "Qwen3.8-27B",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_n": {
+   "value": "183",
+   "frozen_value": "183",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_p": {
+   "value": "1.77E-7",
+   "frozen_value": "1.77E-7",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_tool_atmax": {
+   "value": "181",
+   "frozen_value": "181",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_tool_budget": {
+   "value": "8",
+   "frozen_value": "8",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "p3_tools": {
+   "value": "7.99",
+   "frozen_value": "7.99",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "prov_gemma4_12_pct": {
+   "value": "89.7%",
+   "frozen_value": "89.7%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "prov_granite42_30_pct": {
+   "value": "68.5%",
+   "frozen_value": "68.5%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "prov_qwen36_27_pct": {
+   "value": "94.5%",
+   "frozen_value": "94.5%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "prov_qwen38_27_pct": {
+   "value": "95.2%",
+   "frozen_value": "95.2%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "prov_qwen3_8_pct": {
+   "value": "50.5%",
+   "frozen_value": "50.5%",
+   "canonical_source": [
+    "paper_nature/final_numbers.py (frozen Experiment 3 + extension phases)"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "Experiment 3 and extension counts; recomputable from docs/data/public_sufficient_statistics.json where the counts are carried"
+   ]
+  },
+  "rev_robust_12": {
+   "value": "6",
+   "frozen_value": "6",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/PROFILE_RANKING_SUMMARY_12SYSTEM.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried as aggregates"
+   ]
+  },
+  "rt_a_n": {
+   "value": "7",
+   "frozen_value": "7",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_a_yes": {
+   "value": "0",
+   "frozen_value": "0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_agree2": {
+   "value": "91.6%",
+   "frozen_value": "91.6%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_agree4": {
+   "value": "87.6%",
+   "frozen_value": "87.6%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_corpus_misses": {
+   "value": "274",
+   "frozen_value": "274",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_disagree_items": {
+   "value": "9",
+   "frozen_value": "9",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_endorse_max": {
+   "value": "76.7%",
+   "frozen_value": "76.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_endorse_min": {
+   "value": "63.3%",
+   "frozen_value": "63.3%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_endorse_pct": {
+   "value": "68.9%",
+   "frozen_value": "68.9%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_fn_ci": {
+   "value": "[4.4%, 21.9%]",
+   "frozen_value": "[4.4%, 21.9%]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_fn_corpus": {
+   "value": "36",
+   "frozen_value": "36",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_fn_raw": {
+   "value": "23.3%",
+   "frozen_value": "23.3%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_fn_weighted": {
+   "value": "13.1%",
+   "frozen_value": "13.1%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_items": {
+   "value": "30",
+   "frozen_value": "30",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_judgments": {
+   "value": "180",
+   "frozen_value": "180",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_kappa2": {
+   "value": "0.794",
+   "frozen_value": "0.794",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_kappa4": {
+   "value": "0.735",
+   "frozen_value": "0.735",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_reviewers": {
+   "value": "6",
+   "frozen_value": "6",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "rt_unanimous": {
+   "value": "24/30",
+   "frozen_value": "24/30",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/RT_AUDIT_RESULTS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/scorer_audit_items.json (per-item counts)"
+   ]
+  },
+  "sa_binary_agree": {
+   "value": "100%",
+   "frozen_value": "100%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_AGREEMENT.json"
+   ],
+   "reproduction_route": "mixed",
+   "how": [
+    "item-level statistics recomputable from scorer_audit_items.json; reviewer-axis pairwise agreement is a retained audited aggregate"
+   ]
+  },
+  "sa_blind_corrected": {
+   "value": "11.16%",
+   "frozen_value": "11.16%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_IMPACT.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on withheld audited items"
+   ]
+  },
+  "sa_blind_corrected_ci": {
+   "value": "[10.45%, 12.58%]",
+   "frozen_value": "[10.45%, 12.58%]",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_IMPACT.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on withheld audited items"
+   ]
+  },
+  "sa_blind_frozen": {
+   "value": "10.45%",
+   "frozen_value": "10.45%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_IMPACT.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on withheld audited items"
+   ]
+  },
+  "sa_endorse_pct": {
+   "value": "98.3%",
+   "frozen_value": "98.3%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_AGREEMENT.json"
+   ],
+   "reproduction_route": "mixed",
+   "how": [
+    "item-level statistics recomputable from scorer_audit_items.json; reviewer-axis pairwise agreement is a retained audited aggregate"
+   ]
+  },
+  "sa_fn_ci": {
+   "value": "[0.00%, 2.38%]",
+   "frozen_value": "[0.00%, 2.38%]",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_IMPACT.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on withheld audited items"
+   ]
+  },
+  "sa_fn_item": {
+   "value": "A043",
+   "frozen_value": "A043",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_DISAGREEMENTS.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json"
+   ]
+  },
+  "sa_fn_reweighted": {
+   "value": "0.79%",
+   "frozen_value": "0.79%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_IMPACT.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on withheld audited items"
+   ]
+  },
+  "sa_fn_unweighted": {
+   "value": "3.3%",
+   "frozen_value": "3.3%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_IMPACT.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json; depends on withheld audited items"
+   ]
+  },
+  "sa_fp_genuine_items": {
+   "value": "3",
+   "frozen_value": "3",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_DISAGREEMENTS.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "carried in research_results.json"
+   ]
+  },
+  "sa_fp_pct": {
+   "value": "100.0%",
+   "frozen_value": "100.0%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_AGREEMENT.json"
+   ],
+   "reproduction_route": "mixed",
+   "how": [
+    "item-level statistics recomputable from scorer_audit_items.json; reviewer-axis pairwise agreement is a retained audited aggregate"
+   ]
+  },
+  "sa_items": {
+   "value": "60",
+   "frozen_value": "60",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_AGREEMENT.json"
+   ],
+   "reproduction_route": "mixed",
+   "how": [
+    "item-level statistics recomputable from scorer_audit_items.json; reviewer-axis pairwise agreement is a retained audited aggregate"
+   ]
+  },
+  "sa_judgments": {
+   "value": "360",
+   "frozen_value": "360",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_AGREEMENT.json"
+   ],
+   "reproduction_route": "mixed",
+   "how": [
+    "item-level statistics recomputable from scorer_audit_items.json; reviewer-axis pairwise agreement is a retained audited aggregate"
+   ]
+  },
+  "sa_miss_pct": {
+   "value": "96.7%",
+   "frozen_value": "96.7%",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_AGREEMENT.json"
+   ],
+   "reproduction_route": "mixed",
+   "how": [
+    "item-level statistics recomputable from scorer_audit_items.json; reviewer-axis pairwise agreement is a retained audited aggregate"
+   ]
+  },
+  "sa_n_miss": {
+   "value": "30",
+   "frozen_value": "30",
+   "canonical_source": [
+    "reviewer_response_20261016/audit_packet/BLIND_SCORER_AUDIT_ITEMS.json"
+   ],
+   "reproduction_route": "restricted",
+   "how": [
+    "the audited items contain manuscript text and model output; only per-item rating counts are published, in scorer_audit_items.json"
+   ]
+  },
+  "sa_n_offtarget": {
+   "value": "30",
+   "frozen_value": "30",
+   "canonical_source": [
+    "reviewer_response_20261016/audit_packet/BLIND_SCORER_AUDIT_ITEMS.json"
+   ],
+   "reproduction_route": "restricted",
+   "how": [
+    "the audited items contain manuscript text and model output; only per-item rating counts are published, in scorer_audit_items.json"
+   ]
+  },
+  "sa_reviewers": {
+   "value": "6",
+   "frozen_value": "6",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_AGREEMENT.json"
+   ],
+   "reproduction_route": "mixed",
+   "how": [
+    "item-level statistics recomputable from scorer_audit_items.json; reviewer-axis pairwise agreement is a retained audited aggregate"
+   ]
+  },
+  "sa_unanimous": {
+   "value": "60/60",
+   "frozen_value": "60/60",
+   "canonical_source": [
+    "nature_extension/final_topvenue_validation_20261018/data/AUDIT_AGREEMENT.json"
+   ],
+   "reproduction_route": "mixed",
+   "how": [
+    "item-level statistics recomputable from scorer_audit_items.json; reviewer-axis pairwise agreement is a retained audited aggregate"
+   ]
+  },
+  "ss_e1_fp": {
+   "value": "12",
+   "frozen_value": "12",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ss_e1_near": {
+   "value": "61",
+   "frozen_value": "61",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/fair_scoring_cells.json"
+   ]
+  },
+  "ss_osp_bal": {
+   "value": "+6.2",
+   "frozen_value": "+6.2",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "ss_osp_bal_ci": {
+   "value": "[+1.5, +10.6]",
+   "frozen_value": "[+1.5, +10.6]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "ss_osp_d": {
+   "value": "+0.054",
+   "frozen_value": "+0.054",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "ss_osp_d_ci": {
+   "value": "[-0.347, +0.438]",
+   "frozen_value": "[-0.347, +0.438]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "ss_osp_relsens": {
+   "value": "33.0%",
+   "frozen_value": "33.0%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "ss_symp_bal": {
+   "value": "+10.9",
+   "frozen_value": "+10.9",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "ss_symp_bal_ci": {
+   "value": "[+6.6, +15.1]",
+   "frozen_value": "[+6.6, +15.1]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "ss_symp_d": {
+   "value": "+0.714",
+   "frozen_value": "+0.714",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "ss_symp_d_ci": {
+   "value": "[+0.388, +1.041]",
+   "frozen_value": "[+0.388, +1.041]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/SCORER_SENSITIVITY.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "all four correction scenarios carried in research_results.json; they re-score withheld audited items, so they are not recomputable from public counts"
+   ]
+  },
+  "sub60_best": {
+   "value": "qwen38_27",
+   "frozen_value": "qwen38_27",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "sub60_gpt52": {
+   "value": "39/60 (65.0%)",
+   "frozen_value": "39/60 (65.0%)",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "sub60_gpt_rank": {
+   "value": "3",
+   "frozen_value": "3",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "sub60_qwen38_27": {
+   "value": "51/59 (86.4%)",
+   "frozen_value": "51/59 (86.4%)",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/DENOMINATOR_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "carried in research_results.json with every numerator and denominator"
+   ]
+  },
+  "tr_max_gap": {
+   "value": "0.42",
+   "frozen_value": "0.42",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_correct_verdict_only_vs_false_verdict_only_a": {
+   "value": "67.6%",
+   "frozen_value": "67.6%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_correct_verdict_only_vs_false_verdict_only_b": {
+   "value": "63.6%",
+   "frozen_value": "63.6%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_correct_verdict_only_vs_false_verdict_only_ci": {
+   "value": "[+1.1, +7.0]",
+   "frozen_value": "[+1.1, +7.0]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_correct_verdict_only_vs_false_verdict_only_d": {
+   "value": "+4.0",
+   "frozen_value": "+4.0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_correct_verdict_only_vs_false_verdict_only_n": {
+   "value": "627",
+   "frozen_value": "627",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_correct_verdict_only_vs_false_verdict_only_p": {
+   "value": "2.6264E-3",
+   "frozen_value": "2.6264E-3",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_correct_vs_false_rationale_ci": {
+   "value": "[-0.5, +6.6]",
+   "frozen_value": "[-0.5, +6.6]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_correct_vs_false_rationale_d": {
+   "value": "+3.0",
+   "frozen_value": "+3.0",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_false_rationale_vs_bare_false_verdict_d": {
+   "value": "+13.5",
+   "frozen_value": "+13.5",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_filler_vs_neutral_a": {
+   "value": "65.1%",
+   "frozen_value": "65.1%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_filler_vs_neutral_b": {
+   "value": "65.6%",
+   "frozen_value": "65.6%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_filler_vs_neutral_ci": {
+   "value": "[-2.9, +1.9]",
+   "frozen_value": "[-2.9, +1.9]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_filler_vs_neutral_d": {
+   "value": "-0.5",
+   "frozen_value": "-0.5",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_filler_vs_neutral_n": {
+   "value": "625",
+   "frozen_value": "625",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_filler_vs_neutral_p": {
+   "value": "8.0131E-1",
+   "frozen_value": "8.0131E-1",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevance_held_correct_vs_false_verdict_a": {
+   "value": "62.3%",
+   "frozen_value": "62.3%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevance_held_correct_vs_false_verdict_b": {
+   "value": "63.9%",
+   "frozen_value": "63.9%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevance_held_correct_vs_false_verdict_ci": {
+   "value": "[-3.7, +0.3]",
+   "frozen_value": "[-3.7, +0.3]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevance_held_correct_vs_false_verdict_d": {
+   "value": "-1.6",
+   "frozen_value": "-1.6",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevance_held_correct_vs_false_verdict_n": {
+   "value": "620",
+   "frozen_value": "620",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevance_held_correct_vs_false_verdict_p": {
+   "value": "2.6044E-1",
+   "frozen_value": "2.6044E-1",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_rationale_vs_filler_a": {
+   "value": "79.7%",
+   "frozen_value": "79.7%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_rationale_vs_filler_b": {
+   "value": "65.2%",
+   "frozen_value": "65.2%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_rationale_vs_filler_ci": {
+   "value": "[+10.2, +18.9]",
+   "frozen_value": "[+10.2, +18.9]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_rationale_vs_filler_d": {
+   "value": "+14.5",
+   "frozen_value": "+14.5",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_rationale_vs_filler_n": {
+   "value": "627",
+   "frozen_value": "627",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_rationale_vs_filler_p": {
+   "value": "3.7177E-14",
+   "frozen_value": "3.7177E-14",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_vs_irrelevant_rationale_a": {
+   "value": "79.6%",
+   "frozen_value": "79.6%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_vs_irrelevant_rationale_b": {
+   "value": "62.1%",
+   "frozen_value": "62.1%",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_vs_irrelevant_rationale_ci": {
+   "value": "[+14.2, +21.1]",
+   "frozen_value": "[+14.2, +21.1]",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_vs_irrelevant_rationale_d": {
+   "value": "+17.5",
+   "frozen_value": "+17.5",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_vs_irrelevant_rationale_n": {
+   "value": "623",
+   "frozen_value": "623",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "tx_relevant_vs_irrelevant_rationale_p": {
+   "value": "8.7525E-20",
+   "frozen_value": "8.7525E-20",
+   "canonical_source": [
+    "nature_extension/fair_scoring_validation_20261020/data/TRANSFER_RECONCILIATION.json"
+   ],
+   "reproduction_route": "recomputable",
+   "how": [
+    "recomputed from docs/data/public_sufficient_statistics.json"
+   ]
+  },
+  "u12_bias_ci": {
+   "value": "[-0.00005, +0.01236]",
+   "frozen_value": "[-0.00005, +0.01236]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12*.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_bias_delta": {
+   "value": "+0.00629",
+   "frozen_value": "+0.00629",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12*.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_bias_pct": {
+   "value": "97.4%",
+   "frozen_value": "97.4%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12*.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_m1_bic": {
+   "value": "3111",
+   "frozen_value": "3111",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12SYSTEM.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_m2_bic": {
+   "value": "3349",
+   "frozen_value": "3349",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12SYSTEM.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_n_obs": {
+   "value": "3,569",
+   "frozen_value": "3,569",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12SYSTEM.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_n_sys": {
+   "value": "12",
+   "frozen_value": "12",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12SYSTEM.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_profile_ci": {
+   "value": "[-0.04542, -0.00684]",
+   "frozen_value": "[-0.04542, -0.00684]",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12*.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_profile_delta": {
+   "value": "-0.02488",
+   "frozen_value": "-0.02488",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12*.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  },
+  "u12_profile_pct": {
+   "value": "0.1%",
+   "frozen_value": "0.1%",
+   "canonical_source": [
+    "nature_extension/reviewer_response_20261016/data/UNITARY_VS_PROFILE_12*.json"
+   ],
+   "reproduction_route": "audited_aggregate",
+   "how": [
+    "twelve-system profile analysis; carried as aggregates"
+   ]
+  }
+ },
+ "generated_by": "tools/build_research_data.py"
+}

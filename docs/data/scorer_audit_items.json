@@ -1,0 +1,1505 @@
+{
+ "schema_version": 1,
+ "what_this_is": "Derive docs/data/scorer_audit_items.json from the frozen human scorer audits.\n\nTWO audits, both of the SCORER and not of any person:\n\n  blind     60 items, 6 reviewers, 360 judgments. Asks whether the blind finding-list\n            scorer was right to record a miss (or a false positive).\n  targeted  30 items, 6 reviewers, 180 judgments. Asks the same question of the\n            relation-targeted finding-list scorer, which is the rung the headline\n            contrast depends on.\n\nWHAT IS PUBLISHED, AND WHY ONLY THIS\n\nPer ITEM, the number of reviewers choosing each category. Nothing else. That is enough to\nrecompute every item-level statistic the manuscript reports -- majority verdicts, unanimity,\nstratum false-negative rates, the reweighted rate and its bootstrap interval, and Fleiss'\nkappa, which depends only on per-item category counts.\n\nDeliberately NOT published, because it is not de-identifiable in a group of six named\ncolleagues and no consent covering publication exists:\n\n  * the reviewer axis -- per-reviewer endorsement rates, and the pairwise agreement matrix\n    keyed to reviewer pairs. Mean pairwise raw agreement therefore CANNOT be recomputed from\n    this file; it is carried as a retained audited aggregate and labelled as one.\n  * free-text reviewer notes.\n  * the audited items themselves: the manuscript text, the model's finding list and the\n    reviewer-facing evidence summaries. Items appear only as opaque labels.\n\nAn E0 defect is a perturbation THIS STUDY injected into a sound published manuscript. An\naudited \"miss\" is a scorer judgement about a model's output on a perturbed manuscript. No\nitem here asserts that any real paper contains an error.",
+ "defects_are_synthetic": "An E0 defect is a perturbation THIS STUDY injected into a sound published manuscript. Nothing here asserts that any real paper contains an error.",
+ "human_data_policy": "Per-item category counts only. The reviewer axis and all free text are withheld: six named colleagues are not de-identifiable along that axis and no consent covering publication of individual judgements exists.",
+ "audits": {
+  "targeted": {
+   "question": "When the relation-targeted finding-list scorer records a miss, how often did the model actually identify the tested relation in substantively correct language that the strict matcher failed to credit?",
+   "rung": "RELATION_TARGETED_FINDING_LIST",
+   "state": "E0",
+   "n_items": 30,
+   "n_reviewers": 6,
+   "total_judgments": 180,
+   "sampling_seed": 20261020,
+   "population_total_misses": 274,
+   "strata": {
+    "C_NEAR_MISS": {
+     "population": 60,
+     "sampled": 15,
+     "weight": 4.0
+    },
+    "B_OFF_TARGET": {
+     "population": 64,
+     "sampled": 8,
+     "weight": 8.0
+    },
+    "A_NO_FINDINGS": {
+     "population": 150,
+     "sampled": 7,
+     "weight": 21.4286
+    },
+    "D_INVALID": {
+     "population": 0,
+     "sampled": 0,
+     "weight": null
+    }
+   },
+   "reweighting_note": "Any population-level statement from this audit must weight each item by sampling_weight. The raw 30-item endorsement rate is NOT a population rate, because C_NEAR_MISS is deliberately over-represented.",
+   "tie_break_rule": "a tie is resolved toward the earlier level in [Yes, Partially, No, Ambiguous], which favours the criticism rather than the scorer; the sensitivity below resolves ties the other way",
+   "bootstrap": {
+    "draws": 10000,
+    "seed": 20261021,
+    "design": "stratified, items resampled within stratum"
+   },
+   "items": [
+    {
+     "item": "RT001",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "numerical",
+     "domain": "D_statistics",
+     "cluster": "M15",
+     "relation": "R51",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 6,
+      "Partially": 0,
+      "No": 0,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT002",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "numerical",
+     "domain": "C_biomedical",
+     "cluster": "M16",
+     "relation": "R54",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 4,
+      "No": 2,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT003",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "cross_reference",
+     "domain": "A_ml_ai",
+     "cluster": "M05",
+     "relation": "R13",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 6,
+      "Partially": 0,
+      "No": 0,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT004",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "method_result",
+     "domain": "E_physics_engineering",
+     "cluster": "M08",
+     "relation": "R19",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 3,
+      "Partially": 0,
+      "No": 3,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT005",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "cross_reference",
+     "domain": "B_vision_signal",
+     "cluster": "M03",
+     "relation": "R07",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT006",
+     "stratum": "A_NO_FINDINGS",
+     "stratum_population": 150,
+     "stratum_sampled": 7,
+     "sampling_weight": 21.4286,
+     "family": "statistical",
+     "domain": "B_vision_signal",
+     "cluster": "M02",
+     "relation": "R03",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT007",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "claim_evidence",
+     "domain": "C_biomedical",
+     "cluster": "M19",
+     "relation": "R24",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 2,
+      "No": 4,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT008",
+     "stratum": "B_OFF_TARGET",
+     "stratum_population": 64,
+     "stratum_sampled": 8,
+     "sampling_weight": 8.0,
+     "family": "claim_evidence",
+     "domain": "B_vision_signal",
+     "cluster": "M01",
+     "relation": "R01",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT009",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "arithmetic",
+     "domain": "A_ml_ai",
+     "cluster": "M05",
+     "relation": "R11",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 3,
+      "Ambiguous / Cannot determine": 3
+     }
+    },
+    {
+     "item": "RT010",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "arithmetic",
+     "domain": "D_statistics",
+     "cluster": "M14",
+     "relation": "R48",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT011",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "method_result",
+     "domain": "A_ml_ai",
+     "cluster": "M04",
+     "relation": "R08",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT012",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "claim_evidence",
+     "domain": "E_physics_engineering",
+     "cluster": "M09",
+     "relation": "R22",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT013",
+     "stratum": "A_NO_FINDINGS",
+     "stratum_population": 150,
+     "stratum_sampled": 7,
+     "sampling_weight": 21.4286,
+     "family": "method_result",
+     "domain": "B_vision_signal",
+     "cluster": "M01",
+     "relation": "R02",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT014",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "numerical",
+     "domain": "E_physics_engineering",
+     "cluster": "M18",
+     "relation": "R59",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 6,
+      "Partially": 0,
+      "No": 0,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT015",
+     "stratum": "B_OFF_TARGET",
+     "stratum_population": 64,
+     "stratum_sampled": 8,
+     "sampling_weight": 8.0,
+     "family": "cross_reference",
+     "domain": "D_statistics",
+     "cluster": "M20",
+     "relation": "R33",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT016",
+     "stratum": "B_OFF_TARGET",
+     "stratum_population": 64,
+     "stratum_sampled": 8,
+     "sampling_weight": 8.0,
+     "family": "statistical",
+     "domain": "B_vision_signal",
+     "cluster": "M02",
+     "relation": "R03",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT017",
+     "stratum": "A_NO_FINDINGS",
+     "stratum_population": 150,
+     "stratum_sampled": 7,
+     "sampling_weight": 21.4286,
+     "family": "cross_reference",
+     "domain": "C_biomedical",
+     "cluster": "M11",
+     "relation": "R36",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT018",
+     "stratum": "A_NO_FINDINGS",
+     "stratum_population": 150,
+     "stratum_sampled": 7,
+     "sampling_weight": 21.4286,
+     "family": "claim_evidence",
+     "domain": "C_biomedical",
+     "cluster": "M19",
+     "relation": "R24",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT019",
+     "stratum": "A_NO_FINDINGS",
+     "stratum_population": 150,
+     "stratum_sampled": 7,
+     "sampling_weight": 21.4286,
+     "family": "numerical",
+     "domain": "A_ml_ai",
+     "cluster": "M04",
+     "relation": "R09",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT020",
+     "stratum": "B_OFF_TARGET",
+     "stratum_population": 64,
+     "stratum_sampled": 8,
+     "sampling_weight": 8.0,
+     "family": "arithmetic",
+     "domain": "B_vision_signal",
+     "cluster": "M03",
+     "relation": "R05",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT021",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "method_result",
+     "domain": "D_statistics",
+     "cluster": "M20",
+     "relation": "R31",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 6,
+      "Partially": 0,
+      "No": 0,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT022",
+     "stratum": "B_OFF_TARGET",
+     "stratum_population": 64,
+     "stratum_sampled": 8,
+     "sampling_weight": 8.0,
+     "family": "numerical",
+     "domain": "A_ml_ai",
+     "cluster": "M04",
+     "relation": "R09",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT023",
+     "stratum": "B_OFF_TARGET",
+     "stratum_population": 64,
+     "stratum_sampled": 8,
+     "sampling_weight": 8.0,
+     "family": "method_result",
+     "domain": "C_biomedical",
+     "cluster": "M16",
+     "relation": "R53",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 6,
+      "Partially": 0,
+      "No": 0,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT024",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "arithmetic",
+     "domain": "C_biomedical",
+     "cluster": "M21",
+     "relation": "R38",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 2,
+      "No": 3,
+      "Ambiguous / Cannot determine": 1
+     }
+    },
+    {
+     "item": "RT025",
+     "stratum": "A_NO_FINDINGS",
+     "stratum_population": 150,
+     "stratum_sampled": 7,
+     "sampling_weight": 21.4286,
+     "family": "arithmetic",
+     "domain": "E_physics_engineering",
+     "cluster": "M08",
+     "relation": "R18",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT026",
+     "stratum": "A_NO_FINDINGS",
+     "stratum_population": 150,
+     "stratum_sampled": 7,
+     "sampling_weight": 21.4286,
+     "family": "method_result",
+     "domain": "D_statistics",
+     "cluster": "M17",
+     "relation": "R56",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT027",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "statistical",
+     "domain": "B_vision_signal",
+     "cluster": "M02",
+     "relation": "R03",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT028",
+     "stratum": "B_OFF_TARGET",
+     "stratum_population": 64,
+     "stratum_sampled": 8,
+     "sampling_weight": 8.0,
+     "family": "numerical",
+     "domain": "A_ml_ai",
+     "cluster": "M04",
+     "relation": "R09",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT029",
+     "stratum": "C_NEAR_MISS",
+     "stratum_population": 60,
+     "stratum_sampled": 15,
+     "sampling_weight": 4.0,
+     "family": "statistical",
+     "domain": "B_vision_signal",
+     "cluster": "M02",
+     "relation": "R03",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 2,
+      "Partially": 3,
+      "No": 1,
+      "Ambiguous / Cannot determine": 0
+     }
+    },
+    {
+     "item": "RT030",
+     "stratum": "B_OFF_TARGET",
+     "stratum_population": 64,
+     "stratum_sampled": 8,
+     "sampling_weight": 8.0,
+     "family": "method_result",
+     "domain": "E_physics_engineering",
+     "cluster": "M18",
+     "relation": "R58",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 6,
+      "Partially": 0,
+      "No": 0,
+      "Ambiguous / Cannot determine": 0
+     }
+    }
+   ]
+  },
+  "blind": {
+   "question": "Was the BLIND finding-list scorer right to record this miss (or this false positive)?",
+   "n_items": 60,
+   "n_reviewers": 6,
+   "total_judgments": 360,
+   "items": [
+    {
+     "item": "A001",
+     "item_kind": "MISS",
+     "family": "method_result",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A002",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "numerical",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A003",
+     "item_kind": "MISS",
+     "family": "arithmetic",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A004",
+     "item_kind": "MISS",
+     "family": "method_result",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A005",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "cross_reference",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A006",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "arithmetic",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A007",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "arithmetic",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A008",
+     "item_kind": "MISS",
+     "family": "claim_evidence",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A009",
+     "item_kind": "MISS",
+     "family": "cross_reference",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A010",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "numerical",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A011",
+     "item_kind": "MISS",
+     "family": "arithmetic",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A012",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "statistical",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A013",
+     "item_kind": "MISS",
+     "family": "claim_evidence",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A014",
+     "item_kind": "MISS",
+     "family": "numerical",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A015",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "cross_reference",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A016",
+     "item_kind": "MISS",
+     "family": "arithmetic",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A017",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "method_result",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A018",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "arithmetic",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A019",
+     "item_kind": "MISS",
+     "family": "arithmetic",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A020",
+     "item_kind": "MISS",
+     "family": "numerical",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A021",
+     "item_kind": "MISS",
+     "family": "method_result",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A022",
+     "item_kind": "MISS",
+     "family": "statistical",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A023",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "method_result",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A024",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "statistical",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A025",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "claim_evidence",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A026",
+     "item_kind": "MISS",
+     "family": "numerical",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A027",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "arithmetic",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A028",
+     "item_kind": "MISS",
+     "family": "statistical",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A029",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "cross_reference",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A030",
+     "item_kind": "MISS",
+     "family": "numerical",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A031",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "cross_reference",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A032",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "arithmetic",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A033",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "method_result",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A034",
+     "item_kind": "MISS",
+     "family": "cross_reference",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A035",
+     "item_kind": "MISS",
+     "family": "claim_evidence",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A036",
+     "item_kind": "MISS",
+     "family": "numerical",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A037",
+     "item_kind": "MISS",
+     "family": "arithmetic",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A038",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "method_result",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A039",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "claim_evidence",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A040",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "numerical",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A041",
+     "item_kind": "MISS",
+     "family": "arithmetic",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A042",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "method_result",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A043",
+     "item_kind": "MISS",
+     "family": "arithmetic",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 4,
+      "Partially": 2,
+      "No": 0,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_FALSE_NEGATIVE",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A044",
+     "item_kind": "MISS",
+     "family": "cross_reference",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A045",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "numerical",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A046",
+     "item_kind": "MISS",
+     "family": "method_result",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A047",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "arithmetic",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A048",
+     "item_kind": "MISS",
+     "family": "claim_evidence",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A049",
+     "item_kind": "MISS",
+     "family": "method_result",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A050",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "claim_evidence",
+     "domain": "B_vision_signal",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A051",
+     "item_kind": "MISS",
+     "family": "cross_reference",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A052",
+     "item_kind": "MISS",
+     "family": "claim_evidence",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A053",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "claim_evidence",
+     "domain": "D_statistics",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A054",
+     "item_kind": "MISS",
+     "family": "arithmetic",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A055",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "arithmetic",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A056",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "arithmetic",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A057",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "claim_evidence",
+     "domain": "C_biomedical",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A058",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "cross_reference",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A059",
+     "item_kind": "FALSE_POSITIVE",
+     "family": "numerical",
+     "domain": "A_ml_ai",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    },
+    {
+     "item": "A060",
+     "item_kind": "MISS",
+     "family": "cross_reference",
+     "domain": "E_physics_engineering",
+     "n_reviewers": 6,
+     "counts": {
+      "Yes": 0,
+      "Partially": 0,
+      "No": 6,
+      "Ambiguous / Cannot determine": 0
+     },
+     "majority_verdict": "SCORER_ENDORSED",
+     "unanimous_binary": 1
+    }
+   ]
+  }
+ },
+ "retained_audited_aggregates": {
+  "note": "These depend on the withheld reviewer axis and CANNOT be recomputed from the per-item counts above. They are carried as audited aggregates, not as recomputable values.",
+  "targeted_mean_pairwise_raw_agreement_4level": 0.8756,
+  "targeted_mean_pairwise_raw_agreement_binary": 0.9156,
+  "blind_pairwise_raw_agreement_4level": 0.9911,
+  "blind_pairwise_raw_agreement_binary": 1.0
+ },
+ "generated_by": "tools/build_scorer_audit_public.py"
+}

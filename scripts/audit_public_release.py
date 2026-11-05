@@ -72,28 +72,46 @@ FORBIDDEN_DIR_PARTS = {
     "hf_cache", "checkpoints", "papers_cache", "overleaf", "baseline", "phase" + "6_human_study",
 }
 
-# This is a CODE release. It ships research software and the instructions to run it; it
-# does not ship the study's experimental results.
+# This is a RESEARCH DATA AND CODE release. It deliberately ships the study's released
+# outcome data so that the published numerical results can be reproduced independently.
 #
-# The only data file allowed under docs/data/ is a fixture that is explicitly marked
-# synthetic, and the marking is checked below rather than taken on trust. configs/ and
-# prompts/ hold method configuration, not outcomes.
+# What it must never ship is the material behind those outcomes: manuscript text, model
+# generations, participant identities, free-text judgements and the arXiv identifiers that
+# would attach an injected defect to a named third-party paper. Each released file is
+# listed here with what it is allowed to contain, and the contents are checked below
+# rather than taken on trust.
 ALLOWED_DATA = {
-    "docs/data/synthetic_demo_cells.json",
+    "docs/data/fair_scoring_cells.json":
+        "per-cell binary outcomes, opaque manuscript and relation labels",
+    "docs/data/fair_scoring_support.json":
+        "audited aggregates supporting the ladder",
+    "docs/data/public_sufficient_statistics.json":
+        "de-identified sufficient statistics for the other experiments",
+    "docs/data/research_results.json":
+        "aggregate outcome blocks and the manuscript index routes",
+    "docs/data/scorer_audit_items.json":
+        "PER-ITEM human rating counts only; no reviewer axis, no free text",
+    "docs/data/manuscript_results_index.json":
+        "source-of-truth manifest: macro, value, canonical record, reproduction route",
+    "docs/data/synthetic_demo_cells.json":
+        "synthetic fixture; must declare itself synthetic",
 }
+SYNTHETIC_FIXTURES = {"docs/data/synthetic_demo_cells.json"}
 
-# Named result artifacts that must never reappear in a code release. Listed by name so
-# that restoring one by accident fails loudly instead of quietly shipping outcomes.
+# Frozen private records that must never be copied into the public tree verbatim. The
+# public release carries DERIVED, de-identified files built from these by tools/; shipping
+# the originals would ship manuscript text, model output and reviewer-level judgements.
 FORBIDDEN_RESULT_FILES = {
-    "public_sufficient_statistics.json": "published aggregate study statistics",
-    "fair_scoring_cells.json": "per-relation experimental outcomes",
-    "fair_scoring_support.json": "audited result aggregates and scorer-audit rates",
-    "STATISTICAL_RECHECK.csv": "result table",
-    "FAIR_LADDER_METRICS.json": "frozen result metrics",
-    "SCORER_SENSITIVITY.json": "frozen result metrics",
-    "RT_AUDIT_RESULTS.json": "human scorer-audit outcomes",
-    "ANTHROPIC_ACCOUNTING.json": "frozen result accounting",
-    "MISS_ANATOMY.json": "frozen result analysis",
+    "STATISTICAL_RECHECK.csv": "private audit result table",
+    "FAIR_LADDER_METRICS.json": "frozen private metrics record",
+    "SCORER_SENSITIVITY.json": "frozen private metrics record",
+    "RT_AUDIT_RESULTS.json": "reviewer-level human scorer-audit record",
+    "ANTHROPIC_ACCOUNTING.json": "frozen private accounting record",
+    "MISS_ANATOMY.json": "frozen private analysis record",
+    "BLIND_SCORER_AUDIT_ITEMS.json": "audited items: manuscript text and model output",
+    "RELATION_TARGETED_AUDIT_SAMPLE.json": "audited items: manuscript text and model output",
+    "FINAL_NUMBERS.json": "private manuscript macro store",
+    "NATURAL_ERROR_LEDGER.json": "naturally occurring errors in third-party manuscripts",
 }
 MAX_FILE_BYTES = 512 * 1024
 MAX_TOTAL_BYTES = 8 * 1024 * 1024
@@ -158,7 +176,7 @@ def main() -> int:
         if suffix in FORBIDDEN_SUFFIXES:
             failures.append(f"[type] {rel} is a {FORBIDDEN_SUFFIXES[suffix]}")
 
-        if suffix == ".json" and rel not in ALLOWED_DATA and not rel.startswith(("configs/", "prompts/", ".github/")):
+        if suffix == ".json" and rel not in ALLOWED_DATA and not rel.startswith(("configs/", "prompts/", ".github/", "reproducibility/")):
             failures.append(f"[data] {rel} is a JSON data file outside the allowed set")
 
         if f.name in FORBIDDEN_RESULT_FILES:
@@ -187,26 +205,53 @@ def main() -> int:
             if m:
                 failures.append(f"[privacy] {rel}: {what} ({m.group(0)[:48]!r})")
 
-    # Every data file the site serves must say, in the file itself, that it is synthetic.
-    # A reader who downloads it directly must not have to infer that from the filename.
+    # Every released data file is checked for what it must and must not contain. The
+    # filename is not evidence of anything; the contents are.
+    ARXIV = re.compile(r"\b(?:19|20|21|22|23|24|25|26|27)\d\d\.\d{4,5}\b")
     for rel in sorted(ALLOWED_DATA):
         f = ROOT / rel
         if not f.exists():
             continue
         try:
-            doc = json.loads(f.read_text())
+            raw = f.read_text()
+            doc = json.loads(raw)
         except (OSError, ValueError) as e:
-            failures.append(f"[fixture] {rel} is not readable JSON: {e}")
+            failures.append(f"[data] {rel} is not readable JSON: {e}")
             continue
-        if doc.get("synthetic") is not True:
-            failures.append(f"[fixture] {rel} is not marked \"synthetic\": true")
-        if "warning" not in doc:
-            failures.append(f"[fixture] {rel} carries no warning that it is not evidence")
+
+        # No released file may name a third-party manuscript. Attaching an injected defect
+        # to a named paper is the one thing this release must never do.
+        m = ARXIV.search(raw)
+        if m:
+            failures.append(f"[data] {rel} contains what looks like an arXiv identifier "
+                            f"({m.group(0)!r}); manuscripts must appear as opaque labels")
+        # No released file may carry the reviewer axis or free-text judgements.
+        for pat, what in ((r"Reviewer_\d", "a reviewer identifier"),
+                          (r'"notes"\s*:', "a free-text notes field")):
+            m = re.search(pat, raw)
+            if m:
+                failures.append(f"[data] {rel} contains {what} ({m.group(0)[:32]!r})")
+
+        if rel in SYNTHETIC_FIXTURES:
+            if doc.get("synthetic") is not True:
+                failures.append(f"[fixture] {rel} is not marked \"synthetic\": true")
+            if "warning" not in doc:
+                failures.append(f"[fixture] {rel} carries no warning that it is not evidence")
+        else:
+            # A released outcome file must state that E0 defects are injected, so a reader
+            # who downloads it alone cannot mistake it for a list of real paper errors.
+            if "defect" in raw.lower() or "e0" in raw.lower():
+                if not re.search(r"inject|perturbation|synthetic", raw, re.I):
+                    failures.append(f"[data] {rel} discusses E0 defects without stating "
+                                    f"that they are injected perturbations")
+
+        # Long free-text strings are what a leak would look like in any cell table.
         for row in doc.get("cells", []):
             for v in row:
                 if isinstance(v, str) and len(v) > 24:
-                    failures.append(f"[fixture] {rel} contains a long string, which is what "
-                                    f"leaked free text would look like: {v[:40]!r}")
+                    failures.append(f"[data] {rel} contains a long string in a cell row, "
+                                    f"which is what leaked free text would look like: "
+                                    f"{v[:40]!r}")
                     break
             else:
                 continue
@@ -225,10 +270,12 @@ def main() -> int:
         return 1
 
     print("PUBLIC RELEASE AUDIT: PASS")
-    print("  no secrets, no personal paths, no participant data, no figures,")
-    print("  no manuscripts, no model weights, no oversized files.")
-    print("  no experimental results: the only data file is a fixture that declares")
-    print("  itself synthetic and carries a warning against being read as evidence.")
+    print("  no credentials, no personal paths, no manuscript text, no model")
+    print("  generations, no model weights, no oversized files.")
+    print("  released outcome data: every data file is on the approved list, carries no")
+    print("  arXiv identifier, no reviewer axis and no free text, and states that E0")
+    print("  defects are perturbations this study injected, not errors in real papers.")
+    print("  human review data: per-item rating counts only.")
     return 0
 
 
