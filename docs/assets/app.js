@@ -472,8 +472,8 @@ function runTable1() {
   const rows = [];
   let flips = 0;
   for (const spec of VTBFair.CONTRASTS) {
-    const key = spec.id || spec.key || (spec.a + "->" + spec.b);
-    const a = spec.a || key.split("->")[0], b = spec.b || key.split("->")[1];
+    /* VTBFair.CONTRASTS is a list of [from, to] pairs. */
+    const a = spec[0], b = spec[1], key = a + "->" + b;
     const P = VTBFair.contrast(DATA, a, b, systems, "pooled", metric);
     const B = VTBFair.contrast(DATA, a, b, systems, "system_balanced", metric);
     const signFlip = (P.point >= 0) !== (B.point >= 0);
