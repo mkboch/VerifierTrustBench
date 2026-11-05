@@ -55,8 +55,21 @@ def test_no_generated_figures_are_tracked():
 
 
 def test_no_manuscript_sources_are_tracked():
-    bad = [f.relative_to(ROOT).as_posix() for f in FILES
-           if f.suffix.lower() in {".tex", ".bib", ".docx"} or "manuscript" in f.name.lower()]
+    """The paper itself, and the source papers, must stay out of the repository.
+
+    Matching any filename containing "manuscript" would now be wrong: the release ships a
+    manuscript RESULTS INDEX and a manuscript TARGETS file, which are metadata about
+    reported values, not manuscript text. Match the document formats and the paper
+    sources instead.
+    """
+    doc_suffixes = {".tex", ".bib", ".docx", ".pdf"}
+    bad = []
+    for f in FILES:
+        rel = f.relative_to(ROOT).as_posix()
+        if f.suffix.lower() in doc_suffixes:
+            bad.append(rel)
+        elif re.match(r"manuscript[_-]", f.name.lower()):
+            bad.append(rel)
     assert bad == [], f"manuscript material is tracked: {bad}"
 
 
@@ -66,30 +79,57 @@ def test_no_raw_generation_records_are_tracked():
 
 
 def test_the_only_tracked_data_files_are_the_documented_ones():
-    """This is a code release. The only JSON it ships are method configuration, prompts,
-    workflow files, and one fixture that declares itself synthetic."""
+    """Every JSON the release ships is on this list, by path.
+
+    The release now publishes outcome data on purpose. The guard that matters is that
+    nothing ships which has not been reviewed and documented, so a new data file cannot
+    appear without this list and the data dictionary being updated too.
+    """
     allowed = {
-        "docs/data/synthetic_demo_cells.json",   # fabricated demo input
+        # released outcome data -- documented in docs/data/DATA_DICTIONARY.md
+        "docs/data/fair_scoring_cells.json",
+        "docs/data/fair_scoring_support.json",
+        "docs/data/public_sufficient_statistics.json",
+        "docs/data/research_results.json",
+        "docs/data/scorer_audit_items.json",
+        "docs/data/manuscript_results_index.json",
+        # fabricated demo input, declares itself synthetic
+        "docs/data/synthetic_demo_cells.json",
+        # comparison targets, read only by the reconciliation
+        "reproducibility/manuscript_targets.json",
+        # method configuration, not outcomes
         "configs/models.json", "prompts/questions.json",
     }
     jsons = {f.relative_to(ROOT).as_posix() for f in FILES if f.suffix == ".json"}
-    assert jsons <= allowed, f"unexpected JSON data: {sorted(jsons - allowed)}"
+    assert jsons <= allowed, f"undocumented JSON data: {sorted(jsons - allowed)}"
 
 
-# Result artifacts that must never come back. Named individually so that restoring one by
-# accident fails loudly rather than quietly shipping experimental outcomes.
+def test_every_released_data_file_is_in_the_data_dictionary():
+    """A data file nobody documented is a data file nobody reviewed."""
+    dd = (ROOT / "docs/data/DATA_DICTIONARY.md")
+    assert dd.exists(), "docs/data/DATA_DICTIONARY.md is missing"
+    text = dd.read_text()
+    missing = [f.name for f in (ROOT / "docs/data").glob("*.json")
+               if f.name not in text]
+    assert missing == [], f"released data files are undocumented: {missing}"
+
+
+# Frozen PRIVATE records that must never be copied into the public tree verbatim. The
+# release ships DERIVED, de-identified files built from these by tools/; the originals
+# carry manuscript text, model output and reviewer-level judgements. Named individually so
+# that copying one in by accident fails loudly.
 FORBIDDEN_RESULT_NAMES = {
-    "public_sufficient_statistics.json", "fair_scoring_cells.json",
-    "fair_scoring_support.json", "STATISTICAL_RECHECK.csv", "FAIR_LADDER_METRICS.json",
-    "SCORER_SENSITIVITY.json", "RT_AUDIT_RESULTS.json", "ANTHROPIC_ACCOUNTING.json",
-    "MISS_ANATOMY.json", "DERIVATION.md",
+    "STATISTICAL_RECHECK.csv", "FAIR_LADDER_METRICS.json", "SCORER_SENSITIVITY.json",
+    "RT_AUDIT_RESULTS.json", "ANTHROPIC_ACCOUNTING.json", "MISS_ANATOMY.json",
+    "BLIND_SCORER_AUDIT_ITEMS.json", "RELATION_TARGETED_AUDIT_SAMPLE.json",
+    "FINAL_NUMBERS.json", "FINAL_PROVENANCE_MAP.json", "NATURAL_ERROR_LEDGER.json",
 }
 
 
-def test_no_experimental_result_artifact_is_tracked():
+def test_no_private_frozen_record_is_tracked():
     bad = [f.relative_to(ROOT).as_posix() for f in FILES
            if f.name in FORBIDDEN_RESULT_NAMES]
-    assert bad == [], f"experimental result artifacts are tracked: {bad}"
+    assert bad == [], f"private frozen records are tracked verbatim: {bad}"
 
 
 def test_no_study_value_is_hard_coded_in_page_or_analysis_code():
