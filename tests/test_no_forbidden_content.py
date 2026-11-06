@@ -14,12 +14,25 @@ AUDIT = ROOT / "scripts/audit_public_release.py"
 
 
 def repo_files() -> list[pathlib.Path]:
+    """Every file this repository would publish: tracked AND untracked-but-not-ignored.
+
+    These guards used to enumerate tracked files only. A file added but not yet committed
+    was therefore invisible to them, so the suite passed locally and failed in CI on the
+    first commit -- which happened three times. Including untracked, non-ignored files
+    makes a new file visible to the guards the moment it exists, which is when the author
+    can still act on it.
+    """
     try:
-        out = subprocess.run(["git", "-C", str(ROOT), "ls-files", "-z"],
-                             capture_output=True, text=True, check=True).stdout
-        names = [n for n in out.split("\0") if n]
+        tracked = subprocess.run(
+            ["git", "-C", str(ROOT), "ls-files", "-z"],
+            capture_output=True, text=True, check=True).stdout
+        # --others --exclude-standard: present, not tracked, not ignored
+        untracked = subprocess.run(
+            ["git", "-C", str(ROOT), "ls-files", "-z", "--others", "--exclude-standard"],
+            capture_output=True, text=True, check=True).stdout
+        names = [n for n in (tracked + untracked).split("\0") if n]
         if names:
-            return [ROOT / n for n in names]
+            return sorted({ROOT / n for n in names})
     except (subprocess.CalledProcessError, FileNotFoundError):
         pass
     return [p for p in ROOT.rglob("*")
@@ -69,6 +82,7 @@ def test_no_manuscript_sources_are_tracked():
     metadata_about_the_manuscript = {
         "docs/data/manuscript_results_index.json",
         "reproducibility/manuscript_targets.json",
+        "reproducibility/manuscript_targets_archive.json",
     }
     bad = []
     for f in FILES:
@@ -104,6 +118,8 @@ def test_the_only_tracked_data_files_are_the_documented_ones():
         "docs/data/synthetic_demo_cells.json",
         # comparison targets, read only by the reconciliation
         "reproducibility/manuscript_targets.json",
+        # the superseded draft's targets and the ten resolved discrepancies, archival
+        "reproducibility/manuscript_targets_archive.json",
         # method configuration, not outcomes
         "configs/models.json", "prompts/questions.json",
     }
@@ -248,3 +264,36 @@ def test_no_file_is_unexpectedly_large():
     big = [(f.relative_to(ROOT).as_posix(), f.stat().st_size) for f in FILES
            if f.stat().st_size > 512 * 1024]
     assert big == [], f"oversized files: {big}"
+
+
+def test_the_guards_see_untracked_files_too():
+    """A new file must be visible to these guards before it is committed.
+
+    Enumerating tracked files only made every guard blind to a file that had been added
+    but not yet committed: the suite passed locally and failed in CI on the first commit.
+    This asserts the enumeration includes untracked, non-ignored files, so the guards fire
+    while the author can still act on them.
+    """
+    probe = ROOT / "docs/data/_guard_probe_tmp.json"
+    probe.write_text("{}")
+    try:
+        seen = {f.relative_to(ROOT).as_posix() for f in repo_files()}
+        assert "docs/data/_guard_probe_tmp.json" in seen, (
+            "repo_files() cannot see an untracked file; the guards are blind until commit")
+    finally:
+        probe.unlink()
+    # and an ignored file must NOT be treated as publishable
+    ignored = ROOT / "reproduction_output"
+    ignored.mkdir(exist_ok=True)
+    p = ignored / "scratch.json"
+    p.write_text("{}")
+    try:
+        seen = {f.relative_to(ROOT).as_posix() for f in repo_files()}
+        assert "reproduction_output/scratch.json" not in seen, (
+            "an ignored build artifact is being treated as a published file")
+    finally:
+        p.unlink()
+        try:
+            ignored.rmdir()
+        except OSError:
+            pass
