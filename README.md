@@ -14,6 +14,12 @@ pip install -r requirements.txt
 python -m reproducibility.verify_all
 ```
 
+It checks the **corrected manuscript of 2026-11-05** and should report
+**zero discrepancies**. Ten disagreements found against the superseded draft are preserved
+in `reproducibility/manuscript_targets_archive.json` and re-emitted as
+`HISTORICAL_DISCREPANCIES.md` on every run, so the corrections stay auditable rather than
+disappearing once the manuscript adopted them.
+
 That command verifies every data checksum, validates the schema, recomputes the rung
 counts, the estimators, the six paired contrasts under both weightings and their
 manuscript-cluster bootstrap intervals, regenerates the tables and figures, and writes a

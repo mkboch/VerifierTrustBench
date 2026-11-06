@@ -1,5 +1,36 @@
 # Changelog
 
+## 2026-11-05 (later) — manuscript targets versioned; zero current discrepancies
+
+The reproducibility checker now verifies the **corrected** Nature Machine Intelligence
+manuscript rather than the superseded draft.
+
+- `reproducibility/manuscript_targets.json` carries `manuscript_version`
+  `2026-11-05-corrected` and reports **zero discrepancies**: the corrected manuscript
+  adopted the frozen record's values in every case.
+- `reproducibility/manuscript_targets_archive.json` preserves the superseded draft's
+  targets **and all ten discrepancies D1–D10**, with their explanations and the draft's
+  own values. Nothing was deleted and no assertion was suppressed; every run re-emits
+  `HISTORICAL_DISCREPANCIES.md` and `.json` alongside the reconciliation.
+- The per-rung denominators are now stated as each rung's jointly scoreable set
+  (299 / 297 / 299 / 299), the paired pooled relation→verdict effect is named as such
+  (+29.8658 pp raw, +12.7517 pp balanced accuracy), and the rung-marginal +29.4314 pp is
+  kept as a separate estimand that the suite asserts must **differ** from it.
+- GPT-5.2 is checked at every rung alongside the five open-weight systems, including its
+  E1 false alarms (0, 1, 0, 2) and the displayed rounding of its d′ (−0.0750335 → −0.08).
+- Interval endpoints are checked both exactly and at the manuscript's displayed precision,
+  so a rounding convention cannot drift unnoticed: the relation→verdict d′ lower endpoint
+  is asserted as 0.124955676 exactly and as **+0.12** at two decimals.
+
+A checker that reports zero is only worth something if it can still fail.
+`tests/test_reproducibility.py` reintroduces the old D3 error (147 binary E0 hits instead
+of 148) into a copy of the targets and asserts the run exits non-zero and names the
+offending assertion.
+
+No research evidence changed. No frozen record was modified.
+
+# Changelog
+
 ## 2026-11-05 — GPT-5.2 blind E0 export corrected
 
 **Commit `fd4b291f` exported GPT-5.2 blind E0 outcomes incorrectly, and this release

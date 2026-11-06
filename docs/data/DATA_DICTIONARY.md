@@ -106,9 +106,18 @@ be run and tested without touching the real outcomes. **It is not evidence.**
 
 ---
 
-## Known discrepancies with the 2026-11-05 manuscript
+## Manuscript agreement
 
-Reported, not reconciled. The frozen record is the source of truth.
+The **corrected** Nature Machine Intelligence manuscript of 2026-11-05 agrees with the
+frozen record. `python -m reproducibility.verify_all` reports **zero current
+discrepancies**.
+
+The ten disagreements below were found against the **superseded draft** and were adopted
+into the corrected manuscript. They are archived in
+`reproducibility/manuscript_targets_archive.json`, not deleted, and are re-emitted as
+`HISTORICAL_DISCREPANCIES.md` on every run so that the corrections remain auditable.
+
+### Historical discrepancies against the superseded draft (archival)
 
 | id | where | manuscript | canonical |
 |---|---|---|---|

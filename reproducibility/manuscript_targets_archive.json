@@ -1,0 +1,335 @@
+{
+ "what_this_is": "ARCHIVAL. The verification targets taken from the SUPERSEDED Nature Machine Intelligence draft of 2026-11-05, together with every disagreement found between that draft and the frozen record. It is kept so the corrections remain auditable after the manuscript adopted them. It is NOT the active target set and no analysis reads it; reproducibility/manuscript_targets.json is the active set.",
+ "status": "superseded",
+ "superseded_on": "2026-11-05",
+ "superseded_by": "reproducibility/manuscript_targets.json (corrected manuscript)",
+ "how_these_were_resolved": "Each discrepancy was reported, never reconciled by altering data. The corrected manuscript adopted the canonical value in every case, so the active target set now agrees with the frozen record and reports zero discrepancies.",
+ "superseded_draft_targets": {
+  "contrasts_table1": {
+   "weighting": "pooled",
+   "systems": "five open-weight",
+   "rows": [
+    {
+     "from": "blind",
+     "to": "category",
+     "n": 296,
+     "balanced_accuracy_pp": 5.41,
+     "ba_ci": [
+      2.32,
+      8.57
+     ],
+     "dprime": 0.63,
+     "dp_ci": [
+      0.3,
+      1.13
+     ]
+    },
+    {
+     "from": "blind",
+     "to": "relation",
+     "n": 298,
+     "balanced_accuracy_pp": 2.85,
+     "ba_ci": [
+      0.16,
+      5.9
+     ],
+     "dprime": -0.09,
+     "dp_ci": [
+      -0.62,
+      0.23
+     ]
+    },
+    {
+     "from": "category",
+     "to": "relation",
+     "n": 296,
+     "balanced_accuracy_pp": -2.7,
+     "ba_ci": [
+      -6.31,
+      1.03
+     ],
+     "dprime": -0.73,
+     "dp_ci": [
+      -1.4,
+      -0.29
+     ]
+    },
+    {
+     "from": "category",
+     "to": "binary",
+     "n": 296,
+     "balanced_accuracy_pp": 10.14,
+     "ba_ci": [
+      7.26,
+      13.18
+     ],
+     "dprime": -0.23,
+     "dp_ci": [
+      -0.82,
+      0.11
+     ]
+    },
+    {
+     "from": "relation",
+     "to": "binary",
+     "n": 298,
+     "balanced_accuracy_pp": 12.75,
+     "ba_ci": [
+      9.77,
+      15.5
+     ],
+     "dprime": 0.46,
+     "dp_ci": [
+      0.13,
+      0.77
+     ]
+    },
+    {
+     "from": "blind",
+     "to": "binary",
+     "n": 298,
+     "balanced_accuracy_pp": 15.44,
+     "ba_ci": [
+      12.46,
+      18.54
+     ],
+     "dprime": 0.39,
+     "dp_ci": [
+      -0.11,
+      0.66
+     ]
+    }
+   ]
+  },
+  "unrounded_central_result": {
+   "contrast": "relation->binary",
+   "weighting": "pooled",
+   "balanced_accuracy_pp": 12.752,
+   "ba_ci": [
+    9.774,
+    15.5
+   ],
+   "dprime": 0.46,
+   "dp_ci": [
+    0.125,
+    0.772
+   ],
+   "category_to_relation_dprime": -0.733,
+   "category_to_relation_dp_ci": [
+    -1.4,
+    -0.291
+   ]
+  },
+  "ladder_e0": [
+   {
+    "rung": "blind",
+    "hits": 35,
+    "n": 297,
+    "rate_pct": 11.8
+   },
+   {
+    "rung": "category",
+    "hits": 66,
+    "n": 297,
+    "rate_pct": 22.2
+   },
+   {
+    "rung": "relation",
+    "hits": 60,
+    "n": 297,
+    "rate_pct": 20.2
+   },
+   {
+    "rung": "binary",
+    "hits": 147,
+    "n": 297,
+    "rate_pct": 49.5
+   }
+  ],
+  "ladder_e1_false_alarms": [
+   {
+    "rung": "blind",
+    "fas": 4,
+    "n": 300,
+    "rate_pct": 1.3
+   },
+   {
+    "rung": "category",
+    "fas": 2,
+    "n": 300,
+    "rate_pct": 0.7
+   },
+   {
+    "rung": "relation",
+    "fas": 12,
+    "n": 300,
+    "rate_pct": 4.0
+   },
+   {
+    "rung": "binary",
+    "fas": 24,
+    "n": 300,
+    "rate_pct": 8.0
+   }
+  ],
+  "ladder_pooled_balanced_accuracy_pct": {
+   "blind": 55.2,
+   "category": 60.8,
+   "relation": 58.1,
+   "binary": 70.7
+  },
+  "ladder_pooled_dprime": {
+   "blind": 0.99,
+   "category": 1.63,
+   "relation": 0.9,
+   "binary": 1.38
+  },
+  "frontier_gpt_5_2": {
+   "e0_rate_pct": {
+    "blind": 30.0,
+    "category": 41.7,
+    "relation": 53.3,
+    "binary": 65.0
+   },
+   "raw_relation_to_verdict_pp": 23.3,
+   "raw_ci": [
+    10.0,
+    35.6
+   ],
+   "balanced_accuracy_pp": 10.0,
+   "dprime": -0.07
+  }
+ },
+ "discrepancies": {
+  "what_this_is": "Places where the manuscript values supplied on 2026-11-05 disagree with the frozen canonical record. The canonical record is the source of truth. These are reported, never reconciled by adjusting data.",
+  "items": [
+   {
+    "id": "D1",
+    "where": "section 3B, E0 denominators",
+    "manuscript": "297 for all four rungs",
+    "canonical": "299 / 297 / 299 / 299",
+    "why": "the manuscript uses one denominator for every rung; the frozen analysis uses the per-rung complete-case set, which differs because scoreability differs by rung",
+    "severity": "denominator error"
+   },
+   {
+    "id": "D2",
+    "where": "section 3C, E1 denominators",
+    "manuscript": "300 for all four rungs",
+    "canonical": "299 / 297 / 299 / 299",
+    "why": "300 is the number of cells attempted (5 systems x 60 relations), not the number scoreable",
+    "severity": "denominator error"
+   },
+   {
+    "id": "D3",
+    "where": "section 3B, binary rung E0 hits",
+    "manuscript": 147,
+    "canonical": 148,
+    "why": "a one-count difference in the headline rung",
+    "severity": "count mismatch"
+   },
+   {
+    "id": "D4",
+    "where": "section 3B, blind sensitivity",
+    "manuscript": 11.8,
+    "canonical": 11.7,
+    "why": "follows from D1",
+    "severity": "rounding/denominator"
+   },
+   {
+    "id": "D5",
+    "where": "section 3B, relation sensitivity",
+    "manuscript": 20.2,
+    "canonical": 20.1,
+    "why": "follows from D1",
+    "severity": "rounding/denominator"
+   },
+   {
+    "id": "D6",
+    "where": "section 3C, relation balanced accuracy",
+    "manuscript": 58.1,
+    "canonical": 58.0,
+    "why": "follows from D1 and D2",
+    "severity": "rounding/denominator"
+   },
+   {
+    "id": "D7",
+    "where": "Table 1, relation->binary d' lower CI",
+    "manuscript": 0.13,
+    "canonical": 0.125,
+    "computed": 0.12495567648969796,
+    "why": "double rounding. The exact endpoint is 0.124956, which rounds to 0.125 at three decimals and to 0.12 at two. The manuscript appears to have rounded the already-rounded 0.125 up to 0.13.",
+    "severity": "display rounding"
+   },
+   {
+    "id": "D8",
+    "where": "section 3F, GPT-5.2 category and relation E0 rates",
+    "manuscript": "category 41.7%, relation 53.3%",
+    "canonical": "category 53.3%, relation 41.7%",
+    "why": "the two rates are transposed. FRONTIER_ITEMLEVEL.csv records 32/60 detected at the category-targeted rung and 25/60 at the relation-targeted rung",
+    "severity": "values transposed"
+   },
+   {
+    "id": "D9",
+    "where": "section 3F, GPT-5.2 pooled d' difference",
+    "manuscript": -0.07,
+    "canonical": -0.0750335,
+    "why": "-0.0750335 rounds to -0.08 at two decimals, not -0.07; the magnitude exceeds 0.075",
+    "severity": "display rounding"
+   },
+   {
+    "id": "D10",
+    "where": "section 3B, pooled descriptive raw relation-to-verdict difference",
+    "manuscript": "approximately +29.3 pp",
+    "canonical": "+29.4314 pp marginal on 299 cells, or +29.8658 pp paired on the 298 eligible cells",
+    "why": "the manuscript's figure matches neither estimand exactly; the marginal descriptive is +29.43 and the paired estimate is +29.87",
+    "severity": "estimand and value"
+   }
+  ]
+ },
+ "canonical_ladder": {
+  "source": "nature_extension/fair_scoring_validation_20261020/data/FAIR_LADDER_METRICS.json pooled_per_rung",
+  "denominator_definition": "per rung, the complete-case set: cells scoreable in BOTH evidence states for that rung. The denominator therefore differs between rungs.",
+  "rows": [
+   {
+    "rung": "blind",
+    "n": 299,
+    "hits": 35,
+    "false_alarms": 4,
+    "sensitivity_pct": 11.7,
+    "false_alarm_rate_pct": 1.3,
+    "balanced_accuracy_pct": 55.2,
+    "dprime": 0.987
+   },
+   {
+    "rung": "category",
+    "n": 297,
+    "hits": 66,
+    "false_alarms": 2,
+    "sensitivity_pct": 22.2,
+    "false_alarm_rate_pct": 0.7,
+    "balanced_accuracy_pct": 60.8,
+    "dprime": 1.63
+   },
+   {
+    "rung": "relation",
+    "n": 299,
+    "hits": 60,
+    "false_alarms": 12,
+    "sensitivity_pct": 20.1,
+    "false_alarm_rate_pct": 4.0,
+    "balanced_accuracy_pct": 58.0,
+    "dprime": 0.896
+   },
+   {
+    "rung": "binary",
+    "n": 299,
+    "hits": 148,
+    "false_alarms": 24,
+    "sensitivity_pct": 49.5,
+    "false_alarm_rate_pct": 8.0,
+    "balanced_accuracy_pct": 70.7,
+    "dprime": 1.381
+   }
+  ]
+ }
+}

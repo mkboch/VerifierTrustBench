@@ -31,7 +31,10 @@ from .estimators import aggregate, rates, wilson
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-TARGETS = json.loads((HERE / "manuscript_targets.json").read_text())
+TARGETS_PATH = HERE / "manuscript_targets.json"
+ARCHIVE_PATH = HERE / "manuscript_targets_archive.json"
+TARGETS = json.loads(TARGETS_PATH.read_text())
+ARCHIVE = json.loads(ARCHIVE_PATH.read_text()) if ARCHIVE_PATH.exists() else None
 
 ROWS = []       # (stage, item, expected, got, tol, status, note)
 _fail = 0
@@ -91,12 +94,22 @@ def main(argv=None) -> int:
                     help="bootstrap draws; the frozen analysis used 10000. Lowering this "
                          "changes interval endpoints and is for smoke-testing only.")
     ap.add_argument("--no-figures", action="store_true")
+    ap.add_argument("--targets", default=None,
+                    help="an alternative manuscript target file. The default is the "
+                         "CURRENT corrected manuscript; the superseded draft's targets "
+                         "are in reproducibility/manuscript_targets_archive.json.")
     a = ap.parse_args(argv)
+    if a.targets:
+        global TARGETS, OVERRIDE
+        TARGETS = json.loads(Path(a.targets).read_text())
+        OVERRIDE = TARGETS.get("canonical_overrides", {})
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     exact = a.draws == 10000
 
     print(__doc__.strip().splitlines()[0])
+    print(f"\nmanuscript targets: {TARGETS.get('manuscript_version', 'unversioned')}"
+          f"  ({a.targets or TARGETS_PATH.name})")
     print(f"\nbootstrap draws: {a.draws}" + ("" if exact else
           "   *** NOT the frozen 10000: intervals will not match the manuscript ***"))
 
@@ -127,6 +140,26 @@ def main(argv=None) -> int:
     # ------------------------------------------------- 3,4 counts and estimators
     print("\n[3] rung counts        [4] estimators")
     lad = {r["rung"]: r for r in C.ladder(cells, OW)}
+    # the current manuscript's own per-rung figures, checked against recomputed outcomes
+    for t in TARGETS["ladder_e0"]:
+        r = lad[t["rung"]]
+        check("counts", f"manuscript {t['rung']} E0 hits", t["hits"], r["hits"])
+        check("counts", f"manuscript {t['rung']} E0 n", t["n"], r["n_e0"])
+        check("counts", f"manuscript {t['rung']} E0 rate %", t["rate_pct"],
+              100 * r["sensitivity"], tol=0.05, nd=1)
+    for t in TARGETS["ladder_e1_false_alarms"]:
+        r = lad[t["rung"]]
+        check("counts", f"manuscript {t['rung']} E1 false alarms", t["fas"],
+              r["false_alarms"])
+        check("counts", f"manuscript {t['rung']} E1 n", t["n"], r["n_e1"])
+        check("counts", f"manuscript {t['rung']} E1 FA rate %", t["rate_pct"],
+              100 * r["false_alarm_rate"], tol=0.05, nd=1)
+    for rung, v in TARGETS["ladder_pooled_balanced_accuracy_pct"].items():
+        check("estimators", f"manuscript {rung} balanced accuracy %", v,
+              100 * lad[rung]["balanced_accuracy"], tol=0.05, nd=1)
+    for rung, v in TARGETS["ladder_pooled_dprime"].items():
+        check("estimators", f"manuscript {rung} d' (2dp)", v, lad[rung]["dprime"],
+              tol=0.005, nd=2)
     for t in TARGETS["canonical_ladder"]["rows"]:
         r = lad[t["rung"]]
         check("counts", f"{t['rung']} complete-case n", t["n"], r["n_e0"])
@@ -203,6 +236,33 @@ def main(argv=None) -> int:
                                ("cat->rel d' CI hi", u["category_to_relation_dp_ci"][1],
                                 cr["ci95_hi"])]:
             check("intervals", f"unrounded {lbl}", want, got, tol=0.0005, nd=3)
+    rp = TARGETS.get("relation_to_verdict_paired_pooled")
+    if rp:
+        pr = C.eligible(cells, "relation", "binary", OW)
+        rh = sum(x["a"]["e0_hit"] for x in pr)
+        vh = sum(x["b"]["e0_hit"] for x in pr)
+        check("estimand", "paired pooled n", rp["n"], len(pr))
+        check("estimand", "paired pooled raw difference pp", rp["raw_difference_pp"],
+              100 * (vh - rh) / len(pr), tol=0.0005, nd=4)
+        ba = C.contrast(cells, "relation", "binary", OW, "balanced_accuracy", "pooled",
+                        draws=a.draws)
+        dp = C.contrast(cells, "relation", "binary", OW, "dprime", "pooled", draws=a.draws)
+        check("estimand", "paired pooled balanced-accuracy pp",
+              rp["balanced_accuracy_pp"], ba["point"], tol=0.0005, nd=4)
+        check("estimand", "paired pooled d'", rp["dprime"], dp["point"],
+              tol=0.0005, nd=3)
+        if exact:
+            check("intervals", "paired pooled BA CI lo", rp["balanced_accuracy_ci"][0],
+                  ba["ci95_lo"], tol=0.0005, nd=3)
+            check("intervals", "paired pooled BA CI hi", rp["balanced_accuracy_ci"][1],
+                  ba["ci95_hi"], tol=0.0005, nd=3)
+            check("intervals", "paired pooled d' CI lo exact",
+                  rp["dprime_ci_lo_exact"], dp["ci95_lo"], tol=5e-9)
+            # the rounding convention itself, not only the value
+            check("intervals", "paired pooled d' CI lo displayed at 2dp",
+                  rp["dprime_ci_lo_display_2dp"], dp["ci95_lo"], tol=1e-9, nd=2)
+            check("intervals", "paired pooled d' CI hi", rp["dprime_ci_hi"],
+                  dp["ci95_hi"], tol=0.0005, nd=3)
     for t in TARGETS["weighting_sensitive_dprime"]:
         r = C.contrast(cells, t["from"], t["to"], OW, "dprime", t["weighting"],
                        draws=a.draws)
@@ -426,8 +486,9 @@ def main(argv=None) -> int:
     rh = sum(p["a"]["e0_hit"] for p in pairs)
     vh = sum(p["b"]["e0_hit"] for p in pairs)
     check("gpt", "relation->verdict paired n", rv["paired_n"], len(pairs))
+    # the corrected manuscript states this to two decimals; compare at its own precision
     check("gpt", "relation->verdict raw difference pp", rv["raw_difference_pp"],
-          100 * (vh - rh) / len(pairs), tol=0.0005, nd=3)
+          100 * (vh - rh) / len(pairs), tol=0.005, nd=2)
     for metric, key, cikey, tol, nd in (
             ("balanced_accuracy", "balanced_accuracy_pp", "balanced_accuracy_ci", 0.005, 2),
             ("dprime", "dprime", "dprime_ci", 1e-6, 7)):
@@ -440,6 +501,17 @@ def main(argv=None) -> int:
                       r["ci95_lo"], tol=0.05, nd=2)
                 check("gpt", f"relation->verdict {metric} CI hi", rv[cikey][1],
                       r["ci95_hi"], tol=0.05, nd=2)
+    if "dprime_display_2dp" in rv:
+        r = C.contrast(cells, "relation", "binary", G, "dprime", "pooled", draws=a.draws)
+        check("gpt", "relation->verdict d' displayed at 2dp", rv["dprime_display_2dp"],
+              r["point"], tol=1e-9, nd=2)
+    if "e1_false_alarms" in TARGETS.get("frontier_gpt_5_2", {}):
+        for rung, fa in TARGETS["frontier_gpt_5_2"]["e1_false_alarms"].items():
+            check("gpt", f"manuscript {rung} E1 false alarms", fa,
+                  glad[rung]["false_alarms"])
+        for rung, pct in TARGETS["frontier_gpt_5_2"]["e0_rate_pct"].items():
+            check("gpt", f"manuscript {rung} E0 rate %", pct,
+                  100 * glad[rung]["sensitivity"], tol=0.05, nd=1)
     # a single system: the two weightings must coincide exactly, not merely closely
     for metric in ("balanced_accuracy", "dprime"):
         p_ = C.contrast(cells, "relation", "binary", G, metric, "pooled", draws=a.draws)
@@ -494,7 +566,7 @@ def main(argv=None) -> int:
         print(f"    {'PASS' if not f else 'FAIL'}  {k}: {n - f}/{n}")
 
     # ------------------------------------------------- manuscript discrepancies
-    print("\n[*] manuscript vs canonical record")
+    print("\n[*] current manuscript vs canonical record")
     disc = TARGETS["manuscript_vs_canonical_discrepancies"]["items"]
     for d_ in disc:
         ROWS.append({"stage": "discrepancy", "item": f"{d_['id']} {d_['where']}",
@@ -503,7 +575,30 @@ def main(argv=None) -> int:
                      "status": "DISCREPANCY", "note": d_["why"]})
         print(f"    {d_['id']}  {d_['where']}: manuscript {d_['manuscript']}, "
               f"canonical {d_['canonical']}")
-    print(f"    {len(disc)} recorded discrepancies -- reported, not reconciled")
+    if not disc:
+        print("    0 -- the corrected manuscript agrees with the frozen record")
+
+    # Historical discrepancies are PRESERVED, in their own report, never deleted.
+    if ARCHIVE:
+        hist = ARCHIVE["discrepancies"]["items"]
+        hp = out / "HISTORICAL_DISCREPANCIES.json"
+        (hp).write_text(json.dumps({
+            "what_this_is": ARCHIVE["what_this_is"],
+            "superseded_version": ARCHIVE.get("status"),
+            "resolved_on": ARCHIVE.get("superseded_on"),
+            "how_resolved": ARCHIVE["how_these_were_resolved"],
+            "n": len(hist), "items": hist}, indent=1))
+        with open(out / "HISTORICAL_DISCREPANCIES.md", "w") as fh:
+            fh.write("# Historical manuscript discrepancies (archival)\n\n")
+            fh.write(ARCHIVE["what_this_is"] + "\n\n")
+            fh.write(ARCHIVE["how_these_were_resolved"] + "\n\n")
+            fh.write("| id | where | superseded draft | canonical |\n|---|---|---|---|\n")
+            for d_ in hist:
+                fh.write(f"| {d_['id']} | {d_['where']} | {d_['manuscript']} | "
+                         f"{d_['canonical']} |\n")
+        print(f"\n[*] historical discrepancies preserved: {len(hist)} "
+              f"({', '.join(d_['id'] for d_ in hist)})")
+        print(f"    wrote {out}/HISTORICAL_DISCREPANCIES.md and .json")
 
     # ---------------------------------------------------------------- report
     with open(out / "RECONCILIATION.csv", "w", newline="") as fh:
@@ -518,6 +613,10 @@ def main(argv=None) -> int:
         "manuscript_discrepancies_reported": ndisc,
         "bootstrap_draws": a.draws, "exact_frozen_bootstrap": exact,
         "figures_written": figs,
+        "manuscript_version": TARGETS.get("manuscript_version", "unversioned"),
+        "current_manuscript_discrepancies": ndisc,
+        "historical_discrepancies_archived": (len(ARCHIVE["discrepancies"]["items"])
+                                              if ARCHIVE else 0),
         "scope": ("Every assertion compares a value computed from the public research "
                   "data against the manuscript value recorded in manuscript_targets.json. "
                   "This is 100% parity across THIS set of assertions, which is not the "
@@ -527,7 +626,9 @@ def main(argv=None) -> int:
     (out / "RECONCILIATION.json").write_text(json.dumps(summary, indent=1))
     print(f"\n{'='*64}\n{npass}/{nassert} assertions PASS"
           f"{'' if npass == nassert else f'   {nassert-npass} FAIL'}"
-          f"   plus {ndisc} manuscript discrepancies reported")
+          f"   |  current-manuscript discrepancies: {ndisc}"
+          + (f"   |  historical archived: {len(ARCHIVE['discrepancies']['items'])}"
+             if ARCHIVE else ""))
     if npass != nassert:
         for r in ROWS:
             if r["status"] == "FAIL":

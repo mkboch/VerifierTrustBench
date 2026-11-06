@@ -40,3 +40,4 @@ overleaf/
 .DS_Store
 reproduction_output/
 .pytest_repro_out/
+.pytest_hist_out/

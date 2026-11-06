@@ -1,5 +1,5 @@
 {
- "what_this_is": "Values reported in the Nature Machine Intelligence manuscript of 2026-11-05, recorded here as VERIFICATION TARGETS. They are compared against values computed from the public research data. They are never inputs to any computation, and no analysis function reads this file. If a target and a computed value disagree, the computed value is the finding and the disagreement is reported.",
+ "what_this_is": "Verification targets for the CORRECTED Nature Machine Intelligence manuscript of 2026-11-05. They are compared against values recomputed from the public research data; they are never inputs to any computation and no analysis module reads this file. The corrected manuscript adopted the frozen record's values, so these targets agree with canonical data and the checker should report ZERO discrepancies. The superseded draft's targets and the ten disagreements found against it are kept in reproducibility/manuscript_targets_archive.json.",
  "rounding": "The manuscript rounds half away from zero. A computed value is compared after rounding by that rule at the manuscript's reported precision, plus an absolute tolerance for the last displayed digit.",
  "contrasts_table1": {
   "weighting": "pooled",
@@ -76,7 +76,7 @@
     ],
     "dprime": 0.46,
     "dp_ci": [
-     0.13,
+     0.12,
      0.77
     ]
    },
@@ -107,7 +107,7 @@
   ],
   "dprime": 0.46,
   "dp_ci": [
-   0.125,
+   0.124955676,
    0.772
   ],
   "category_to_relation_dprime": -0.733,
@@ -166,8 +166,8 @@
   {
    "rung": "blind",
    "hits": 35,
-   "n": 297,
-   "rate_pct": 11.8
+   "n": 299,
+   "rate_pct": 11.7
   },
   {
    "rung": "category",
@@ -178,13 +178,13 @@
   {
    "rung": "relation",
    "hits": 60,
-   "n": 297,
-   "rate_pct": 20.2
+   "n": 299,
+   "rate_pct": 20.1
   },
   {
    "rung": "binary",
-   "hits": 147,
-   "n": 297,
+   "hits": 148,
+   "n": 299,
    "rate_pct": 49.5
   }
  ],
@@ -192,32 +192,32 @@
   {
    "rung": "blind",
    "fas": 4,
-   "n": 300,
+   "n": 299,
    "rate_pct": 1.3
   },
   {
    "rung": "category",
    "fas": 2,
-   "n": 300,
+   "n": 297,
    "rate_pct": 0.7
   },
   {
    "rung": "relation",
    "fas": 12,
-   "n": 300,
+   "n": 299,
    "rate_pct": 4.0
   },
   {
    "rung": "binary",
    "fas": 24,
-   "n": 300,
+   "n": 299,
    "rate_pct": 8.0
   }
  ],
  "ladder_pooled_balanced_accuracy_pct": {
   "blind": 55.2,
   "category": 60.8,
-  "relation": 58.1,
+  "relation": 58.0,
   "binary": 70.7
  },
  "ladder_pooled_dprime": {
@@ -299,17 +299,19 @@
  "frontier_gpt_5_2": {
   "e0_rate_pct": {
    "blind": 30.0,
-   "category": 41.7,
-   "relation": 53.3,
+   "category": 53.3,
+   "relation": 41.7,
    "binary": 65.0
   },
-  "raw_relation_to_verdict_pp": 23.3,
-  "raw_ci": [
-   10.0,
-   35.6
-  ],
+  "e1_false_alarms": {
+   "blind": 0,
+   "category": 1,
+   "relation": 0,
+   "binary": 2
+  },
+  "raw_relation_to_verdict_pp": 23.33,
   "balanced_accuracy_pp": 10.0,
-  "dprime": -0.07
+  "dprime": -0.0750335
  },
  "frontier_claude_sonnet_5_5": {
   "finding_list_requests_refused": 45,
@@ -420,105 +422,11 @@
   ]
  },
  "manuscript_vs_canonical_discrepancies": {
-  "what_this_is": "Places where the manuscript values supplied on 2026-11-05 disagree with the frozen canonical record. The canonical record is the source of truth. These are reported, never reconciled by adjusting data.",
-  "items": [
-   {
-    "id": "D1",
-    "where": "section 3B, E0 denominators",
-    "manuscript": "297 for all four rungs",
-    "canonical": "299 / 297 / 299 / 299",
-    "why": "the manuscript uses one denominator for every rung; the frozen analysis uses the per-rung complete-case set, which differs because scoreability differs by rung",
-    "severity": "denominator error"
-   },
-   {
-    "id": "D2",
-    "where": "section 3C, E1 denominators",
-    "manuscript": "300 for all four rungs",
-    "canonical": "299 / 297 / 299 / 299",
-    "why": "300 is the number of cells attempted (5 systems x 60 relations), not the number scoreable",
-    "severity": "denominator error"
-   },
-   {
-    "id": "D3",
-    "where": "section 3B, binary rung E0 hits",
-    "manuscript": 147,
-    "canonical": 148,
-    "why": "a one-count difference in the headline rung",
-    "severity": "count mismatch"
-   },
-   {
-    "id": "D4",
-    "where": "section 3B, blind sensitivity",
-    "manuscript": 11.8,
-    "canonical": 11.7,
-    "why": "follows from D1",
-    "severity": "rounding/denominator"
-   },
-   {
-    "id": "D5",
-    "where": "section 3B, relation sensitivity",
-    "manuscript": 20.2,
-    "canonical": 20.1,
-    "why": "follows from D1",
-    "severity": "rounding/denominator"
-   },
-   {
-    "id": "D6",
-    "where": "section 3C, relation balanced accuracy",
-    "manuscript": 58.1,
-    "canonical": 58.0,
-    "why": "follows from D1 and D2",
-    "severity": "rounding/denominator"
-   },
-   {
-    "id": "D7",
-    "where": "Table 1, relation->binary d' lower CI",
-    "manuscript": 0.13,
-    "canonical": 0.125,
-    "computed": 0.12495567648969796,
-    "why": "double rounding. The exact endpoint is 0.124956, which rounds to 0.125 at three decimals and to 0.12 at two. The manuscript appears to have rounded the already-rounded 0.125 up to 0.13.",
-    "severity": "display rounding"
-   },
-   {
-    "id": "D8",
-    "where": "section 3F, GPT-5.2 category and relation E0 rates",
-    "manuscript": "category 41.7%, relation 53.3%",
-    "canonical": "category 53.3%, relation 41.7%",
-    "why": "the two rates are transposed. FRONTIER_ITEMLEVEL.csv records 32/60 detected at the category-targeted rung and 25/60 at the relation-targeted rung",
-    "severity": "values transposed"
-   },
-   {
-    "id": "D9",
-    "where": "section 3F, GPT-5.2 pooled d' difference",
-    "manuscript": -0.07,
-    "canonical": -0.0750335,
-    "why": "-0.0750335 rounds to -0.08 at two decimals, not -0.07; the magnitude exceeds 0.075",
-    "severity": "display rounding"
-   },
-   {
-    "id": "D10",
-    "where": "section 3B, pooled descriptive raw relation-to-verdict difference",
-    "manuscript": "approximately +29.3 pp",
-    "canonical": "+29.4314 pp marginal on 299 cells, or +29.8658 pp paired on the 298 eligible cells",
-    "why": "the manuscript's figure matches neither estimand exactly; the marginal descriptive is +29.43 and the paired estimate is +29.87",
-    "severity": "estimand and value"
-   }
-  ]
+  "what_this_is": "Disagreements between the CURRENT corrected manuscript and the frozen record. Empty is the expected and required state. The ten found against the superseded draft are archived in manuscript_targets_archive.json, not deleted.",
+  "items": []
  },
  "canonical_overrides": {
-  "what_this_is": "Assertions where the manuscript's printed value is known to disagree with the frozen record (see manuscript_vs_canonical_discrepancies). The canonical value is asserted; the manuscript value is reported as a discrepancy, so a known display error does not masquerade as a reproduction failure.",
-  "relation->binary d' CI lo": {
-   "canonical": 0.125,
-   "nd": 3,
-   "tol": 0.0005,
-   "discrepancy": "D7"
-  },
-  "gpt-5.2 relation->binary d'": {
-   "canonical": -0.0750335,
-   "nd": 7,
-   "tol": 1e-06,
-   "discrepancy": "D9"
-  }
+  "what_this_is": "Empty. The corrected manuscript prints the canonical value for every assertion, so no assertion needs a canonical substitution."
  },
  "gpt_5_2": {
   "note": "GPT-5.2 is a single system, so pooled and system-balanced coincide for every GPT-only contrast. Both are computed and both are asserted, so a change that broke one weighting could not hide behind the other.",
@@ -558,19 +466,19 @@
   ],
   "relation_to_verdict": {
    "paired_n": 60,
-   "raw_difference_pp": 23.333,
+   "raw_difference_pp": 23.33,
    "balanced_accuracy_pp": 10.0,
    "balanced_accuracy_ci": [
     2.5,
-    17.0
+    16.964
    ],
    "dprime": -0.0750335,
    "dprime_ci": [
-    -0.66,
-    0.8
+    -0.657,
+    0.805
    ],
    "dprime_display_2dp": -0.08,
-   "display_note": "-0.0750335 rounds to -0.08 at two decimals under round-half-away-from-zero. A printed -0.07 is wrong."
+   "display_note": "-0.0750335 rounds to -0.08 at two decimals under round-half-away-from-zero; the magnitude exceeds 0.075."
   },
   "canonical_source": "nature_extension/final_topvenue_validation_20261018/data/FRONTIER_ITEMLEVEL.csv and FRONTIER_RESULTS.json"
  },
@@ -597,5 +505,37 @@
    "raw_difference_pp": 29.4314,
    "why_it_differs": "each rung uses its own complete-case set, so the relation rung has 299 cells here and 298 in the paired set"
   }
+ },
+ "manuscript_version": "2026-11-05-corrected",
+ "supersedes": {
+  "version": "2026-11-05-draft",
+  "archive": "reproducibility/manuscript_targets_archive.json",
+  "resolved_discrepancies": [
+   "D1",
+   "D2",
+   "D3",
+   "D4",
+   "D5",
+   "D6",
+   "D7",
+   "D8",
+   "D9",
+   "D10"
+  ]
+ },
+ "ladder_denominator_definition": "Per rung, the jointly scoreable set: cells scoreable in BOTH evidence states at THAT rung. The denominator therefore differs between rungs because scoreability does.",
+ "relation_to_verdict_paired_pooled": {
+  "n": 298,
+  "raw_difference_pp": 29.8658,
+  "balanced_accuracy_pp": 12.7517,
+  "balanced_accuracy_ci": [
+   9.774,
+   15.5
+  ],
+  "dprime": 0.46,
+  "dprime_ci_lo_exact": 0.124955676,
+  "dprime_ci_lo_display_2dp": 0.12,
+  "dprime_ci_hi": 0.772,
+  "note": "The PAIRED POOLED contrast. The rung-marginal raw difference of +29.4314 pp on 299 cells is a different estimand and must not be substituted for it."
  }
 }
