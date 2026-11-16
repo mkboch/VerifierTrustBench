@@ -23,7 +23,7 @@ RUNG_LABEL = {
 }
 SIX = [("blind", "category"), ("blind", "relation"), ("category", "relation"),
        ("category", "binary"), ("relation", "binary"), ("blind", "binary")]
-METRICS = ["balanced_accuracy", "dprime"]
+METRICS = ["balanced_accuracy", "youden_j", "dprime"]
 
 
 def index(cells, systems=None):
@@ -83,7 +83,9 @@ def contrast(cells, a, b, systems, metric, weighting, draws=DRAWS, seed=LADDER_S
     for p in pairs:
         units[p["cluster"]].append(p)
     fn = pooled_diff if weighting == "pooled" else system_balanced_diff
-    scale = 100.0 if metric == "balanced_accuracy" else 1.0
+    # balanced accuracy and Youden's J are rates; both are reported in percentage
+    # points. d-prime is a standardised index and is not scaled.
+    scale = 100.0 if metric in ("balanced_accuracy", "youden_j") else 1.0
     stat = lambda ps: (lambda v: None if v is None else v * scale)(fn(ps, metric))
     point, lo, hi, nval = cluster_bootstrap(units, stat, draws=draws, seed=seed)
     return {
@@ -94,6 +96,44 @@ def contrast(cells, a, b, systems, metric, weighting, draws=DRAWS, seed=LADDER_S
         "excludes_zero": (lo is not None and hi is not None and (lo > 0 or hi < 0)),
         "bootstrap": {"draws": draws, "seed": seed, "valid_replicates": nval,
                       "unit": "manuscript", "generator": "python stdlib Mersenne Twister"},
+    }
+
+
+def decompose(cells, a, b, systems):
+    """Split the apparent contraction between a raw difference and a balanced-accuracy
+    difference into its two causes.
+
+    A raw detection difference and a balanced-accuracy difference are not on the same
+    scale, so the gap between them is not a false-alarm penalty. Exactly:
+
+        dBA = (dTPR - dFPR) / 2 = J / 2
+
+    so the gap dTPR - dBA has two parts: the false-alarm penalty dFPR, which is a real
+    cost, and J/2, which is the metric's own division by two and carries no empirical
+    content. This returns both, in percentage points.
+    """
+    pairs = eligible(cells, a, b, systems)
+    A = rates(*aggregate([p["a"] for p in pairs]))
+    B = rates(*aggregate([p["b"] for p in pairs]))
+    if A is None or B is None:
+        return None
+    d_tpr = 100 * (B["sensitivity"] - A["sensitivity"])
+    d_fpr = 100 * (B["false_alarm_rate"] - A["false_alarm_rate"])
+    d_j = d_tpr - d_fpr
+    d_ba = 100 * (B["balanced_accuracy"] - A["balanced_accuracy"])
+    gap = d_tpr - d_ba
+    return {
+        "n_pairs": len(pairs),
+        "raw_detection_difference_pp": d_tpr,
+        "false_alarm_difference_pp": d_fpr,
+        "youden_j_difference_pp": d_j,
+        "balanced_accuracy_difference_pp": d_ba,
+        "apparent_contraction_pp": gap,
+        "contraction_from_false_alarms_pp": d_fpr,
+        "contraction_from_metric_halving_pp": d_j / 2,
+        "share_from_false_alarms": (d_fpr / gap) if gap else None,
+        "share_from_metric_halving": ((d_j / 2) / gap) if gap else None,
+        "identity_j_equals_twice_ba": abs(d_j - 2 * d_ba) < 1e-9,
     }
 
 

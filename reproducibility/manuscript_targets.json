@@ -537,5 +537,219 @@
   "dprime_ci_lo_display_2dp": 0.12,
   "dprime_ci_hi": 0.772,
   "note": "The PAIRED POOLED contrast. The rung-marginal raw difference of +29.4314 pp on 299 cells is a different estimand and must not be substituted for it."
+ },
+ "metric_scale_decomposition": {
+  "what_this_is": "A raw detection difference and a balanced-accuracy difference are not on the same scale. Because dBA = (dTPR - dFPR)/2 = J/2, the gap between them has two parts: the false-alarm penalty, which is a real cost, and the metric's own division by two, which carries no empirical content. Reporting the gap as if it were all false alarms overstates the false-alarm effect roughly fourfold.",
+  "identity": "J = 2*BA - 1, so dJ = 2*dBA exactly",
+  "open_weight_relation_to_verdict": {
+   "n": 298,
+   "raw_detection_difference_pp": 29.8658,
+   "false_alarm_difference_pp": 4.3624,
+   "youden_j_difference_pp": 25.5034,
+   "balanced_accuracy_difference_pp": 12.7517,
+   "apparent_contraction_pp": 17.1141,
+   "contraction_from_false_alarms_pp": 4.3624,
+   "contraction_from_metric_halving_pp": 12.7517,
+   "share_from_false_alarms": 0.2549,
+   "share_from_metric_halving": 0.7451
+  },
+  "gpt_5_2_relation_to_verdict": {
+   "n": 60,
+   "raw_detection_difference_pp": 23.3333,
+   "false_alarm_difference_pp": 3.3333,
+   "youden_j_difference_pp": 20.0,
+   "balanced_accuracy_difference_pp": 10.0,
+   "apparent_contraction_pp": 13.3333,
+   "contraction_from_false_alarms_pp": 3.3333,
+   "contraction_from_metric_halving_pp": 10.0,
+   "share_from_false_alarms": 0.25,
+   "share_from_metric_halving": 0.75
+  }
+ },
+ "rung_ordering": {
+  "what_this_is": "Which metrics order the four rungs the same way. Raw sensitivity, balanced accuracy and Youden's J agree; only d-prime reorders, and that reordering rests on two false alarms in 297 cells.",
+  "by_sensitivity": [
+   "binary",
+   "category",
+   "relation",
+   "blind"
+  ],
+  "by_balanced_accuracy": [
+   "binary",
+   "category",
+   "relation",
+   "blind"
+  ],
+  "by_youden_j": [
+   "binary",
+   "category",
+   "relation",
+   "blind"
+  ],
+  "by_dprime": [
+   "category",
+   "binary",
+   "blind",
+   "relation"
+  ],
+  "dprime_fragility": {
+   "category_false_alarms": 2,
+   "category_n": 297,
+   "bootstrap_resamples_with_zero_category_false_alarms": 1261,
+   "bootstrap_draws": 10000,
+   "extra_category_false_alarms_needed_to_restore_the_sensitivity_order": 3,
+   "note": "Three additional false alarms among 297 clean cells -- a one-point change in the false-alarm rate -- restores the ordering the other three metrics give."
+  }
+ },
+ "transfer_paired_contrasts": {
+  "what_this_is": "Paired contrasts on jointly scoreable cases, clustered by manuscript. The headline relevant-versus-irrelevant comparison combines a benefit and an interference cost, and the two are separated here.",
+  "contrasts": [
+   {
+    "name": "relevant rationale vs irrelevant rationale",
+    "n": 623,
+    "pp": 17.5,
+    "ci": [
+     14.24,
+     21.02
+    ]
+   },
+   {
+    "name": "relevant rationale vs neutral control",
+    "n": 628,
+    "pp": 14.49,
+    "ci": [
+     11.02,
+     18.1
+    ]
+   },
+   {
+    "name": "relevant rationale vs length-matched filler",
+    "n": 627,
+    "pp": 14.51,
+    "ci": [
+     10.22,
+     18.85
+    ]
+   },
+   {
+    "name": "irrelevant rationale vs neutral control",
+    "n": 621,
+    "pp": -3.54,
+    "ci": [
+     -6.28,
+     -0.96
+    ]
+   },
+   {
+    "name": "correct vs incorrect bare verdict",
+    "n": 627,
+    "pp": 3.99,
+    "ci": [
+     1.12,
+     6.91
+    ]
+   },
+   {
+    "name": "false rationale vs neutral control",
+    "n": 622,
+    "pp": 11.58,
+    "ci": [
+     7.87,
+     15.0
+    ]
+   },
+   {
+    "name": "correct verdict vs neutral control",
+    "n": 627,
+    "pp": 2.23,
+    "ci": [
+     0.0,
+     4.47
+    ]
+   },
+   {
+    "name": "filler vs neutral control",
+    "n": 625,
+    "pp": -0.48,
+    "ci": [
+     -2.89,
+     2.07
+    ]
+   }
+  ]
+ },
+ "abstention": {
+  "what_this_is": "How the frozen scorer treats UNRESOLVED, and how the headline metrics move under defensible alternatives. The frozen rule is asymmetric: UNRESOLVED is a miss on E0 and a correct rejection on E1.",
+  "binary_rung_open_weight": {
+   "n": 299,
+   "e0_unresolved": 21,
+   "e1_unresolved": 12,
+   "e0_issue_present": 148,
+   "e1_issue_present": 24
+  },
+  "frozen_rule": {
+   "tpr_pct": 49.5,
+   "fpr_pct": 8.0,
+   "balanced_accuracy_pct": 70.7,
+   "youden_j_pp": 41.5,
+   "dprime": 1.381
+  },
+  "unresolved_excluded": {
+   "tpr_pct": 53.2,
+   "fpr_pct": 8.4,
+   "balanced_accuracy_pct": 72.4,
+   "youden_j_pp": 44.9,
+   "dprime": 1.453
+  },
+  "unresolved_incorrect_in_both": {
+   "tpr_pct": 49.5,
+   "fpr_pct": 12.0,
+   "balanced_accuracy_pct": 68.7,
+   "youden_j_pp": 37.5,
+   "dprime": 1.154
+  }
+ },
+ "four_rung_cohort": {
+  "n_relations": 60,
+  "n_in_full_corpus": 184,
+  "n_manuscripts": 21,
+  "per_manuscript_min": 2,
+  "per_manuscript_max": 4,
+  "selection": "exp3heldout/design_heldout.py broad_subset(): for each manuscript, group its certified relations by defect family, shuffle the family order with random.Random(SUBSET_SEED+1), take one case per family up to 60//21 = 2 per manuscript, then top up to 60 from the remaining cases under the same seeded shuffle.",
+  "subset_seed": 20260918,
+  "broad_subset_n": 60,
+  "reproduces_ladder_manifest": true,
+  "inherited_from": "the 60-case broad-family replication cohort, reused by the 12-system evidence-profile experiment and then by the four-rung study; it was not redrawn",
+  "family_ratio_subset_over_corpus": {
+   "cross_reference": 0.97,
+   "numerical": 0.8,
+   "method_result": 1.07,
+   "claim_evidence": 1.29,
+   "arithmetic": 1.79,
+   "statistical": 0.51
+  },
+  "domain_ratio_subset_over_corpus": {
+   "B_vision_signal": 0.98,
+   "C_biomedical": 1.05,
+   "D_statistics": 0.9,
+   "E_physics_engineering": 1.12,
+   "A_ml_ai": 0.96
+  },
+  "overrepresents_cross_reference_or_numerical": false
+ },
+ "human_audit_definitions": {
+  "what_this_is": "The targeted scorer audit yields two different item counts under two different questions. Both are correct; they are not interchangeable.",
+  "majority_yes_items": 7,
+  "majority_not_no_items": 9,
+  "any_reviewer_yes_or_partial_items": 11,
+  "unanimous_items": 24,
+  "tied_items": 2,
+  "n_items": 30,
+  "definitions": {
+   "majority_yes": "the majority chose Yes: an explicit scorer false negative",
+   "majority_not_no": "the majority chose Yes or Partially: any majority disagreement",
+   "any_yes_or_partial": "at least one reviewer chose Yes or Partially"
+  },
+  "relationship": "the 7 majority-Yes items are a strict subset of the 9 majority-disagreement items"
  }
 }

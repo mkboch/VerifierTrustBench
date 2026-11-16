@@ -297,3 +297,31 @@ def test_the_guards_see_untracked_files_too():
             ignored.rmdir()
         except OSError:
             pass
+
+
+def test_public_prose_reads_as_a_standalone_study():
+    """User-facing text must not read as a revision of an earlier paper.
+
+    The repository documents genuine corrections in CHANGELOG.md, which is where
+    provenance belongs. What it must not do is narrate the project's drafting history in
+    its ordinary prose, because a reader arriving at the repository is reading about the
+    study, not about its production.
+    """
+    banned = ["corrected manuscript", "superseded draft", "reviewer response",
+              "rebuttal", "resubmission", "earlier draft", "post-review",
+              "the refined analysis", "previous manuscript", "previous draft",
+              "updated draft", "production manuscript"]
+    # CHANGELOG.md is the sanctioned place for correction history; directory names are
+    # kept for reproducibility and are described, not narrated.
+    targets = [ROOT / "README.md", ROOT / "docs/index.html",
+               ROOT / "docs/data/DATA_DICTIONARY.md",
+               ROOT / "docs/data/SYNTHETIC_FIXTURE.md"]
+    bad = []
+    for f in targets:
+        if not f.exists():
+            continue
+        low = read(f).lower()
+        for phrase in banned:
+            if phrase in low:
+                bad.append(f"{f.relative_to(ROOT).as_posix()}: {phrase!r}")
+    assert bad == [], f"drafting language in user-facing text: {bad}"

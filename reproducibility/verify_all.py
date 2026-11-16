@@ -22,7 +22,7 @@ disagreement; nothing is nudged to make a line pass.
 Requires no private path, no environment variable, no GPU and no paid model API.
 """
 from __future__ import annotations
-import argparse, csv, json, math, sys
+import argparse, collections, csv, json, math, sys
 from pathlib import Path
 
 from . import contrasts as C
@@ -564,6 +564,82 @@ def main(argv=None) -> int:
         n = sum(1 for r in ROWS if r["stage"] == k)
         f = sum(1 for r in ROWS if r["stage"] == k and r["status"] == "FAIL")
         print(f"    {'PASS' if not f else 'FAIL'}  {k}: {n - f}/{n}")
+
+    # -------------------------------------------- metric scale (stage 7d)
+    #
+    # The point of this stage: a raw difference and a balanced-accuracy difference are not
+    # on the same scale, so the gap between them is NOT a false-alarm penalty. Half of a
+    # Youden's J difference is the metric's own division by two. Asserting the identity
+    # and the split stops the paper, the data and the page from drifting apart on it.
+    print("\n[7d] metric scale and Youden's J")
+    msd = TARGETS.get("metric_scale_decomposition")
+    if msd:
+        for key, systems in (("open_weight_relation_to_verdict", OW),
+                             ("gpt_5_2_relation_to_verdict", ["gpt-5.2"])):
+            t = msd[key]
+            d_ = C.decompose(cells, "relation", "binary", systems)
+            check("scale", f"{key} paired n", t["n"], d_["n_pairs"])
+            for f_, tol, nd_ in (("raw_detection_difference_pp", 0.0005, 4),
+                                 ("false_alarm_difference_pp", 0.0005, 4),
+                                 ("youden_j_difference_pp", 0.0005, 4),
+                                 ("balanced_accuracy_difference_pp", 0.0005, 4),
+                                 ("apparent_contraction_pp", 0.0005, 4),
+                                 ("contraction_from_false_alarms_pp", 0.0005, 4),
+                                 ("contraction_from_metric_halving_pp", 0.0005, 4)):
+                check("scale", f"{key} {f_}", t[f_], d_[f_], tol=tol, nd=nd_)
+            check("scale", f"{key} share from false alarms", t["share_from_false_alarms"],
+                  d_["share_from_false_alarms"], tol=0.0005, nd=4)
+            check("scale", f"{key} identity dJ = 2*dBA", True,
+                  d_["identity_j_equals_twice_ba"])
+            # the misreading this guards against: the gap is NOT mostly false alarms
+            check("scale", f"{key} metric halving is the larger share", True,
+                  d_["contraction_from_metric_halving_pp"] >
+                  d_["contraction_from_false_alarms_pp"],
+                  note="if this ever flips, the paper's framing must change with it")
+        # the identity must hold on every rung, not only in the contrast
+        from .estimators import identity_check
+        for r in C.ladder(cells, OW):
+            check("scale", f"{r['rung']} J = 2BA-1", True, identity_check(r) < 1e-12)
+
+    # ------------------------------------------- rung ordering (stage 7e)
+    ro = TARGETS.get("rung_ordering")
+    if ro:
+        print("\n[7e] rung ordering across metrics")
+        lad2 = {r["rung"]: r for r in C.ladder(cells, OW)}
+        for metric, key in (("sensitivity", "by_sensitivity"),
+                            ("balanced_accuracy", "by_balanced_accuracy"),
+                            ("youden_j", "by_youden_j"),
+                            ("dprime", "by_dprime")):
+            got = sorted(lad2, key=lambda k: -lad2[k][metric])
+            check("ordering", f"rung order by {metric}", ",".join(ro[key]), ",".join(got))
+        # the scientific point: three metrics agree and only d-prime differs
+        check("ordering", "sensitivity, balanced accuracy and J agree", True,
+              ro["by_sensitivity"] == ro["by_balanced_accuracy"] == ro["by_youden_j"])
+        check("ordering", "d-prime alone reorders", True,
+              ro["by_dprime"] != ro["by_sensitivity"])
+        fr = ro["dprime_fragility"]
+        check("ordering", "category rung false alarms", fr["category_false_alarms"],
+              lad2["category"]["false_alarms"])
+        check("ordering", "category rung n", fr["category_n"], lad2["category"]["n_e1"])
+
+    # ------------------------------------------ four-rung cohort (stage 7f)
+    co = TARGETS.get("four_rung_cohort")
+    if co:
+        print("\n[7f] four-rung cohort")
+        clusters = {c["cluster"] for c in cells}
+        rels = {c["relation"] for c in cells}
+        check("cohort", "relations in the ladder subset", co["n_relations"], len(rels))
+        check("cohort", "manuscripts covered", co["n_manuscripts"], len(clusters))
+        per = collections.Counter(
+            c["cluster"] for c in cells
+            if c["system"] == OW[0] and c["rung"] == "blind")
+        check("cohort", "minimum relations per manuscript", co["per_manuscript_min"],
+              min(per.values()))
+        check("cohort", "maximum relations per manuscript", co["per_manuscript_max"],
+              max(per.values()))
+        check("cohort", "the subset is smaller than the full corpus", True,
+              co["n_relations"] < co["n_in_full_corpus"],
+              note="60 of 184; the abstract must not imply all 184 ran four conditions")
 
     # ------------------------------------------------- manuscript discrepancies
     print("\n[*] current manuscript vs canonical record")

@@ -106,18 +106,17 @@ be run and tested without touching the real outcomes. **It is not evidence.**
 
 ---
 
-## Manuscript agreement
+## Agreement with the reported results
 
-The **corrected** Nature Machine Intelligence manuscript of 2026-11-05 agrees with the
-frozen record. `python -m reproducibility.verify_all` reports **zero current
-discrepancies**.
+`python -m reproducibility.verify_all` reports **zero discrepancies** between the values
+in this release and the figures reported in the paper.
 
-The ten disagreements below were found against the **superseded draft** and were adopted
-into the corrected manuscript. They are archived in
-`reproducibility/manuscript_targets_archive.json`, not deleted, and are re-emitted as
-`HISTORICAL_DISCREPANCIES.md` on every run so that the corrections remain auditable.
+Verification targets are versioned. The table below records public corrections this
+release has carried, retained under `reproducibility/manuscript_targets_archive.json` and
+re-emitted on every run so that each correction stays auditable. `CHANGELOG.md` describes
+them in full.
 
-### Historical discrepancies against the superseded draft (archival)
+### Recorded corrections (archival)
 
 | id | where | manuscript | canonical |
 |---|---|---|---|

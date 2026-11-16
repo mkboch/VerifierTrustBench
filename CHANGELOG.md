@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-11-16 — comparable-scale metrics and expanded verification
+
+- **Youden's J** (`J = TPR − FPR`) is now computed, tested and reported alongside balanced
+  accuracy, with manuscript-cluster bootstrap intervals for all six paired contrasts under
+  both weightings. `J = 2·BA − 1` holds identically, so a difference in J is exactly twice
+  a difference in balanced accuracy; the tests assert this rather than assuming it.
+- `reproducibility.contrasts.decompose()` splits the gap between a raw detection
+  difference and a balanced-accuracy difference into the false-alarm penalty and the
+  metric's own division by two. For the relation-targeted list → binary verdict contrast
+  the apparent 17.11 pp contraction is **4.36 pp false alarms and 12.75 pp arithmetic**.
+  The playground computes and displays the same split on every contrast card.
+- The ladder, cohort, abstention, ordering and transfer findings are now verified
+  assertions: 316 in total, up from 277.
+- Verification targets gained blocks for the metric-scale decomposition, the rung ordering
+  across metrics, the four-rung cohort and its seeded selection rule, the abstention
+  sensitivity analysis and the paired transfer contrasts.
+- User-facing documentation was rewritten to describe the study rather than its drafting
+  history. Correction history stays here, in the changelog, where it is auditable. Source
+  directory names are unchanged so that published paths, manifests and checksums continue
+  to resolve.
+
 ## 2026-11-05 (later) — manuscript targets versioned; zero current discrepancies
 
 The reproducibility checker now verifies the **corrected** Nature Machine Intelligence

@@ -365,12 +365,44 @@ function runContrasts() {
         + "estimate looks." }));
 
   c.appendChild(table(["Rung", "Detected (E0)", "False alarms (E1)", "Cells",
-                       "Sensitivity", "Specificity", "Balanced accuracy", "d′"], [
+                       "Sensitivity", "Specificity", "Balanced accuracy", "Youden J", "d′"], [
     [lab(a), r.A.hits, r.A.false_alarms, r.A.n, fmtPct(r.A.sensitivity_pct),
-     fmtPct(r.A.specificity_pct), fmtPct(r.A.balanced_accuracy_pct), fmtD(r.A.dprime)],
+     fmtPct(r.A.specificity_pct), fmtPct(r.A.balanced_accuracy_pct),
+     pp(r.A.youden_j_pp) + " pp", fmtD(r.A.dprime)],
     [lab(b), r.B.hits, r.B.false_alarms, r.B.n, fmtPct(r.B.sensitivity_pct),
-     fmtPct(r.B.specificity_pct), fmtPct(r.B.balanced_accuracy_pct), fmtD(r.B.dprime)],
+     fmtPct(r.B.specificity_pct), fmtPct(r.B.balanced_accuracy_pct),
+     pp(r.B.youden_j_pp) + " pp", fmtD(r.B.dprime)],
   ]));
+
+  /* Why a raw difference and a balanced-accuracy difference are not the same size.
+     Computed here from the two rungs' own rates, never typed in. */
+  (function () {
+    const dT = r.B.sensitivity_pct - r.A.sensitivity_pct;
+    const dF = r.B.false_alarm_rate_pct - r.A.false_alarm_rate_pct;
+    const dJ = dT - dF;
+    const dBA = r.B.balanced_accuracy_pct - r.A.balanced_accuracy_pct;
+    const gap = dT - dBA;
+    if (Math.abs(gap) < 1e-9) return;
+    c.appendChild(el("h3", { text: "Why the raw and balanced-accuracy differences differ" }));
+    c.appendChild(table(["Quantity", "Value"], [
+      ["Raw detection difference (ΔTPR)", pp(dT) + " pp"],
+      ["False-alarm difference (ΔFPR)", pp(dF) + " pp"],
+      ["Youden J difference (ΔTPR − ΔFPR)", pp(dJ) + " pp"],
+      ["Balanced-accuracy difference (= ΔJ / 2)", pp(dBA) + " pp"],
+      ["Apparent contraction (ΔTPR − ΔBA)", pp(gap) + " pp"],
+      ["— of which the false-alarm penalty", pp(dF) + " pp ("
+        + (100 * dF / gap).toFixed(1) + "% of it)"],
+      ["— of which the metric's division by two", pp(dJ / 2) + " pp ("
+        + (100 * (dJ / 2) / gap).toFixed(1) + "% of it)"],
+    ]));
+    c.appendChild(el("div", { class: "note", text:
+      "Balanced accuracy averages sensitivity and specificity, so a difference in it is "
+      + "exactly half a difference in Youden's J: ΔBA = ΔJ / 2, and J = 2·BA − 1. The gap "
+      + "between the raw and balanced-accuracy differences is therefore NOT a false-alarm "
+      + "penalty alone. Here the false-alarm penalty is " + pp(dF) + " pp and the "
+      + "remaining " + pp(dJ / 2) + " pp is the metric's own halving, which carries no "
+      + "empirical content." }));
+  })();
 
   const flip = (r.point >= 0) !== (other.point >= 0);
   const signif = r.excludesZero !== other.excludesZero;

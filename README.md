@@ -14,11 +14,10 @@ pip install -r requirements.txt
 python -m reproducibility.verify_all
 ```
 
-It checks the **corrected manuscript of 2026-11-05** and should report
-**zero discrepancies**. Ten disagreements found against the superseded draft are preserved
-in `reproducibility/manuscript_targets_archive.json` and re-emitted as
-`HISTORICAL_DISCREPANCIES.md` on every run, so the corrections stay auditable rather than
-disappearing once the manuscript adopted them.
+It compares every value against the figures reported in the paper and should report
+**zero discrepancies**. Verification targets are versioned; `CHANGELOG.md` records the
+public corrections this release has carried, and each run writes the full audit trail
+beside its reconciliation.
 
 That command verifies every data checksum, validates the schema, recomputes the rung
 counts, the estimators, the six paired contrasts under both weightings and their
@@ -202,6 +201,10 @@ the frozen record; `verify_all` reports each one rather than reconciling it, and
 
 ## Code structure
 
+Directory names record the order in which the studies were run and are kept unchanged so
+that published paths, manifests and checksums continue to resolve. The descriptions below
+name what each directory contains.
+
 ```
 src/
   exp3heldout/        corpus harvesting, screening, cohort selection, the relation miner,
@@ -211,9 +214,9 @@ src/
                       rules, scoring, manuscript normalisation, inference client
   exp2br/             the repaired bounded-blind protocol and its runner
   exp2bbroad/         the broad multi-family replication
-  nature_extension/
-    reviewer_response_20261016/code/        the four-rung ladder
-    final_topvenue_validation_20261018/code/ frontier replication
+  nature_extension/                       elicitation-ladder and proprietary studies
+    reviewer_response_20261016/code/        the four-rung elicitation ladder
+    final_topvenue_validation_20261018/code/ the proprietary-model evaluation
     fair_scoring_validation_20261020/code/  the E0/E1 fair-scoring phase
     verifier_profile/   the reusable Verification Evidence Profile harness
     phase0_methods/     re-analysis: GEE vs Bayes, BH FDR, screening funnel

@@ -98,6 +98,11 @@
       sensitivity_pct: 100 * sens, false_alarm_rate_pct: 100 * far,
       specificity_pct: 100 * (1 - far),
       balanced_accuracy_pct: (100 * (sens + 1 - far)) / 2,
+      /* Youden's J = TPR - FPR, the same information on an un-halved scale.
+         J = 2*BA - 1 exactly, so a difference in J is twice a difference in balanced
+         accuracy. Showing both is what stops the metric's division by two being read
+         as a false-alarm penalty. */
+      youden_j_pp: 100 * (sens - far),
       dprime: loglinearDprime(h, n, fa, n),
     };
   }

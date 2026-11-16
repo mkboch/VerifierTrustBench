@@ -60,8 +60,18 @@ def rates(hits: int, n0: int, fas: int, n1: int):
         "n_e0": n0, "n_e1": n1, "hits": hits, "false_alarms": fas,
         "sensitivity": sens, "false_alarm_rate": far, "specificity": 1 - far,
         "balanced_accuracy": (sens + (1 - far)) / 2,
+        # Youden's J = TPR - FPR. It is the same information as balanced accuracy on an
+        # un-halved scale: J = 2 * BA - 1 exactly, so a difference in J is exactly twice
+        # the difference in balanced accuracy. Reporting J alongside BA is what keeps a
+        # reader from reading the metric's division by two as a false-alarm penalty.
+        "youden_j": sens - far,
         "dprime": phi_inv(h) - phi_inv(f),
     }
+
+
+def identity_check(r):
+    """J = 2*BA - 1, to machine precision. Asserted in the tests rather than assumed."""
+    return abs(r["youden_j"] - (2 * r["balanced_accuracy"] - 1))
 
 
 def aggregate(cells):
