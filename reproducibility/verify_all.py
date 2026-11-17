@@ -336,59 +336,28 @@ def main(argv=None) -> int:
     check("experiments", "Claude refusals are not scored as errors", True,
           acc["n_scored"] < 60, note="strict denominator excludes refused/unparseable")
 
+    # The scorer assessments came from language-model chat sessions, not human reviewers
+    # (corrected 2026-11-16). They no longer support any claim, so what is asserted here is
+    # only that the published counts are internally consistent and correctly LABELLED --
+    # never that they validate the scorer.
     t = sa["audits"]["targeted"]; b = sa["audits"]["blind"]
     LV = ["Yes", "Partially", "No", "Ambiguous / Cannot determine"]
     tot = {k: sum(i["counts"][k] for i in t["items"]) for k in LV}
     nj = sum(tot.values())
-    check("experiments", "targeted audit judgments",
-          TARGETS["scorer_audit"]["targeted_audit"]["judgments"], nj)
-    check("experiments", "targeted endorsement %",
-          TARGETS["scorer_audit"]["targeted_endorsement_pct"], 100 * tot["No"] / nj,
-          tol=0.05, nd=1)
+    check("provenance", "targeted assessment judgements are internally consistent",
+          t["total_judgments"], nj)
+    check("provenance", "blind assessment judgements are internally consistent",
+          b["total_judgments"], sum(sum(i["counts"].values()) for i in b["items"]))
+    check("provenance", "assessments are labelled as AI sessions, not reviewers", True,
+          "n_sessions" in t["items"][0] and "n_reviewers" not in t["items"][0])
+    check("provenance", "the file states it is not human validation", True,
+          "not_human_validation" in sa)
+    check("provenance", "the scorer-validity verdict is withdrawn", "WITHDRAWN_2026_11_16",
+          D.load("fair_scoring_support.json")["scorer_audit"]["verdict"]["status"])
+    check("provenance", "the correction scenarios are labelled exploratory",
+          "EXPLORATORY_NOT_EMPIRICALLY_SUPPORTED",
+          rr["scorer_correction_scenarios"]["status"])
 
-    def maj(c):
-        m = max(c.values())
-        for k in LV:
-            if c[k] == m:
-                return k
-    check("experiments", "unanimous targeted items",
-          TARGETS["scorer_audit"]["unanimous_targeted_items"],
-          sum(1 for i in t["items"] if max(i["counts"].values()) == i["n_reviewers"]))
-    num = den = 0.0
-    strata = {}
-    for i in t["items"]:
-        strata.setdefault(i["stratum"], {"yes": 0, "n": 0, "pop": i["stratum_population"]})
-        strata[i["stratum"]]["n"] += 1
-        strata[i["stratum"]]["yes"] += 1 if maj(i["counts"]) == "Yes" else 0
-    for s, v in strata.items():
-        num += v["pop"] * v["yes"] / v["n"]; den += v["pop"]
-    check("experiments", "targeted reweighted false-negative %",
-          TARGETS["scorer_audit"]["targeted_reweighted_false_negative_pct"],
-          100 * num / den, tol=0.05, nd=1,
-          note="recomputed from published per-item counts")
-    check("experiments", "blind audit judgments",
-          TARGETS["scorer_audit"]["blind_audit"]["judgments"],
-          sum(sum(i["counts"].values()) for i in b["items"]))
-    gl = rr["gold_label_validation"]["agreement_overall"]
-    check("experiments", "gold-label agreement x",
-          TARGETS["scorer_audit"]["gold_label_validation"]["x"], gl["x"])
-    check("experiments", "gold-label agreement n",
-          TARGETS["scorer_audit"]["gold_label_validation"]["n"], gl["n"])
-    check("experiments", "gold-label agreement %",
-          TARGETS["scorer_audit"]["gold_label_validation"]["pct"],
-          100 * gl["x"] / gl["n"], tol=0.05, nd=1)
-
-    sc = rr["scorer_correction_scenarios"]["scenarios"]
-    sct = TARGETS["scorer_audit"]
-    check("experiments", "conservative one-sided BA pp (one_sided_with_partial)",
-          sct["conservative_one_sided_balanced_accuracy_pp"],
-          sc["one_sided_with_partial"]["balanced_accuracy_difference_pp"],
-          tol=0.05, nd=1)
-    check("experiments", "earlier public aggregate (one_sided_strict) BA pp",
-          sct["earlier_public_aggregate_one_sided_strict_pp"],
-          sc["one_sided_strict"]["balanced_accuracy_difference_pp"], tol=0.005, nd=2)
-    check("experiments", "one-sided d' interval includes zero", False,
-          sc["one_sided_with_partial"]["dprime_difference_excludes_zero"])
     n = sum(1 for r in ROWS if r["stage"] == "experiments")
     f = sum(1 for r in ROWS if r["stage"] == "experiments" and r["status"] == "FAIL")
     print(f"    {'PASS' if not f else 'FAIL'}  experiments: {n - f}/{n}")
@@ -600,6 +569,72 @@ def main(argv=None) -> int:
         from .estimators import identity_check
         for r in C.ladder(cells, OW):
             check("scale", f"{r['rung']} J = 2BA-1", True, identity_check(r) < 1e-12)
+
+    # ------------------------------------- false alarms and robustness (stage 7g)
+    print("\n[7g] false-alarm inference, scorer sensitivity, per system")
+    rb = D.load("robustness.json")
+    fai = TARGETS.get("false_alarm_inference")
+    if fai:
+        pr = C.eligible(cells, "relation", "binary", OW)
+        np_ = len(pr)
+        fa_a = sum(x["a"]["e1_false_alarm"] for x in pr)
+        fa_b = sum(x["b"]["e1_false_alarm"] for x in pr)
+        bb = sum(1 for x in pr if x["b"]["e1_false_alarm"] and not x["a"]["e1_false_alarm"])
+        cc = sum(1 for x in pr if x["a"]["e1_false_alarm"] and not x["b"]["e1_false_alarm"])
+        check("falsealarm", "paired n", fai["n"], np_)
+        check("falsealarm", "relation-list false alarms", fai["relation_false_alarms"], fa_a)
+        check("falsealarm", "verdict false alarms", fai["verdict_false_alarms"], fa_b)
+        check("falsealarm", "difference pp", fai["difference_pp"],
+              100 * (fa_b - fa_a) / np_, tol=5e-4, nd=4)
+        check("falsealarm", "discordance b", fai["discordance"]["verdict_only_b"], bb)
+        check("falsealarm", "discordance c", fai["discordance"]["list_only_c"], cc)
+        # the published interval must match the published point, and exclude zero
+        pub = rb["false_alarm_inference"]
+        check("falsealarm", "published difference matches recomputed",
+              fai["difference_pp"], pub["paired_difference_pp"], tol=5e-4, nd=4)
+        check("falsealarm", "interval excludes zero", True,
+              pub["primary_interval"]["excludes_zero"])
+        check("falsealarm", "McNemar is declared unclustered", True,
+              "CAVEAT" in pub["exact_mcnemar"] and "NOT" in pub["exact_mcnemar"]["CAVEAT"])
+        check("falsealarm", "the cost side is not reported without a denominator", True,
+              pub["relation_targeted_list"]["n"] == np_
+              and pub["relation_localized_verdict"]["n"] == np_)
+    scs = TARGETS.get("scorer_confound_sensitivity")
+    if scs:
+        pub = rb["scorer_confound_sensitivity"]
+        check("scorer", "frozen Youden J", scs["frozen_youden_j_pp"],
+              pub["frozen_scorers"]["youden_j_difference_pp"], tol=5e-4, nd=4)
+        check("scorer", "common-rule Youden J", scs["common_rule_youden_j_pp"],
+              pub["common_evidence_localisation_rule"]["youden_j_difference_pp"],
+              tol=5e-4, nd=4)
+        check("scorer", "retained fraction", scs["retained_fraction"],
+              pub["retained_fraction_of_youden_j"], tol=5e-4, nd=4)
+        # the scientific point: J survives the scoring change, raw rates do not
+        check("scorer", "J is robust to the scoring choice", True,
+              pub["retained_fraction_of_youden_j"] > 0.8)
+        check("scorer", "the raw rate is NOT robust to the scoring choice", True,
+              abs(pub["common_evidence_localisation_rule"]["raw_difference_pp"]) <
+              0.5 * abs(pub["frozen_scorers"]["raw_difference_pp"]))
+        check("scorer", "no fifth condition is claimed", False,
+              scs["fifth_condition_run"])
+        check("scorer", "the file disclaims a format/scorer decomposition", True,
+              "HAS NOT BEEN RUN" in pub["what_this_does_not_establish"])
+    ps = TARGETS.get("per_system")
+    if ps:
+        pub = rb["per_system"]
+        check("persystem", "rows published", ps["n_rows"], len(pub["rows"]))
+        check("persystem", "pooled is not the mean of per-system", True,
+              abs(pub["pooled_raw_difference_pp"]
+                  - pub["mean_of_per_system_raw_difference_pp"]) > 1e-6)
+        for r in pub["rows"]:
+            if r["system"] == "qwen3_8":
+                check("persystem", "qwen3_8 net Youden J", ps["qwen3_8_youden_j_pp"],
+                      r["youden_j_difference_pp"], tol=5e-4, nd=4)
+    for k in ("falsealarm", "scorer", "persystem", "provenance"):
+        nn = sum(1 for r in ROWS if r["stage"] == k)
+        ff = sum(1 for r in ROWS if r["stage"] == k and r["status"] == "FAIL")
+        if nn:
+            print(f"    {'PASS' if not ff else 'FAIL'}  {k}: {nn - ff}/{nn}")
 
     # ------------------------------------------- rung ordering (stage 7e)
     ro = TARGETS.get("rung_ordering")

@@ -323,45 +323,6 @@
   "policy_refusals": 2,
   "truncated": 1
  },
- "scorer_audit": {
-  "gold_label_validation": {
-   "x": 43,
-   "n": 47,
-   "pct": 91.5
-  },
-  "blind_audit": {
-   "items": 60,
-   "reviewers": 6,
-   "judgments": 360
-  },
-  "blind_reweighted_false_negative_pct": 0.79,
-  "blind_ci": [
-   0.0,
-   2.38
-  ],
-  "targeted_audit": {
-   "items": 30,
-   "reviewers": 6,
-   "judgments": 180
-  },
-  "targeted_reweighted_false_negative_pct": 13.1,
-  "targeted_ci": [
-   4.4,
-   21.9
-  ],
-  "targeted_endorsement_pct": 68.9,
-  "unanimous_targeted_items": 24,
-  "conservative_one_sided_balanced_accuracy_pp": 6.2,
-  "conservative_ci": [
-   1.5,
-   10.6
-  ],
-  "earlier_public_aggregate_one_sided_strict_pp": 7.33,
-  "earlier_ci": [
-   2.53,
-   11.79
-  ]
- },
  "dataset": {
   "candidate_manuscripts": 1076,
   "passed_screening": 34,
@@ -751,5 +712,102 @@
    "any_yes_or_partial": "at least one reviewer chose Yes or Partially"
   },
   "relationship": "the 7 majority-Yes items are a strict subset of the 9 majority-disagreement items"
+ },
+ "annotation_provenance_correction": {
+  "corrected_on": "2026-11-16",
+  "what_was_wrong": "Six scorer-assessment sessions were described as human reviewers. The first author states they were three ChatGPT and three Claude chat sessions. They are not human judgements and not independent validation.",
+  "removed_from_primary_analysis": [
+   "purported human blind-scorer false-negative rate (0.79%)",
+   "purported human targeted-scorer false-negative rate (13.14%)",
+   "human agreement coefficients (Fleiss' kappa, pairwise agreement)",
+   "human-corrected performance estimates",
+   "the four scorer-correction scenarios as empirically supported findings",
+   "the verdict that the scorer was validated"
+  ],
+  "gold_label_exercise_43_of_47": "NOT removed, and NOT asserted. The private research tree records this as a separate exercise with six NAMED participants and per-person raw submissions, whose own analysis distinguishes those responses from a model calibration run. That record conflicts with the instruction to treat it as an AI session. Marked PROVENANCE_UNCONFIRMED pending the author's determination; it is asserted nowhere.",
+  "retained_as_exploratory": "Raw per-item counts remain published unchanged, labelled as exploratory AI-session assessment.",
+  "superseded_targets_retained_for_provenance": {
+   "gold_label_validation": {
+    "x": 43,
+    "n": 47,
+    "pct": 91.5
+   },
+   "blind_audit": {
+    "items": 60,
+    "reviewers": 6,
+    "judgments": 360
+   },
+   "blind_reweighted_false_negative_pct": 0.79,
+   "blind_ci": [
+    0.0,
+    2.38
+   ],
+   "targeted_audit": {
+    "items": 30,
+    "reviewers": 6,
+    "judgments": 180
+   },
+   "targeted_reweighted_false_negative_pct": 13.1,
+   "targeted_ci": [
+    4.4,
+    21.9
+   ],
+   "targeted_endorsement_pct": 68.9,
+   "unanimous_targeted_items": 24,
+   "conservative_one_sided_balanced_accuracy_pp": 6.2,
+   "conservative_ci": [
+    1.5,
+    10.6
+   ],
+   "earlier_public_aggregate_one_sided_strict_pp": 7.33,
+   "earlier_ci": [
+    2.53,
+    11.79
+   ]
+  }
+ },
+ "false_alarm_inference": {
+  "n": 298,
+  "relation_false_alarms": 11,
+  "verdict_false_alarms": 24,
+  "relation_rate_pct": 3.6913,
+  "verdict_rate_pct": 8.0537,
+  "difference_pp": 4.3624,
+  "ci95_pp": [
+   0.7273,
+   7.6667
+  ],
+  "discordance": {
+   "verdict_only_b": 23,
+   "list_only_c": 10,
+   "both": 1,
+   "neither": 264
+  },
+  "mcnemar_exact_p": 0.035082,
+  "mcnemar_is_not_clustered": true
+ },
+ "scorer_confound_sensitivity": {
+  "n": 298,
+  "frozen_youden_j_pp": 25.5034,
+  "common_rule_youden_j_pp": 22.4832,
+  "common_rule_ci95_pp": [
+   16.1616,
+   28.8889
+  ],
+  "retained_fraction": 0.8816,
+  "frozen_raw_pp": 29.8658,
+  "common_rule_raw_pp": 4.0268,
+  "common_rule_list_e0": 125,
+  "common_rule_list_e1": 72,
+  "common_rule_verdict_e0": 137,
+  "common_rule_verdict_e1": 17,
+  "fifth_condition_run": false
+ },
+ "per_system": {
+  "n_rows": 7,
+  "pooled_raw_pp": 29.8658,
+  "mean_per_system_raw_pp": 29.9548,
+  "qwen3_8_youden_j_pp": 0.0,
+  "note": "one system shows zero net Youden's J gain"
  }
 }

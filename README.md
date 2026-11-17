@@ -31,6 +31,10 @@ data or on a file you supply.
 
 > **An E0 defect is a perturbation this study injected** into a sound published
 > manuscript. Nothing in this repository asserts that any real paper contains an error.
+>
+> **Provenance correction, 16 November 2026.** Scorer assessments previously described
+> here as the work of six human reviewers were six language-model chat sessions. They are
+> exploratory and are not human validation. See [`CHANGELOG.md`](CHANGELOG.md).
 
 ---
 
@@ -119,8 +123,8 @@ playground, which reads it in your browser and uploads it nowhere.
 ### Published here
 
 - **The released outcome data** — 1,440 per-cell binary outcomes, the audited aggregates,
-  the de-identified sufficient statistics for every other experiment, per-item human
-  rating counts, and a source-of-truth manifest mapping each manuscript value to its
+  the de-identified sufficient statistics for every other experiment, per-item rating
+  counts from an exploratory AI-session assessment, and a source-of-truth manifest mapping each manuscript value to its
   canonical record and its reproduction route. See
   [`docs/data/DATA_DICTIONARY.md`](docs/data/DATA_DICTIONARY.md).
 - **`reproducibility/`** — the end-to-end reproduction, using the frozen bootstrap
@@ -156,12 +160,12 @@ playground, which reads it in your browser and uploads it nowhere.
 - **Source manuscript text** — the corpus is third-party copyrighted material, and the
   relation ledgers embed excerpts.
 - **The manuscript**, reviewer reports, audit records and internal research logs.
-- **The reviewer axis of the human audits, and all free text.** Per-item rating counts
-  *are* published, which is enough to recompute every item-level statistic the manuscript
-  reports. Per-reviewer rates and the pairwise agreement matrix are not: six named
-  colleagues are not de-identifiable along that axis and no consent covering publication
-  of individual judgements exists. Mean pairwise agreement is therefore carried as a
-  retained audited aggregate and labelled as one.
+- **The per-session axis of the scorer assessments, and all free text.** Per-item rating
+  counts *are* published. The sessions were language-model chat sessions, not human
+  reviewers (see [`CHANGELOG.md`](CHANGELOG.md), 16 November 2026), their independence is
+  not established, and publishing a per-session axis would invite reading them as
+  independent replicates. Agreement statistics over them are not human inter-rater
+  reliability and are carried for provenance only.
 - **The label-to-arXiv mapping.** Manuscripts appear only as opaque labels, so no released
   file names a third-party paper beside an injected-defect label.
 - Paper-specific checker modules whose regular expressions quote source-manuscript
@@ -187,7 +191,9 @@ numbers must be **computed**, never looked up.
 | recompute the rung counts, balanced accuracy and log-linear d′ | **yes** |
 | recompute the scorer audits' reweighted false-negative rates from per-item counts | **yes** |
 | recompute the broader benchmark, three-state, agentic and transfer results | **yes** |
-| recompute reviewer-level agreement in the human audits | **no** — the reviewer axis is withheld; the value is carried as an audited aggregate |
+| recompute the false-alarm cost with its interval | **yes** — +4.36 pp, 95% CI [+0.73, +7.67] |
+| recompute the per-system table and the scorer-sensitivity bound | **yes** |
+| treat the scorer assessments as independent validation | **no** — they were AI chat sessions, not human reviewers; see `CHANGELOG.md` |
 | obtain raw model generations, source manuscript text or participant data | **no** — see the manuscript's availability statement |
 | identify which real papers were used | **no**, by design |
 

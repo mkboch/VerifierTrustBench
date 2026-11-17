@@ -170,6 +170,26 @@ ROUTE = {
 }
 
 
+def relabel_sessions(obj):
+    """Rewrite 'reviewers' to 'sessions' in a frozen block carried into public data.
+
+    The frozen records call the assessors reviewers. They were language-model chat
+    sessions. The COUNTS are untouched; only the noun changes, and only on the public
+    copy -- the frozen record itself is never rewritten.
+    """
+    import re as _re
+    txt = json.dumps(obj)
+    txt = _re.sub(r"\bsix reviewers\b", "six AI chat sessions", txt)
+    txt = _re.sub(r"\breviewers\b", "sessions", txt)
+    txt = _re.sub(r"\breviewer\b", "session", txt)
+    out = json.loads(txt)
+    if isinstance(out, dict):
+        out["PROVENANCE_NOTE_2026_11_16"] = (
+            "The assessors were six language-model chat sessions, not human reviewers. "
+            "Counts are unchanged; see CHANGELOG.md.")
+    return out
+
+
 def research_results():
     fn = J(ROOT / "paper_final/FINAL_NUMBERS.json")
     sens = J(FS / "SCORER_SENSITIVITY.json")
@@ -215,7 +235,16 @@ def research_results():
         },
         "ladder_decomposition": dec,
         "scorer_correction_scenarios": {
-            "note": ("Four scenarios, not one. They differ in WHICH audited judgements are "
+            "PROVENANCE_CORRECTION_2026_11_16": (
+                "EXPLORATORY ONLY. Every scenario below is computed from assessments made "
+                "by six language-model chat sessions, reported by the first author as three "
+                "ChatGPT and three Claude conversations. This repository previously "
+                "described them as six human reviewers; that was incorrect. They are not "
+                "human judgements, not independent adjudication and not a measured scorer "
+                "false-negative rate. These scenarios must NOT be used as empirically "
+                "supported corrections to any headline result."),
+            "status": "EXPLORATORY_NOT_EMPIRICALLY_SUPPORTED",
+            "note": ("Four scenarios, not one. They differ in WHICH assessed judgements are "
                      "credited and in WHETHER the correction is applied to the clean state "
                      "as well. They are different estimands and must not be interchanged."),
             "frozen_primary_not_altered": sens["frozen_primary_not_altered"],
@@ -256,7 +285,17 @@ def research_results():
             "bootstrap": {"seed": fr["seed"], "draws": fr["n_bootstrap"]},
         },
         "gold_label_validation": {
-            "label": "Human gold-label validation of the deterministic checkers",
+            "label": "Gold-label validation of the deterministic checkers",
+            "PROVENANCE_NOTE_2026_11_16": (
+                "DISTINCT FROM THE SCORER ASSESSMENTS. The private research tree records "
+                "this exercise with six NAMED individual participants and per-person raw "
+                "submission files, and its own analysis separates those responses from a "
+                "model calibration run. On the available "
+                "records this exercise does appear to have involved people, unlike the "
+                "scorer assessments corrected on 2026-11-16. The first author must confirm "
+                "which description is correct before this value is used in any publication; "
+                "until then it is marked UNCONFIRMED and is not asserted as validation."),
+            "status": "PROVENANCE_UNCONFIRMED_PENDING_AUTHOR",
             "human_participants": num("hv_participants"),
             "privacy": ("Aggregates only. No participant identifier, free text or "
                         "per-participant row is published."),
@@ -276,8 +315,8 @@ def research_results():
                 "agreement_control_items": frac("hv_sens_ctrl"),
             },
         },
-        "denominator_reconciliation": den,
-        "miss_anatomy": miss,
+        "denominator_reconciliation": relabel_sessions(den),
+        "miss_anatomy": relabel_sessions(miss),
         "contamination_chronology": pseudonymise_chronology(chron, cmap),
         "audit_impact": imp,
         "generated_by": "tools/build_research_data.py",

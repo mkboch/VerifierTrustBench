@@ -4,7 +4,7 @@
 Two blocks that the per-cell table cannot carry, because neither is a per-cell quantity:
 
   scorer_audit     the human scorer-validity audit of relation-targeted misses, and the
-                   four sensitivity scenarios built on it. Six colleagues rated 30 sampled
+                   four sensitivity scenarios built on it. Six AI chat sessions rated 30 sampled
                    items; only the resulting RATES and the scenario outputs are published.
                    No per-reviewer judgment, no item text, no reviewer identifier.
 
@@ -57,10 +57,13 @@ doc = {
         "computed by the frozen analysis and are reproduced verbatim; a visitor cannot "
         "regenerate them from the counts on this page.",
     "scorer_audit": {
+        "PROVENANCE_CORRECTION_2026_11_16": (
+            "These assessments came from six language-model chat sessions, reported by the first author as three ChatGPT and three Claude conversations, NOT from human reviewers as this repository previously stated. They are EXPLORATORY. They do not establish a measured scorer false-negative rate, human inter-rater reliability, or the validity of the benchmark's labels. Every rate and scenario below inherits that limitation."),
+        "status": "EXPLORATORY_AI_SESSION_ASSESSMENT",
         "design":
             "30 relation-targeted E0 cells the frozen scorer marked as misses were sampled "
             "under a stratified, non-proportional design across three strata and rated "
-            "independently by six colleagues. A stratum's measured rate is reweighted back "
+            "by six language-model chat sessions (EXPLORATORY; not human reviewers and not independent validation -- see provenance). A stratum's rate is reweighted back "
             "to the stratum's share of the corpus before it is reported.",
         "strata": {
             "A_NO_FINDINGS": "the system returned no finding at all",
@@ -80,7 +83,7 @@ doc = {
             "interval_is": "static audited aggregate, not recomputed in your browser",
         },
         "counts": {
-            "n_reviewers": rt["n_reviewers"],
+            "n_sessions": rt["n_reviewers"],
             "n_items_sampled": rt["n_items"],
             "n_judgments": rt["judgment_level"]["total_judgments"],
             "llm_judge_used": rt["llm_judge_used"],
@@ -105,7 +108,7 @@ doc = {
                 "Most items are true scorer misses, so agreement is measured against a "
                 "skewed base rate; kappa is reported with raw agreement rather than "
                 "instead of it. Per-reviewer and per-pair figures are NOT published: six "
-                "identifiable colleagues produced them.",
+                "language-model sessions produced them and their independence is not established, so a kappa over them does not carry its usual meaning.",
         },
         "e1_near_misses_were_not_audited":
             "The audit sampled E0 misses only. The 61 E1 near misses received NO human "
@@ -118,7 +121,24 @@ doc = {
             dict(id=k, kind=SCENARIO_KIND[k][0], basis=SCENARIO_KIND[k][1], **v)
             for k, v in ss["scenarios"].items()
         ],
-        "verdict": ss["verdict"],
+        # The frozen verdict concluded that the scorer was validated and that scorer false
+        # negatives could not explain the interface difference. Both treated the assessments
+        # as independent adjudication. They were not independent adjudicators, so the
+        # conclusions are WITHDRAWN. The original text is retained verbatim and labelled:
+        # withdrawing a conclusion is not the same as deleting the record of drawing it.
+        "verdict": {
+            "status": "WITHDRAWN_2026_11_16",
+            "why": ("The conclusion rested on treating six language-model chat sessions as "
+                    "independent adjudication of the scorer. They are neither independent "
+                    "adjudicators nor human reviewers, so neither 'the scorer is valid' nor "
+                    "'scorer false negatives cannot explain the interface difference' is "
+                    "supported by this evidence."),
+            "what_is_still_supported": (
+                "Nothing about scorer validity. The scorer-confound question is OPEN; it is "
+                "addressed by deterministic re-scoring of the stored outputs, which does not "
+                "depend on any subjective assessment."),
+            "superseded_conclusion_retained_for_provenance": ss["verdict"],
+        },
     },
     "proprietary_replication": {
         "anthropic": {

@@ -643,11 +643,20 @@ function runFrontier() {
   return c;
 }
 
-/** The human scorer audits, and the four correction scenarios kept distinct. */
+/** The exploratory AI-session assessment, and the four scenarios kept distinct. */
 function runScorer() {
   const A = need(AUDIT, "scorer_audit_items.json");
   const R = need(RESEARCH, "research_results.json").scorer_correction_scenarios;
-  const c = card("Human scorer audits", "per-item rating counts, recomputed here");
+  const c = card("Exploratory AI-session assessment",
+                 "per-item rating counts \u2014 NOT human validation");
+  c.appendChild(el("div", { class: "warn note", text:
+    "PROVENANCE CORRECTION, 16 November 2026. These assessments were previously described "
+    + "as the work of six human reviewers. They were six language-model chat sessions "
+    + "(three ChatGPT, three Claude). They are EXPLORATORY: not human judgements, not "
+    + "independent adjudication, and not evidence that the benchmark or its scorer is "
+    + "correct. No model identifier, version or transcript is recorded, so the session "
+    + "origin is NOT VERIFIED. The counts below are the unchanged raw outcomes; what "
+    + "changed is what may be concluded from them." }));
 
   const LV = ["Yes", "Partially", "No", "Ambiguous / Cannot determine"];
   const summarise = (aud) => {
@@ -656,18 +665,18 @@ function runScorer() {
     for (const it of aud.items) {
       let mx = 0;
       for (const k of LV) { tot[k] += it.counts[k] || 0; mx = Math.max(mx, it.counts[k] || 0); }
-      if (mx === it.n_reviewers) unanimous++;
+      if (mx === it.n_sessions) unanimous++;
     }
     const n = LV.reduce((s, k) => s + tot[k], 0);
     return { tot, n, unanimous };
   };
-  for (const [key, title] of [["targeted", "Relation-targeted scorer audit"],
-                              ["blind", "Blind scorer audit"]]) {
+  for (const [key, title] of [["targeted", "Relation-targeted scorer assessment"],
+                              ["blind", "Blind scorer assessment"]]) {
     const aud = A.audits[key];
     const s = summarise(aud);
     c.appendChild(el("h3", { text: title }));
     c.appendChild(table(["Quantity", "Value"], [
-      ["Items", aud.n_items], ["Reviewers", aud.n_reviewers], ["Judgments", s.n],
+      ["Items", aud.n_items], ["Sessions", aud.n_sessions], ["Judgements", s.n],
       ["Scorer endorsed (No)", s.tot.No + " of " + s.n + " = " + fmtPct(100 * s.tot.No / s.n)],
       ["Scorer false negative (Yes)", s.tot.Yes + " of " + s.n + " = "
         + fmtPct(100 * s.tot.Yes / s.n)],
@@ -691,12 +700,19 @@ function runScorer() {
       });
       c.appendChild(table(["Stratum", "Majority-Yes items", "Population", "Rate"], srows));
       c.appendChild(el("p", { class: "sub", text:
-        "Population-reweighted false-negative rate: " + fmtPct(100 * num / den)
+        "EXPLORATORY population-reweighted rate (not a measured scorer error rate): " + fmtPct(100 * num / den)
         + " across " + den + " corpus misses \u2014 recomputed here from the per-item "
         + "counts above, not quoted." }));
     }
   }
-  c.appendChild(el("h3", { text: "Correction scenarios \u2014 four, not one" }));
+  c.appendChild(el("h3", { text: "Correction scenarios \u2014 exploratory, four, not one" }));
+  c.appendChild(el("div", { class: "warn note", text:
+    "These scenarios are computed from the AI-session assessments above and are therefore "
+    + "EXPLORATORY, not empirically supported corrections. The conclusion previously drawn "
+    + "from them \u2014 that the scorer was validated and that scorer false negatives could "
+    + "not explain the interface difference \u2014 has been WITHDRAWN. The scorer-confound "
+    + "question is answered instead by deterministic re-scoring, which needs no subjective "
+    + "assessment." }));
   const sc = R.scenarios;
   c.appendChild(table(["Scenario", "Balanced accuracy", "95% CI", "d\u2032", "d\u2032 95% CI",
                        "d\u2032 excludes 0?"],
@@ -714,9 +730,11 @@ function runScorer() {
     + w.earlier_public_aggregate_used + "' instead. They are different scenarios, not a "
     + "contradiction." }));
   c.appendChild(el("div", { class: "warn note", text:
-    "This audit is of the SCORER, not of any person. Only per-item rating counts are "
-    + "published: the reviewer axis and all free text are withheld, so reviewer-level "
-    + "agreement cannot be recomputed here and is carried as an audited aggregate." }));
+    "This assessment is of the SCORER, not of any person. Only per-item counts are "
+    + "published: the per-session axis and all free text are withheld. The sessions are "
+    + "not established to be independent \u2014 three share one provider and three another "
+    + "\u2014 so agreement statistics over them are NOT human inter-rater reliability and "
+    + "carry no reliability interpretation." }));
   return c;
 }
 

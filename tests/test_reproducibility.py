@@ -99,18 +99,19 @@ def test_no_released_file_names_a_third_party_manuscript():
         assert m is None, f"{f.name} contains an arXiv identifier {m.group(0)!r}"
 
 
-def test_human_review_data_is_counts_only():
-    doc = json.loads((DATA / "scorer_audit_items.json").read_text())
+def test_assessment_data_is_counts_only():
+    """Per-item counts only, and labelled as AI sessions rather than reviewers."""
     raw = (DATA / "scorer_audit_items.json").read_text()
-    assert "Reviewer_" not in raw, "a reviewer identifier reached the public data"
-    assert '"notes"' not in raw, "free-text reviewer notes reached the public data"
+    doc = json.loads(raw)
+    assert "Reviewer_" not in raw, "a session identifier reached the public data"
+    assert '"notes"' not in raw, "free text reached the public data"
     for key in ("targeted", "blind"):
         for item in doc["audits"][key]["items"]:
             assert set(item["counts"]) == {
                 "Yes", "Partially", "No", "Ambiguous / Cannot determine"}
-            assert sum(item["counts"].values()) == item["n_reviewers"]
-    # the reviewer-axis statistics must be declared unrecomputable, not quietly omitted
-    assert "retained_audited_aggregates" in doc
+            assert sum(item["counts"].values()) == item["n_sessions"]
+    # agreement over the sessions must be declared non-reliability, not quietly omitted
+    assert "agreement_between_sessions" in doc
 
 
 def test_the_scorer_correction_scenarios_stay_distinct():

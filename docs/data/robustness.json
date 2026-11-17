@@ -1,0 +1,221 @@
+{
+ "schema_version": 1,
+ "defects_are_synthetic": "An E0 defect is a perturbation THIS STUDY injected into a sound published manuscript. No number here asserts that any real paper contains an error.",
+ "false_alarm_inference": {
+  "what_this_is": "The cost side of the trade-off, with its denominator and its uncertainty. Reporting that false alarms 'doubled' without both would overstate what 13 extra discordant cells can support.",
+  "n_paired_cells": 298,
+  "relation_targeted_list": {
+   "false_alarms": 11,
+   "n": 298,
+   "rate_pct": 3.6912751677852347
+  },
+  "relation_localized_verdict": {
+   "false_alarms": 24,
+   "n": 298,
+   "rate_pct": 8.053691275167786
+  },
+  "paired_difference_pp": 4.3624161073825505,
+  "primary_interval": {
+   "method": "manuscript-cluster bootstrap",
+   "draws": 10000,
+   "seed": 20261016,
+   "clusters": 21,
+   "ci95_pp": [
+    0.7272727272727273,
+    7.666666666666667
+   ],
+   "excludes_zero": true
+  },
+  "paired_discordance": {
+   "verdict_only_b": 23,
+   "list_only_c": 10,
+   "both": 1,
+   "neither": 264
+  },
+  "exact_mcnemar": {
+   "p_value": 0.03508203336969018,
+   "n_discordant": 33,
+   "CAVEAT": "This test treats all cells as independent. They are NOT: five systems x sixty relations nested in twenty-one manuscripts. It does NOT account for clustering and must never be presented as though it does. The cluster bootstrap above is the primary analysis."
+  }
+ },
+ "scorer_confound_sensitivity": {
+  "what_this_is": "SENSITIVITY. The frozen contrast scores the finding list with a lexical\n   matcher and the verdict by exact match, so format and scorer are confounded. Both\n   conditions' stored outputs carry cited evidence lines, which supports ONE deterministic\n   criterion applied identically to both: did the response cite a line supporting the\n   tested relation? Re-scoring both conditions that way gives a SENSITIVITY BOUND on how\n   much of the contrast depends on the scoring choice. It is not a decomposition into\n   format and scorer components; only an experiment that holds the scorer fixed while\n   changing the interface could do that, and none has been run.",
+  "n_cells": 298,
+  "common_rule": "A response is credited with flagging the tested relation iff it asserts a problem AND cites a line supporting that relation, judged by the frozen provenance function. 'Asserts a problem' remains interface-specific -- a list asserts by returning a finding, a verdict by returning ISSUE_PRESENT -- and that residual difference IS the format effect being retained.",
+  "frozen_scorers": {
+   "list_e0_hits": 59,
+   "verdict_e0_hits": 148,
+   "list_e1_false_alarms": 11,
+   "verdict_e1_false_alarms": 24,
+   "raw_difference_pp": 29.86577181208054,
+   "false_alarm_difference_pp": 4.36241610738255,
+   "youden_j_difference_pp": 25.503355704697988,
+   "youden_j_ci95_pp": [
+    19.548872180451127,
+    31.0
+   ],
+   "balanced_accuracy_difference_pp": 12.751677852348998,
+   "dprime_difference": 0.4601433593649865
+  },
+  "common_evidence_localisation_rule": {
+   "list_e0_hits": 125,
+   "verdict_e0_hits": 137,
+   "list_e1_false_alarms": 72,
+   "verdict_e1_false_alarms": 17,
+   "raw_difference_pp": 4.026845637583892,
+   "false_alarm_difference_pp": -18.456375838926174,
+   "youden_j_difference_pp": 22.483221476510064,
+   "youden_j_ci95_pp": [
+    16.161616161616163,
+    28.888888888888886
+   ],
+   "balanced_accuracy_difference_pp": 11.241610738255037,
+   "dprime_difference": 0.9706911265542004
+  },
+  "retained_fraction_of_youden_j": 0.8815789473684209,
+  "reading": "Under the common rule the finding list's detections rise sharply AND so do its false alarms: the lexical matcher undercounted both, and the two errors largely cancel in a discrimination measure. Youden's J is therefore robust to the scoring choice while the RAW rates are not. This bounds the scorer's contribution; it does not isolate format.",
+  "what_this_does_not_establish": "It does not decompose the contrast into a format component and a scorer component. Replacing one scoring rule with another substitutes a criterion rather than holding it fixed. A fifth condition holding the scorer constant while changing only the response interface HAS NOT BEEN RUN."
+ },
+ "per_system": {
+  "what_this_is": "Pooled statistics hide heterogeneity. A pooled value is NOT the mean of the per-system values and the two are reported separately.",
+  "pooled_raw_difference_pp": 29.86577181208054,
+  "mean_of_per_system_raw_difference_pp": 29.954802259887003,
+  "these_are_different_quantities": true,
+  "rows": [
+   {
+    "system": "qwen38_27",
+    "label": "Qwen3-VL-like open-weight system A (27B class)",
+    "group": "open-weight",
+    "n_paired": 59,
+    "relation_e0_hits": 23,
+    "relation_e0_sensitivity_pct": 38.983050847457626,
+    "verdict_e0_hits": 51,
+    "verdict_e0_sensitivity_pct": 86.4406779661017,
+    "relation_e1_false_alarms": 2,
+    "relation_e1_false_alarm_pct": 3.389830508474576,
+    "verdict_e1_false_alarms": 6,
+    "verdict_e1_false_alarm_pct": 10.16949152542373,
+    "raw_difference_pp": 47.45762711864407,
+    "false_alarm_difference_pp": 6.779661016949154,
+    "youden_j_difference_pp": 40.67796610169491,
+    "balanced_accuracy_difference_pp": 20.33898305084747,
+    "dprime_difference": 0.8516150360580144
+   },
+   {
+    "system": "qwen36_27",
+    "label": "Open-weight system B (27B class)",
+    "group": "open-weight",
+    "n_paired": 59,
+    "relation_e0_hits": 18,
+    "relation_e0_sensitivity_pct": 30.508474576271187,
+    "verdict_e0_hits": 41,
+    "verdict_e0_sensitivity_pct": 69.49152542372882,
+    "relation_e1_false_alarms": 5,
+    "relation_e1_false_alarm_pct": 8.47457627118644,
+    "verdict_e1_false_alarms": 3,
+    "verdict_e1_false_alarm_pct": 5.084745762711865,
+    "raw_difference_pp": 38.983050847457626,
+    "false_alarm_difference_pp": -3.3898305084745757,
+    "youden_j_difference_pp": 42.3728813559322,
+    "balanced_accuracy_difference_pp": 21.1864406779661,
+    "dprime_difference": 1.2395183302535098
+   },
+   {
+    "system": "gemma4_12",
+    "label": "Open-weight system C (12B class)",
+    "group": "open-weight",
+    "n_paired": 60,
+    "relation_e0_hits": 10,
+    "relation_e0_sensitivity_pct": 16.666666666666664,
+    "verdict_e0_hits": 25,
+    "verdict_e0_sensitivity_pct": 41.66666666666667,
+    "relation_e1_false_alarms": 1,
+    "relation_e1_false_alarm_pct": 1.6666666666666667,
+    "verdict_e1_false_alarms": 5,
+    "verdict_e1_false_alarm_pct": 8.333333333333332,
+    "raw_difference_pp": 25.0,
+    "false_alarm_difference_pp": 6.666666666666667,
+    "youden_j_difference_pp": 18.333333333333332,
+    "balanced_accuracy_difference_pp": 9.166666666666668,
+    "dprime_difference": 0.11156962887638677
+   },
+   {
+    "system": "granite42_30",
+    "label": "Open-weight system D (30B class)",
+    "group": "open-weight",
+    "n_paired": 60,
+    "relation_e0_hits": 5,
+    "relation_e0_sensitivity_pct": 8.333333333333332,
+    "verdict_e0_hits": 21,
+    "verdict_e0_sensitivity_pct": 35.0,
+    "relation_e1_false_alarms": 1,
+    "relation_e1_false_alarm_pct": 1.6666666666666667,
+    "verdict_e1_false_alarms": 1,
+    "verdict_e1_false_alarm_pct": 1.6666666666666667,
+    "raw_difference_pp": 26.666666666666668,
+    "false_alarm_difference_pp": 0.0,
+    "youden_j_difference_pp": 26.666666666666668,
+    "balanced_accuracy_difference_pp": 13.33333333333333,
+    "dprime_difference": 0.9610561456665081
+   },
+   {
+    "system": "qwen3_8",
+    "label": "Open-weight system E (8B class)",
+    "group": "open-weight",
+    "n_paired": 60,
+    "relation_e0_hits": 3,
+    "relation_e0_sensitivity_pct": 5.0,
+    "verdict_e0_hits": 10,
+    "verdict_e0_sensitivity_pct": 16.666666666666664,
+    "relation_e1_false_alarms": 2,
+    "relation_e1_false_alarm_pct": 3.3333333333333335,
+    "verdict_e1_false_alarms": 9,
+    "verdict_e1_false_alarm_pct": 15.0,
+    "raw_difference_pp": 11.666666666666666,
+    "false_alarm_difference_pp": 11.666666666666666,
+    "youden_j_difference_pp": 0.0,
+    "balanced_accuracy_difference_pp": 0.0,
+    "dprime_difference": -0.09585015166805322
+   },
+   {
+    "system": "POOLED_OPEN_WEIGHT",
+    "label": "Five open-weight systems, pooled",
+    "group": "pooled",
+    "n_paired": 298,
+    "relation_e0_hits": 59,
+    "relation_e0_sensitivity_pct": 19.798657718120804,
+    "verdict_e0_hits": 148,
+    "verdict_e0_sensitivity_pct": 49.664429530201346,
+    "relation_e1_false_alarms": 11,
+    "relation_e1_false_alarm_pct": 3.691275167785235,
+    "verdict_e1_false_alarms": 24,
+    "verdict_e1_false_alarm_pct": 8.053691275167784,
+    "raw_difference_pp": 29.86577181208054,
+    "false_alarm_difference_pp": 4.36241610738255,
+    "youden_j_difference_pp": 25.503355704697988,
+    "balanced_accuracy_difference_pp": 12.751677852348998,
+    "dprime_difference": 0.4601433593649865
+   },
+   {
+    "system": "gpt-5.2",
+    "label": "GPT-5.2 (proprietary, reasoning_effort=none)",
+    "group": "proprietary",
+    "n_paired": 60,
+    "relation_e0_hits": 25,
+    "relation_e0_sensitivity_pct": 41.66666666666667,
+    "verdict_e0_hits": 39,
+    "verdict_e0_sensitivity_pct": 65.0,
+    "relation_e1_false_alarms": 0,
+    "relation_e1_false_alarm_pct": 0.0,
+    "verdict_e1_false_alarms": 2,
+    "verdict_e1_false_alarm_pct": 3.3333333333333335,
+    "raw_difference_pp": 23.333333333333332,
+    "false_alarm_difference_pp": 3.3333333333333335,
+    "youden_j_difference_pp": 20.0,
+    "balanced_accuracy_difference_pp": 9.999999999999998,
+    "dprime_difference": -0.07503349688113614
+   }
+  ]
+ },
+ "generated_by": "tools/build_robustness.py"
+}

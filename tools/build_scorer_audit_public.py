@@ -1,34 +1,46 @@
 #!/usr/bin/env python3
-"""Derive docs/data/scorer_audit_items.json from the frozen human scorer audits.
+"""Derive docs/data/scorer_audit_items.json from the frozen scorer-assessment records.
 
-TWO audits, both of the SCORER and not of any person:
+PROVENANCE, CORRECTED 2026-11-16
+================================
 
-  blind     60 items, 6 reviewers, 360 judgments. Asks whether the blind finding-list
-            scorer was right to record a miss (or a false positive).
-  targeted  30 items, 6 reviewers, 180 judgments. Asks the same question of the
-            relation-targeted finding-list scorer, which is the rung the headline
-            contrast depends on.
+These assessments were previously described in this repository as the work of six human
+reviewers. That description was wrong. The first author states that the six assessment
+sessions were LANGUAGE-MODEL CHAT SESSIONS: three ChatGPT conversations and three Claude
+conversations. No human volunteer, colleague or participant produced them.
 
-WHAT IS PUBLISHED, AND WHY ONLY THIS
+The repository holds NO record of the session origin -- no model identifier, no version,
+no date, no transcript, no setting. The correction therefore rests on the author's
+statement, and the specific session-to-label mapping is NOT VERIFIED from any artifact in
+this tree. The response files carry only the opaque labels used at the time.
 
-Per ITEM, the number of reviewers choosing each category. Nothing else. That is enough to
-recompute every item-level statistic the manuscript reports -- majority verdicts, unanimity,
-stratum false-negative rates, the reweighted rate and its bootstrap interval, and Fleiss'
-kappa, which depends only on per-item category counts.
+WHAT THIS MEANS FOR THE SCIENCE
+-------------------------------
 
-Deliberately NOT published, because it is not de-identifiable in a group of six named
-colleagues and no consent covering publication exists:
+These are EXPLORATORY AI-SESSION ASSESSMENTS. They are not human validation, not
+independent adjudication, and not evidence that the benchmark's labels or its scorer are
+correct. Specifically they do NOT establish:
 
-  * the reviewer axis -- per-reviewer endorsement rates, and the pairwise agreement matrix
-    keyed to reviewer pairs. Mean pairwise raw agreement therefore CANNOT be recomputed from
-    this file; it is carried as a retained audited aggregate and labelled as one.
-  * free-text reviewer notes.
-  * the audited items themselves: the manuscript text, the model's finding list and the
-    reviewer-facing evidence summaries. Items appear only as opaque labels.
+  * a measured scorer false-negative rate;
+  * human inter-rater reliability (the agreement statistics describe agreement between
+    language-model sessions, whose independence is not established -- three sessions share
+    one provider and three share another, and common training data alone would correlate
+    them);
+  * ground-truth validity of the benchmark.
 
-An E0 defect is a perturbation THIS STUDY injected into a sound published manuscript. An
-audited "miss" is a scorer judgement about a model's output on a perturbed manuscript. No
-item here asserts that any real paper contains an error.
+The per-item counts below are the raw frozen outcomes and are published unchanged. What
+changed is the description of what produced them and what may be concluded from them.
+
+TWO ASSESSMENT SETS, both of the SCORER and not of any person:
+
+  blind     60 items, 6 sessions, 360 judgements, on the blind finding-list scorer.
+  targeted  30 items, 6 sessions, 180 judgements, on the relation-targeted scorer.
+
+Whether the same six sessions produced both sets is NOT VERIFIED; the two sets were
+collected on different dates under different file-naming conventions.
+
+An E0 defect is a perturbation THIS STUDY injected into a sound published manuscript.
+Nothing here asserts that any real paper contains an error.
 """
 from __future__ import annotations
 import csv, hashlib, json, os, sys
@@ -59,7 +71,7 @@ def targeted_items():
     """
     d = FS / "relation_targeted_scorer_human_review_responses"
     counts = defaultdict(lambda: defaultdict(int))
-    reviewers = set()
+    sessions = set()
     for p in sorted(d.glob("*.csv")):
         with open(p, newline="", encoding="utf-8-sig") as fh:
             for row in csv.DictReader(fh):
@@ -71,7 +83,7 @@ def targeted_items():
                 if lvl is None:
                     sys.exit(f"unmapped rating {raw!r} in {p.name}")
                 counts[item][lvl] += 1
-                reviewers.add((row.get("reviewer") or p.stem).strip())
+                sessions.add((row.get("reviewer") or p.stem).strip())
     sample = json.load(open(FS / "audit/RELATION_TARGETED_AUDIT_SAMPLE.json"))
     meta = {i["audit_id"]: i for i in sample["items"]}
     f = F.Fair()
@@ -95,10 +107,10 @@ def targeted_items():
             "domain": m["domain"],
             "cluster": cluster.get(m["paper"], ""),
             "relation": relid.get(m["case_id"], ""),
-            "n_reviewers": sum(c.values()),
+            "n_sessions": sum(c.values()),
             "counts": {k: c.get(k, 0) for k in LEVELS},
         })
-    return out, len(reviewers), sample
+    return out, len(sessions), sample
 
 
 def blind_items():
@@ -111,7 +123,7 @@ def blind_items():
                 "item_kind": row["item_kind"],
                 "family": row["family"],
                 "domain": row["domain"],
-                "n_reviewers": int(row["n_reviewers"]),
+                "n_sessions": int(row["n_reviewers"]),
                 "counts": {"Yes": int(row["q1_yes"]), "Partially": int(row["q1_partially"]),
                            "No": int(row["q1_no"]),
                            "Ambiguous / Cannot determine": int(row["q1_ambiguous"])},
@@ -133,16 +145,24 @@ def main() -> int:
         "defects_are_synthetic": (
             "An E0 defect is a perturbation THIS STUDY injected into a sound published "
             "manuscript. Nothing here asserts that any real paper contains an error."),
-        "human_data_policy": (
-            "Per-item category counts only. The reviewer axis and all free text are "
-            "withheld: six named colleagues are not de-identifiable along that axis and no "
-            "consent covering publication of individual judgements exists."),
+        "provenance": (
+            "EXPLORATORY AI-SESSION ASSESSMENT. Six language-model chat sessions "
+            "(reported by the first author as three ChatGPT and three Claude "
+            "conversations) rated the sampled items. These are NOT human judgements and "
+            "are NOT independent validation of the scorer or the benchmark. The session "
+            "origin is not documented in any repository artifact and is NOT VERIFIED; "
+            "the per-session axis and all free text are withheld because they establish "
+            "nothing and could be mistaken for independent replicates."),
+        "not_human_validation": (
+            "This repository previously described these assessments as the work of six "
+            "human reviewers. That description was incorrect and was corrected on "
+            "2026-11-16. See CHANGELOG.md."),
         "audits": {
             "targeted": {
                 "question": rt["question"],
                 "rung": sample["rung"], "state": sample["state"],
-                "n_items": len(tgt), "n_reviewers": n_rev,
-                "total_judgments": sum(i["n_reviewers"] for i in tgt),
+                "n_items": len(tgt), "n_sessions": n_rev,
+                "total_judgments": sum(i["n_sessions"] for i in tgt),
                 "sampling_seed": sample["seed"],
                 "population_total_misses": sample["population_total_misses"],
                 "strata": sample["stratification"],
@@ -154,15 +174,18 @@ def main() -> int:
             "blind": {
                 "question": ("Was the BLIND finding-list scorer right to record this miss "
                              "(or this false positive)?"),
-                "n_items": len(bld), "n_reviewers": ag["n_reviewers"],
-                "total_judgments": sum(i["n_reviewers"] for i in bld),
+                "n_items": len(bld), "n_sessions": ag["n_reviewers"],
+                "total_judgments": sum(i["n_sessions"] for i in bld),
                 "items": bld,
             },
         },
-        "retained_audited_aggregates": {
-            "note": ("These depend on the withheld reviewer axis and CANNOT be recomputed "
-                     "from the per-item counts above. They are carried as audited "
-                     "aggregates, not as recomputable values."),
+        "agreement_between_sessions": {
+            "note": ("Agreement BETWEEN LANGUAGE-MODEL SESSIONS. These are not human "
+                     "inter-rater reliability statistics and must not be reported as "
+                     "such. The sessions are not established to be independent: three "
+                     "share one provider and three another, and shared training data "
+                     "alone would correlate them, so a kappa computed over them does not "
+                     "carry its usual interpretation. Carried for provenance only."),
             "targeted_mean_pairwise_raw_agreement_4level":
                 rt["agreement"]["mean_pairwise_raw_agreement_4level"],
             "targeted_mean_pairwise_raw_agreement_binary":

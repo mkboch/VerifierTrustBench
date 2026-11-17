@@ -81,6 +81,7 @@ def test_no_manuscript_sources_are_tracked():
     # They are listed explicitly so the guard stays strict for everything else.
     metadata_about_the_manuscript = {
         "docs/data/manuscript_results_index.json",
+        "docs/data/robustness.json",
         "reproducibility/manuscript_targets.json",
         "reproducibility/manuscript_targets_archive.json",
     }
@@ -114,6 +115,7 @@ def test_the_only_tracked_data_files_are_the_documented_ones():
         "docs/data/research_results.json",
         "docs/data/scorer_audit_items.json",
         "docs/data/manuscript_results_index.json",
+        "docs/data/robustness.json",
         # fabricated demo input, declares itself synthetic
         "docs/data/synthetic_demo_cells.json",
         # comparison targets, read only by the reconciliation

@@ -1,5 +1,51 @@
 # Changelog
 
+## 16 November 2026 — Annotation provenance clarification
+
+Three ChatGPT conversation sessions and three Claude conversation sessions were previously
+described in this repository as six human volunteer reviewers. **These were AI-generated
+evaluations, not human-participant annotations.** Public-facing descriptions and
+interpretations have been corrected. Frozen model-inference records are unchanged.
+
+**What this repository previously claimed.** That six human reviewers — variously described
+as colleagues, volunteers and independent adjudicators — rated sampled scorer decisions in
+two assessment sets (60 items/360 judgements and 30 items/180 judgements); that this
+established a measured scorer false-negative rate of 13.14% (and 0.79% for the blind
+scorer); that Fleiss' kappa over their ratings measured human inter-rater reliability; and
+that scorer false negatives therefore could not explain the interface difference.
+
+**What the evidence supports.** The per-item rating counts are unchanged and remain
+published. Nothing about who or what produced them is recorded anywhere in this
+repository — no model identifier, version, date, transcript or setting. The correction
+rests on the first author's statement; the session-to-label mapping is **NOT VERIFIED**
+from any artifact here.
+
+**What has been withdrawn.** The scorer-validity verdict, the measured false-negative
+rates, the agreement coefficients as human inter-rater reliability, and the four
+correction scenarios as empirically supported findings. The scenarios and counts remain
+published, relabelled `EXPLORATORY_NOT_EMPIRICALLY_SUPPORTED`. The superseded conclusions
+are retained verbatim and labelled rather than deleted.
+
+**A separate exercise is not affected and is flagged.** The gold-label validation (43/47)
+is recorded in this tree as a distinct exercise with six *named* participants and
+per-person raw submissions, whose own analysis separates human responses from a model
+calibration run. That record conflicts with treating it as an AI session, so it is marked
+`PROVENANCE_UNCONFIRMED_PENDING_AUTHOR` and is asserted nowhere.
+
+**Replacing it.** The scorer-confound question the withdrawn audit was meant to answer is
+now addressed without any subjective assessment: both conditions' stored outputs are
+re-scored under one deterministic evidence-localisation rule. Youden's J falls from
++25.50 pp to +22.48 pp (95% CI [+16.16, +28.89]) — 88% retained — while the raw detection
+difference collapses from +29.87 pp to +4.03 pp. The lexical matcher undercounted both
+detections and false alarms, and the two errors largely cancel in a discrimination
+measure.
+
+Also in this release: the false-alarm cost now ships with its denominator, its paired
+discordance counts and a manuscript-cluster interval (+4.36 pp, 95% CI [+0.73, +7.67]);
+an exact McNemar p-value is carried as a descriptive companion and explicitly marked as
+not accounting for clustering; and a per-system table is published, which shows one of the
+five open-weight systems gaining **zero** net Youden's J.
+
 ## 2026-11-16 — comparable-scale metrics and expanded verification
 
 - **Youden's J** (`J = TPR − FPR`) is now computed, tested and reported alongside balanced

@@ -71,20 +71,38 @@ predates every held-out manuscript. For two of six systems it does not, so chron
 **not** rule memorisation out for them. That is a limit of the evidence, not a finding of
 contamination.
 
-## `scorer_audit_items.json` — human review, counts only
+## `scorer_audit_items.json` — exploratory AI-session assessment, counts only
 
-Two audits of the **scorer** — never of any person. Per item: the number of reviewers
-choosing each of four categories.
+Two assessment sets, both of the **scorer** and never of any person. Per item, the number
+of sessions choosing each of four categories.
 
-That is enough to recompute majority verdicts, unanimity, per-stratum false-negative
-rates, the population-reweighted rate and Fleiss' κ, all of which depend only on per-item
-category counts.
+> **Provenance correction, 16 November 2026.** These assessments were previously described
+> as the work of six human reviewers. They were **six language-model chat sessions** —
+> reported by the first author as three ChatGPT and three Claude conversations. They are
+> **exploratory**: not human judgements, not independent adjudication, and not evidence
+> that the benchmark's labels or its scorer are correct. No model identifier, version,
+> date or transcript is recorded anywhere in this repository, so the session origin is
+> **NOT VERIFIED** from any artifact here. See `CHANGELOG.md`.
 
-**Withheld:** the reviewer axis and all free text. Six named colleagues are not
-de-identifiable along that axis and no consent covering publication of individual
-judgements exists. Consequently **mean pairwise agreement cannot be recomputed from this
-file**; it is carried under `retained_audited_aggregates` and labelled as such rather than
-quietly dropped.
+The per-item counts are the raw frozen outcomes and are unchanged. What changed is the
+description of what produced them and what may be concluded from them.
+
+**Withheld:** the per-session axis and all free text. The sessions are not established to
+be independent — three share one provider and three another, and shared training data
+alone would correlate them — so a per-session axis would invite reading them as
+independent replicates. Agreement statistics over them are **not** human inter-rater
+reliability and are carried under `agreement_between_sessions` for provenance only.
+
+## `robustness.json` — what the headline contrast rests on
+
+Three blocks. **False-alarm inference**: the cost side with its denominator, paired
+discordance counts and a manuscript-cluster interval (+4.36 pp, 95% CI [+0.73, +7.67]); an
+exact McNemar p-value is carried as a descriptive companion and is explicitly **not**
+clustered. **Scorer-confound sensitivity**: both conditions re-scored under one
+deterministic evidence-localisation rule, bounding how much of the contrast depends on the
+scoring choice — it does **not** decompose format from scorer, and no fifth condition has
+been run. **Per-system results**: a pooled value is not the mean of per-system values and
+both are given.
 
 ## `manuscript_results_index.json` — the source-of-truth manifest
 

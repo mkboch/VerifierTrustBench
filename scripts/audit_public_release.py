@@ -93,6 +93,8 @@ ALLOWED_DATA = {
         "PER-ITEM human rating counts only; no reviewer axis, no free text",
     "docs/data/manuscript_results_index.json":
         "source-of-truth manifest: macro, value, canonical record, reproduction route",
+    "docs/data/robustness.json":
+        "false-alarm inference, scorer sensitivity bound, per-system results",
     "docs/data/synthetic_demo_cells.json":
         "synthetic fixture; must declare itself synthetic",
 }
