@@ -160,6 +160,13 @@ playground, which reads it in your browser and uploads it nowhere.
 - **Source manuscript text** — the corpus is third-party copyrighted material, and the
   relation ledgers embed excerpts.
 - **The manuscript**, reviewer reports, audit records and internal research logs.
+- **Every individual submission from the gold-label validation exercise.** That exercise
+  is recorded separately in the private research tree with named individual participants.
+  No per-person submission file, assignment record, identity mapping, individual response,
+  confidence rating, timestamp or free-text explanation is published here, in any commit,
+  release or site asset. Only non-identifying aggregates appear, and those are flagged
+  `PROVENANCE_UNCONFIRMED_PENDING_AUTHOR` pending the author's determination of what
+  produced them (see [`CHANGELOG.md`](CHANGELOG.md), 16 November 2026).
 - **The per-session axis of the scorer assessments, and all free text.** Per-item rating
   counts *are* published. The sessions were language-model chat sessions, not human
   reviewers (see [`CHANGELOG.md`](CHANGELOG.md), 16 November 2026), their independence is

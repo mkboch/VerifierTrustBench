@@ -119,3 +119,30 @@ def test_raw_assessment_counts_were_not_altered_by_the_correction():
     tot = {k: sum(i["counts"][k] for i in t["items"]) for k in LV}
     assert tot == {"Yes": 41, "Partially": 11, "No": 124,
                    "Ambiguous / Cannot determine": 4}
+
+
+def test_no_individual_participant_submission_is_published():
+    """The gold-label exercise's individual submissions must never be released.
+
+    Structural, not name-based: a published file must not carry a per-person axis, a
+    per-response timestamp, a confidence rating or free-text explanation keyed to an
+    individual. The README must also say so, so the claim and the fact stay aligned.
+    """
+    import csv as _csv
+    bad = []
+    for f in sorted((ROOT / "docs/data").glob("*")):
+        if f.suffix not in {".json", ".csv"}:
+            continue
+        raw = f.read_text(encoding="utf-8", errors="replace")
+        for pat, why in (
+                (r'"(reviewer|participant|respondent)_?\d', "per-person key"),
+                (r"Reviewer_\d", "reviewer label"),
+                (r'"(submitted_at|started_at|completed_at)"', "per-response timestamp"),
+                (r'"confidence"\s*:\s*\d', "individual confidence rating"),
+                (r'"notes"\s*:\s*"[^"]{20,}', "free-text response")):
+            if re.search(pat, raw, re.I):
+                bad.append(f"{f.name}: {why}")
+    assert bad == [], f"identifiable participant data in published files: {bad}"
+    readme = flat("README.md").lower()
+    assert "individual submission from the gold-label validation exercise" in readme, (
+        "the README no longer declares the gold-label submissions withheld")
